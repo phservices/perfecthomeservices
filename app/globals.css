@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+ 
+  
+body {
+  font-family: var(--font-bricolage), sans-serif;
+}
+
+@theme {
+ --font-sans: var(--font-bricolage);
+ --font-inter: var(--font-inter);
+
+  --color-primary:#F89A0B;
+  --color-secondary: #0E738C; 
+  --color-accent: #1F2937;
+  --color-white:#FFFFFF;
+  --color-grey-50:#F8FAFC;
+  --color-grey-100:#E5E7EB;
+}
+}
+
+@layer components {
+ .container {
+    @apply mx-auto max-w-[1200px] md:max-w-[1400px] px-4 md:px-2 lg:px-4 xl:px-8;
+  }
+.bg-mobile-hero {
+  position: relative;
+  background-image: url("/images/Hero-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.bg-mobile-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #00000080;
+  z-index: 0;
+}
+
+.bg-mobile-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.bg-cta {
+  background-image: linear-gradient(#0000007A, #0000007A), url("/images/cta.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+@media (min-width: 768px) {
+  .bg-mobile-hero {
+    background-position: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .bg-mobile-hero {
+    background-position: center;
+  }
+}
+}
