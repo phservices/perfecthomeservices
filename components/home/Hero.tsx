@@ -1,4 +1,3 @@
-
 "use client";
 
 import Header from "../Header";
@@ -50,11 +49,11 @@ export default function Hero() {
             Perfect Home Services is an interior and exterior design company
             based in Enugu State, Nigeria, providing professional home
             improvement, construction finishing, industrial cleaning,
-            fumigation, real estate, and interior design training services.
-            From concept development and space planning to construction
-            finishing and final styling, we create functional, comfortable,
-            and visually appealing spaces tailored to the needs of homes,
-            offices, commercial properties, and industrial facilities.
+            fumigation, real estate, and interior design training services. From
+            concept development and space planning to construction finishing and
+            final styling, we create functional, comfortable, and visually
+            appealing spaces tailored to the needs of homes, offices, commercial
+            properties, and industrial facilities.
           </p>
 
           {/* Buttons */}

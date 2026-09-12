@@ -61,6 +61,27 @@ body {
   background-position: center;
 }
 
+.bg-about {
+  background:
+    linear-gradient(#00000080, #00000080),
+    url("/images/About-1.jpg") top / cover no-repeat;
+}
+.bg-listing {
+  background:
+    linear-gradient(#00000080, #00000080),
+    url("/images/listingHero.jpg") center / cover no-repeat;
+}
+
+/* Hide scrollbar but keep scrolling */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 @media (min-width: 768px) {
   .bg-mobile-hero {
     background-position: center;

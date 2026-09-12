@@ -1,16 +1,16 @@
 "use client";
 
 import Footer from "@/components/Footer";
-import Academy from "@/components/home/Academy";
-import Cta from "@/components/home/Cta";
-import FeaturedService from "@/components/home/FeaturedService";
-import Founder from "@/components/home/Founder";
-import Hero from "@/components/home/Hero";
-import Introduction from "@/components/home/Introduction";
-import ServiceArea from "@/components/home/ServiceArea";
-import Testimonials from "@/components/home/Testimonials";
-import TrustedSolution from "@/components/home/TrustedSolution";
-import WhyChooseUs from "@/components/home/WhyChooseUs";
+import Academy from "@/components/Home/Academy";
+import Cta from "@/components/Home/Cta";
+import FeaturedService from "@/components/Home/FeaturedService";
+import Founder from "@/components/Home/Founder";
+import Hero from "@/components/Home/Hero";
+import Introduction from "@/components/Home/Introduction";
+import ServiceArea from "@/components/Home/ServiceArea";
+import Testimonials from "@/components/Home/Testimonials";
+import TrustedSolution from "@/components/Home/TrustedSolution";
+import WhyChooseUs from "@/components/Home/WhyChooseUs";
 
 export default function Page() {
   return (
