@@ -1,23 +1,23 @@
 export const navLinks = [
   {
     title: "Services",
-    router: "/listing",
+    router: "/Listing",
     dropdown: [
         {
         title: "Our Services",
-        router: "Services",
+        router: "/Listing",
       },
       {
         title: "Explore Interior Design Services",
-        router: "/listing/interior-design",
+        router: "/Listing/interior-design",
       },
       {
         title: "Book a Cleaning Service & Learn More",
-        router: "/listing/cleaning",
+        router: "/Listing/cleaning",
       },
       {
         title: "Explore Real Estate Services",
-        router: "/listing/real-estate",
+        router: "/Listing/real-estate",
       },
     ],
   },

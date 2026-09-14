@@ -1,8 +1,8 @@
 "use client";
 
 import Footer from "@/components/Footer";
-import Cta from "@/components/Home/Cta";
 import WhyChooseUs from "@/components/Home/WhyChooseUs";
+import InteriorCta from "@/components/Interior/InteriorCta";
 import InteriorDetails from "@/components/Interior/InteriorDetails";
 import InteriorHero from "@/components/Interior/InteriorHero";
 import OurProjects from "@/components/Interior/OurProjects";
@@ -14,7 +14,7 @@ export default function Page() {
       <InteriorDetails />
       <OurProjects />
       <WhyChooseUs />
-      <Cta />
+      <InteriorCta />
       <Footer />
     </>
   );

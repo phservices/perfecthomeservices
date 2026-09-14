@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Button from "../ui/Button";
+import Link from "next/link";
 
 export default function Introduction() {
   return (
@@ -93,10 +94,11 @@ export default function Introduction() {
 
               {/* Button */}
               <div className="flex w-full justify-start">
-                <Button
-                  style="danger"
-                  type="button"
-                  css="
+                <Link href="/Aboutus">
+                  <Button
+                    style="danger"
+                    type="button"
+                    css="
                     w-full
                     max-w-[220px]
                     px-5
@@ -108,9 +110,10 @@ export default function Introduction() {
                     text-[#1A1A1A]
                     sm:text-[16px]
                   "
-                >
-                  Learn More About Us
-                </Button>
+                  >
+                    Learn More About Us
+                  </Button>
+                </Link>
               </div>
             </div>
 

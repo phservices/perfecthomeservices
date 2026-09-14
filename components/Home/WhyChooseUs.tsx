@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Button from "../ui/Button";
 import { perfectHomeServices } from "@/utils/Content/HomePage.Content";
+import Link from "next/link";
 
 export default function WhyChooseUs() {
   return (
@@ -49,6 +50,7 @@ export default function WhyChooseUs() {
 
           {/* CTA */}
           <div className="flex justify-center">
+             <Link href="/Contact">
             <Button
               style="danger"
               type="button"
@@ -68,6 +70,8 @@ export default function WhyChooseUs() {
             >
               Let&apos;s Discuss your project
             </Button>
+             
+             </Link>
           </div>
 
           {/* Service Cards */}

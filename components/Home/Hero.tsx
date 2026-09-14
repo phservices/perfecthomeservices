@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Header from "../Header";
 import Button from "../ui/Button";
 
@@ -58,11 +59,12 @@ export default function Hero() {
 
           {/* Buttons */}
           <div className="flex w-full flex-col gap-3 sm:flex-row sm:gap-4">
-            <Button
-              style="danger"
-              type="button"
-              text="text-[#F8FAFC]"
-              css="
+            <Link href="/Contact">
+              <Button
+                style="danger"
+                type="button"
+                text="text-[#F8FAFC]"
+                css="
                 w-full
                 sm:w-auto
                 sm:min-w-[165px]
@@ -71,10 +73,12 @@ export default function Hero() {
                 text-[12px]
                 font-bold
               "
-            >
-              Book a Consultation
-            </Button>
-
+              >
+                Book a Consultation
+              </Button>
+            </Link>
+            
+             <Link href="/Listing">
             <Button
               style="primary"
               type="button"
@@ -90,6 +94,8 @@ export default function Hero() {
             >
               Explore Our Services
             </Button>
+             
+             </Link>
           </div>
         </div>
       </div>

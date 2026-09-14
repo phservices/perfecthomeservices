@@ -34,7 +34,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={fn}
       disabled={loading || disabled} // Disable the button when loading or manually disabled
       type={type}
-      className={`flex  items-center justify-center whitespace-nowrap rounded-[99.53px] px-[24.29px] py-[15.55px] duration-150 ${css} ${text}  ${
+      className={`flex  items-center justify-center whitespace-nowrap rounded-[99.53px] px-[24.29px] py-[15.55px] transition-transform duration-150 hover:scale-[1.03] active:scale-[0.97] ${css} ${text}  ${
         style === "danger" && `bg-[#F89A0B52] border-[1px] border-[#F89A0B] cursor-pointer`
       } ${style === "primary" && "bg-transparent border-[1px] border-[#F89A0B] text-[#F8FAFC] cursor-pointer"} ${
         style === "secondary" && "bg-fill-blueStrong text-text-strongInverse"

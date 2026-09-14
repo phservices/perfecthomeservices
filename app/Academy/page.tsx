@@ -1,5 +1,6 @@
 "use client";
 
+import AcademyCta from "@/components/Academy/AcademyCta";
 import AcademyDetails from "@/components/Academy/AcademyDetails";
 import AcademyGallery from "@/components/Academy/AcademyGallery";
 import AcademyHero from "@/components/Academy/AcademyHero";
@@ -16,7 +17,7 @@ export default function Page() {
       <AcademyStory />
       <AcademyGallery />
       <WhyChooseUs />
-      <Cta />
+      <AcademyCta />
       <Footer />
     </>
   );

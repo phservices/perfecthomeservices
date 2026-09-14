@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import Button from "../ui/Button";
 import Image from "next/image";
 
@@ -9,7 +10,6 @@ export default function Founder() {
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
         <div className="py-12 sm:py-16 md:py-20 lg:py-[96px]">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-8 lg:gap-x-[36px]">
-            
             {/* Mobile Heading */}
             <h5 className="mb-0 block text-center font-sans text-[16px] font-semibold leading-[110%] text-[#000000B8] sm:text-[18px] md:hidden">
               Meet the Founder
@@ -28,7 +28,6 @@ export default function Founder() {
 
             {/* Founder Content */}
             <div className="flex flex-col items-start justify-center">
-              
               {/* Desktop Heading */}
               <h5 className="mb-3 hidden font-sans text-[18px] font-semibold leading-[110%] text-[#000000B8] md:block md:text-[20px] lg:text-[24px]">
                 Meet the Founder
@@ -52,13 +51,15 @@ export default function Founder() {
               </p>
 
               <div className="flex w-full items-center justify-center md:justify-start">
-                <Button
-                  style="danger"
-                  type="button"
-                  css="w-full max-w-[300px] sm:w-[220px] md:w-[165px] px-[24.29px] py-[15.55px] text-[12px] font-bold text-[#1A1A1A] font-sans"
-                >
-                  Read his story
-                </Button>
+                <Link href="/Listing">
+                  <Button
+                    style="danger"
+                    type="button"
+                    css="w-full max-w-[300px] sm:w-[220px] md:w-[165px] px-[24.29px] py-[15.55px] text-[12px] font-bold text-[#1A1A1A] font-sans"
+                  >
+                    Read Our Services
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -67,4 +68,3 @@ export default function Founder() {
     </section>
   );
 }
-

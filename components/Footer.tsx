@@ -3,18 +3,16 @@
 import Logo from "./ui/Logo";
 
 const quickLinks = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Projects", href: "/projects" },
-  { label: "Academy", href: "/academy" },
-  { label: "Contact", href: "/contact" },
+  { label: "About", href: "/Aboutus" },
+  { label: "Services", href: "/Listing" },
+  { label: "Academy", href: "/Academy" },
+  { label: "Contact", href: "/Contact" },
 ];
 
 const services = [
-  { label: "Interior & Exterior Design", href: "/services/design" },
-  { label: "Industrial Cleaning", href: "/services/cleaning" },
-  { label: "Fumigation", href: "/services/fumigation" },
-  { label: "Academy", href: "/academy" },
+  { label: "Interior & Exterior Design", href: "/Listing/interior-design" },
+  { label: "Industrial Cleaning & Fumigation", href: "/Listing/cleaning" },
+  { label: "Real Estate", href: "/Listing/real-estate" },
 ];
 
 type LinkItem = {
@@ -76,10 +74,10 @@ export default function Footer() {
                   <PhoneIcon />
 
                   <a
-                    href="tel:+234XXXXXXXXXX"
+                    href="tel:+2348063744335"
                     className="text-sm leading-[120%] text-[#FFFFFFCC] font-normal transition-colors hover:text-white"
                   >
-                    +234 XXX XXX XXXX
+                    +234 8063744335
                   </a>
                 </li>
 
@@ -87,10 +85,10 @@ export default function Footer() {
                   <MailIcon />
 
                   <a
-                    href="mailto:hello@phsinteriors.com"
-                    className="break-all leading-[120%] text-[#FFFFFFCC] font-normaltransition-colors hover:text-white"
+                    href="mailto:perfecthomeservices2017@gmail.com"
+                    className="break-all leading-[120%] text-[#FFFFFFCC] font-normal transition-colors hover:text-white"
                   >
-                    hello@phsinteriors.com
+                    perfecthomeservices2017@gmail.com
                   </a>
                 </li>
               </ul>

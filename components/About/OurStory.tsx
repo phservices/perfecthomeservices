@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Button from "../ui/Button";
+import Link from "next/link";
 
 export default function OurStory() {
   return (
@@ -64,11 +65,12 @@ export default function OurStory() {
             </p>
 
             <div className="mt-6">
-              <Button
-                style="danger"
-                type="button"
-                text="text-[#1A1A1A]"
-                css="
+              <Link href="/Listing">
+                <Button
+                  style="danger"
+                  type="button"
+                  text="text-[#1A1A1A]"
+                  css="
                   w-full
                   max-w-[169px]
                   px-5
@@ -76,9 +78,10 @@ export default function OurStory() {
                   text-[12px]
                   font-bold
                 "
-              >
-                Explore Our Services
-              </Button>
+                >
+                  Explore Our Services
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

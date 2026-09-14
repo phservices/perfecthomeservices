@@ -2,6 +2,8 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, Inter } from "next/font/google";
 import "./globals.css";
+import ScrollReveal from "@/components/ScrollReveal";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const bricolageGrotesque = Bricolage_Grotesque({
   variable: "--font-bricolage",
@@ -30,7 +32,11 @@ export default function RootLayout({
       lang="en"
       className={`${bricolageGrotesque.variable} ${inter.variable} h-full antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <ScrollReveal />
+        <WhatsAppButton />
+      </body>
     </html>
   );
 }

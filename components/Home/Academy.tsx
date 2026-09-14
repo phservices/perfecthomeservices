@@ -3,6 +3,7 @@
 import Button from "../ui/Button";
 import Image from "next/image";
 import { Play } from "lucide-react";
+import Link from "next/link";
 
 export default function Academy() {
   return (
@@ -52,13 +53,15 @@ export default function Academy() {
           </p>
 
           <div className="flex items-center justify-center">
-            <Button
-              style="danger"
-              type="button"
-              css="w-full max-w-[300px] sm:w-[220px] lg:w-[165px] px-[24.29px] py-[15.55px] text-[12px] font-bold text-[#1A1A1A] font-sans"
-            >
-              Join the Academy
-            </Button>
+            <Link href="/Contact">
+              <Button
+                style="danger"
+                type="button"
+                css="w-full max-w-[300px] sm:w-[220px] lg:w-[165px] px-[24.29px] py-[15.55px] text-[12px] font-bold text-[#1A1A1A] font-sans"
+              >
+                Join the Academy
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

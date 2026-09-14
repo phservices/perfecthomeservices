@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Button from "../ui/Button";
+import Link from "next/link";
 
 export default function ServiceArea() {
   return (
@@ -30,13 +31,15 @@ export default function ServiceArea() {
               </h1>
 
               <div className="w-full md:w-auto">
-                <Button
-                  style="danger"
-                  type="button"
-                  css="w-full max-w-full sm:max-w-full md:w-[165px] px-[24.29px] py-[15.55px] text-[12px] font-bold text-[#1A1A1A] font-sans"
-                >
-                  Book a Consultation
-                </Button>
+                <Link href="/Contact">
+                  <Button
+                    style="danger"
+                    type="button"
+                    css="w-full max-w-full sm:max-w-full md:w-[165px] px-[24.29px] py-[15.55px] text-[12px] font-bold text-[#1A1A1A] font-sans"
+                  >
+                    Book a Consultation
+                  </Button>
+                </Link>
               </div>
             </div>
 

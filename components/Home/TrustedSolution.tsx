@@ -1,8 +1,8 @@
-
 "use client";
 
 import { services } from "@/utils/Content/HomePage.Content";
 import Button from "../ui/Button";
+import Link from "next/link";
 
 export default function TrustedSolution() {
   return (
@@ -68,17 +68,18 @@ export default function TrustedSolution() {
             "
           >
             Perfect Home Services delivers professional solutions for
-            residential, commercial, and industrial properties. Every project
-            is handled with careful planning, quality workmanship, and
-            attention to detail. Our services include:
+            residential, commercial, and industrial properties. Every project is
+            handled with careful planning, quality workmanship, and attention to
+            detail. Our services include:
           </p>
 
           {/* CTA */}
           <div className="mb-7 flex justify-center md:mb-8 md:justify-center">
-            <Button
-              type="button"
-              style="danger"
-              css="
+            <Link href="/Listing">
+              <Button
+                type="button"
+                style="danger"
+                css="
                 h-[48px]
                 w-full
                 max-w-[200px]
@@ -86,9 +87,10 @@ export default function TrustedSolution() {
                 font-semibold
                 sm:h-[50px]
               "
-            >
-              See all Services
-            </Button>
+              >
+                See all Services
+              </Button>
+            </Link>
           </div>
 
           {/* Services */}

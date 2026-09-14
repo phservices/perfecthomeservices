@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import Header from "../Header";
 import Button from "../ui/Button";
 
@@ -55,19 +56,21 @@ export default function AboutHero() {
 
           {/* Buttons */}
           <div className="">
-            <Button
-              style="danger"
-              type="button"
-              text="text-[#F8FAFC]"
-              css="
+            <Link href="/Contact">
+              <Button
+                style="danger"
+                type="button"
+                text="text-[#F8FAFC]"
+                css="
                        w-full
                       max-w-[206px]
                        text-[16px]
                        font-bold
                      "
-            >
-              Book a Consultation
-            </Button>
+              >
+                Book a Consultation
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
