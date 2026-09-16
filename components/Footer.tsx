@@ -1,5 +1,7 @@
 "use client";
 
+import type { ReactNode } from "react";
+import Link from "next/link";
 import Logo from "./ui/Logo";
 
 const quickLinks = [
@@ -9,11 +11,11 @@ const quickLinks = [
   { label: "Contact", href: "/Contact" },
 ];
 
-const services = [
-  { label: "Interior & Exterior Design", href: "/Listing/interior-design" },
-  { label: "Industrial Cleaning & Fumigation", href: "/Listing/cleaning" },
-  { label: "Real Estate", href: "/Listing/real-estate" },
-];
+// const services = [
+//   { label: "Interior & Exterior Design", href: "/Listing/interior-design" },
+//   { label: "Industrial Cleaning & Fumigation", href: "/Listing/cleaning" },
+//   { label: "Real Estate", href: "/Listing/real-estate" },
+// ];
 
 type LinkItem = {
   label: string;
@@ -28,12 +30,12 @@ function LinkColumn({ title, links }: { title: string; links: LinkItem[] }) {
       <ul className="space-y-3">
         {links.map((link) => (
           <li key={link.label}>
-            <a
+            <Link
               href={link.href}
-              className="text-sm text-white transition-colors hover:text-white focus-visible:text-white focus-visible:outline-none focus-visible:underline"
+              className="font-sans text-sm text-white/70 transition-colors hover:text-[#F89A0B] focus-visible:text-[#F89A0B] focus-visible:outline-none focus-visible:underline"
             >
               {link.label}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -41,28 +43,49 @@ function LinkColumn({ title, links }: { title: string; links: LinkItem[] }) {
   );
 }
 
+function SocialLink({ href, label }: { href: string; label: string }) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      aria-label={label}
+      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-[#F89A0B] hover:text-[#F89A0B]"
+    >
+      <InstagramIcon />
+    </a>
+  );
+}
+
 export default function Footer() {
   return (
-    <footer className="bg-black text-white">
-      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 md:px-8">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-[1fr_2fr] md:gap-8 lg:gap-16">
+    <footer className="rounded-t-[32px] bg-[#151515] text-white sm:rounded-t-[40px]">
+      <div className="mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-16 md:px-10 md:py-20">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_1.4fr] md:gap-10 lg:gap-20">
           {/* Left: Logo + Navigation */}
-          <div className="flex flex-col gap-8">
-            <Logo />
+          <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-5">
+              <Logo />
+              <p className="max-w-[32ch] font-sans text-sm leading-[150%] text-white/60">
+                Interior design, construction finishing, cleaning, and real
+                estate services built around your space.
+              </p>
+              <SocialLink href="https://instagram.com" label="Instagram" />
+            </div>
 
             <div className="grid grid-cols-2 gap-6 sm:gap-10">
               <LinkColumn title="Quick Links" links={quickLinks} />
-              <LinkColumn title="Services" links={services} />
+              {/* <LinkColumn title="Services" links={services} /> */}
             </div>
           </div>
 
           {/* Right: Contact Card */}
-          <div className=" p-5 sm:p-6 md:p-8">
-            <h2 className="text-xl font-semibold text-white leading-[120%] md:text-2xl lg:text-[32px] ">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 md:p-10">
+            <h2 className="font-display text-xl font-semibold leading-[120%] text-white md:text-2xl lg:text-[32px]">
               We&apos;d Love to Hear From You
             </h2>
 
-            <p className="mt-[16px] max-w-[52ch] text-sm leading-[120%] text-[#FFFFFFCC] font-normal">
+            <p className="mt-4 max-w-[52ch] font-sans text-sm font-normal leading-[150%] text-white/70">
               Have questions or want to discuss your project? Reach out today,
               and let&apos;s explore how we can help.
             </p>
@@ -71,22 +94,26 @@ export default function Footer() {
               {/* Phone + Email */}
               <ul className="space-y-4">
                 <li className="flex items-center gap-3">
-                  <PhoneIcon />
+                  <IconBadge>
+                    <PhoneIcon />
+                  </IconBadge>
 
                   <a
                     href="tel:+2348063744335"
-                    className="text-sm leading-[120%] text-[#FFFFFFCC] font-normal transition-colors hover:text-white"
+                    className="font-sans text-sm leading-[120%] font-normal text-white/80 transition-colors hover:text-white"
                   >
                     +234 8063744335
                   </a>
                 </li>
 
                 <li className="flex items-center gap-3">
-                  <MailIcon />
+                  <IconBadge>
+                    <MailIcon />
+                  </IconBadge>
 
                   <a
                     href="mailto:perfecthomeservices2017@gmail.com"
-                    className="break-all leading-[120%] text-[#FFFFFFCC] font-normal transition-colors hover:text-white"
+                    className="break-all font-sans text-sm leading-[120%] font-normal text-white/80 transition-colors hover:text-white"
                   >
                     perfecthomeservices2017@gmail.com
                   </a>
@@ -95,20 +122,40 @@ export default function Footer() {
 
               {/* Address */}
               <div className="flex items-start gap-3">
-                <span className="mt-[2px]">
+                <IconBadge>
                   <PinIcon />
-                </span>
+                </IconBadge>
 
-                <address className="not-italic leading-[120%] text-[#FFFFFFCC] font-normal">
+                <address className="font-sans text-sm not-italic leading-[145%] font-normal text-white/80">
                   Block A2 Suite B4 Foretold Plaza, Beside New Kenyetta Market,
                   Enugu
                 </address>
               </div>
             </div>
+
+            <Link
+              href="/Contact"
+              className="mt-8 inline-flex rounded-full bg-[#F89A0B] px-6 py-3 font-sans text-sm font-semibold text-[#1A1A1A] transition hover:bg-white"
+            >
+              Book a Consultation
+            </Link>
           </div>
+        </div>
+
+        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 font-sans text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {new Date().getFullYear()} Perfect Home Services. All rights reserved.</p>
+          <p>Enugu, Nigeria</p>
         </div>
       </div>
     </footer>
+  );
+}
+
+function IconBadge({ children }: { children: ReactNode }) {
+  return (
+    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/[0.06]">
+      {children}
+    </span>
   );
 }
 
@@ -147,6 +194,16 @@ function PinIcon() {
     <svg {...iconProps}>
       <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z" />
       <circle cx="12" cy="10" r="3" />
+    </svg>
+  );
+}
+
+function InstagramIcon() {
+  return (
+    <svg {...iconProps} className="shrink-0" width={18} height={18}>
+      <rect x="2" y="2" width="20" height="20" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
     </svg>
   );
 }

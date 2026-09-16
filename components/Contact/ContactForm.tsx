@@ -137,7 +137,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section>
+    <section id="contact-form" className="scroll-mt-28">
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
         <div className="py-12 sm:py-16 md:py-[50px] lg:py-[75px]">
           <p className="font-inter text-[24px] text-[#000000] leading-[36px] font-normal">Get Started</p>

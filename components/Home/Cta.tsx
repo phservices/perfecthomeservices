@@ -5,33 +5,35 @@ import Button from "../ui/Button";
 
 export default function Cta() {
   return (
-    <section className="bg-cta">
+    <section className="bg-white px-5 py-16 sm:px-6 sm:py-20 md:px-8 md:py-24">
       <div className="container mx-auto">
-        <div className="py-[70px] sm:py-[90px] md:py-[110px] lg:py-[127px]">
-          <p className="text-[18px] sm:text-[20px] md:text-[24px] font-semibold font-sans text-[#F8FAFC] leading-[100%] mb-[12px]">
-            Final Call-to-Action
-          </p>
+        <div className="bg-cta overflow-hidden rounded-[28px] px-6 py-16 sm:rounded-[36px] sm:px-10 sm:py-20 md:px-16 md:py-24 lg:px-20 lg:py-28">
+          <span className="mb-4 inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[0.14em] text-[#F89A0B] sm:text-sm">
+            <span className="h-[6px] w-[6px] rounded-full bg-[#F89A0B]" />
+            Let&apos;s Get Started
+          </span>
 
-          <h1 className="text-[32px] sm:text-[38px] md:text-[44px] lg:text-[48px] font-bold leading-[110%] font-sans mb-[16px] text-white">
+          <h2 className="mb-5 max-w-[640px] font-display text-[32px] font-semibold leading-[112%] tracking-[-0.01em] text-white sm:text-[40px] md:text-[46px]">
             Let&apos;s Bring Your Space to Life
-          </h1>
+          </h2>
 
-          <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-[130%] text-[#FFFFFFCC] font-normal mb-[20px] w-full lg:max-w-[739px]">
-            Planning a renovation, building a new home, redesigning your office,
-            or looking for reliable property services?
+          <p className="mb-3 w-full font-sans text-[16px] font-normal leading-[160%] text-white/80 sm:text-[17px] lg:max-w-[560px]">
+            Planning a renovation, building a new home, redesigning your
+            office, or looking for reliable property services?
           </p>
 
-          <p className="text-[16px] sm:text-[18px] md:text-[20px] leading-[130%] text-[#FFFFFFCC] font-normal w-full lg:max-w-[739px] mb-[24px]">
+          <p className="mb-8 w-full font-sans text-[16px] font-normal leading-[160%] text-white/80 sm:text-[17px] lg:max-w-[560px]">
             Our team is ready to help you create a space that is functional,
             beautiful, and built to last.
           </p>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-[12px] sm:gap-[15px]">
+          <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-start sm:gap-4">
             <Link href="/Contact">
               <Button
                 style="danger"
                 type="button"
-                css="w-full sm:w-[165px] px-[24.29px] py-[15.55px] text-[12px] font-bold text-white font-sans"
+                text="text-[#1A1A1A]"
+                css="w-full sm:w-auto sm:min-w-[190px] px-7 py-4 text-[14px] font-sans font-semibold"
               >
                 Book a Consultation
               </Button>
@@ -41,9 +43,9 @@ export default function Cta() {
               <Button
                 style="primary"
                 type="button"
-                css="w-full sm:w-[165px] px-[24.29px] py-[15.55px] text-[12px] font-bold text-[#1A1A1A] font-sans"
+                css="w-full sm:w-auto sm:min-w-[190px] px-7 py-4 text-[14px] font-sans font-semibold"
               >
-                Call our Team
+                Call Our Team
               </Button>
             </Link>
           </div>

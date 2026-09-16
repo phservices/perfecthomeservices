@@ -4,85 +4,47 @@ import Image from "next/image";
 import Button from "../ui/Button";
 import { perfectHomeServices } from "@/utils/Content/HomePage.Content";
 import Link from "next/link";
+import SectionHeading from "../ui/SectionHeading";
 
 export default function WhyChooseUs() {
   return (
-    <section>
+    <section className="bg-white">
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
-        <div className="py-12 sm:py-16 md:py-[50px] lg:py-[75px]">
-          {/* Small Heading */}
-          <h3
-            className="
-              mb-2
-              text-center
-              font-sans
-              text-[16px]
-              font-semibold
-              leading-[110%]
-              text-[#000000B8]
-              sm:text-[18px]
-              md:text-[20px]
-              lg:text-[24px]
-            "
-          >
-            Why Choose Perfect Home Services
-          </h3>
-
-          {/* Main Heading */}
-          <h1
-            className="
-              mx-auto
-              mb-6
-              max-w-[700px]
-              text-center
-              font-sans
-              text-[24px]
-              font-bold
-              leading-[115%]
-              text-[#1A1A1A]
-              sm:text-[28px]
-              md:mb-4
-              md:text-[32px]
-            "
-          >
-            Why Clients Choose Perfect Home Services
-          </h1>
+        <div className="py-16 sm:py-20 md:py-24 lg:py-28">
+          <SectionHeading
+            eyebrow="Why Choose Perfect Home Services"
+            title="Why Clients Choose Us, Every Time"
+          />
 
           {/* CTA */}
-          <div className="flex justify-center">
-             <Link href="/Contact">
-            <Button
-              style="danger"
-              type="button"
-              css="
-                h-[48px]
-                w-full
-                max-w-[300px]
-                px-5
-                text-[14px]
-                font-sans
-                font-semibold
-                leading-[100%]
-                text-[#1A1A1A]
-                sm:h-[50px]
-                sm:text-[16px]
-              "
-            >
-              Let&apos;s Discuss your project
-            </Button>
-             
-             </Link>
+          <div className="mt-8 flex justify-center">
+            <Link href="/Contact">
+              <Button
+                style="danger"
+                type="button"
+                text="text-[#1A1A1A]"
+                css="
+                  h-[52px]
+                  px-7
+                  text-[14px]
+                  font-sans
+                  font-semibold
+                "
+              >
+                Let&apos;s Discuss Your Project
+              </Button>
+            </Link>
           </div>
 
           {/* Service Cards */}
           <div
             className="
-              mt-10
+              mt-12
               grid
               grid-cols-1
-              gap-4
+              gap-5
               sm:grid-cols-2
-              md:mt-[43px]
+              md:mt-14
               lg:grid-cols-4
             "
           >
@@ -90,70 +52,63 @@ export default function WhyChooseUs() {
               <div
                 key={index}
                 className="
+                  group
                   flex
                   w-full
                   flex-col
-                  rounded-[8px]
+                  rounded-2xl
                   border
-                  border-[#F89A0B]
-                  bg-[#F89A0B14]
+                  border-[#1A1A1A]/8
+                  bg-white
+                  p-6
+                  shadow-[0_16px_36px_-28px_rgba(26,26,26,0.35)]
+                  transition-all
+                  duration-200
+                  hover:-translate-y-1
+                  hover:border-[#F89A0B]/40
+                  hover:shadow-[0_24px_48px_-24px_rgba(248,154,11,0.3)]
+                  sm:p-7
                 "
               >
-                <div
+                {/* Icon */}
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-[#F89A0B14] transition-colors group-hover:bg-[#F89A0B22]">
+                  <Image
+                    src={service.icon}
+                    alt={service.title}
+                    width={24}
+                    height={24}
+                    className="h-6 w-6 object-contain"
+                  />
+                </div>
+
+                {/* Title */}
+                <h3
                   className="
-                    flex
-                    h-full
-                    flex-col
-                    px-4
-                    py-7
-                    sm:px-5
-                    sm:py-8
-                    lg:px-4
-                    lg:pt-[41px]
-                    lg:pb-6
+                    mb-3
+                    font-display
+                    text-[19px]
+                    font-semibold
+                    leading-[125%]
+                    text-[#1A1A1A]
+                    sm:text-[20px]
                   "
                 >
-                  {/* Icon */}
-                  <div className="mb-4 h-11 w-11 sm:h-12 sm:w-12">
-                    <Image
-                      src={service.icon}
-                      alt={service.title}
-                      width={48}
-                      height={48}
-                      className="h-full w-full object-contain"
-                    />
-                  </div>
+                  {service.title}
+                </h3>
 
-                  {/* Title */}
-                  <h3
-                    className="
-                      mb-3
-                      font-sans
-                      text-[18px]
-                      font-semibold
-                      leading-[120%]
-                      text-[#000000]
-                      sm:text-[20px]
-                    "
-                  >
-                    {service.title}
-                  </h3>
-
-                  {/* Description */}
-                  <p
-                    className="
-                      font-inter
-                      text-[15px]
-                      font-normal
-                      leading-[145%]
-                      text-[#1A1A1A]
-                      sm:text-[16px]
-                      sm:leading-[140%]
-                    "
-                  >
-                    {service.description}
-                  </p>
-                </div>
+                {/* Description */}
+                <p
+                  className="
+                    font-sans
+                    text-[14.5px]
+                    font-normal
+                    leading-[155%]
+                    text-[#1A1A1A]/65
+                    sm:text-[15px]
+                  "
+                >
+                  {service.description}
+                </p>
               </div>
             ))}
           </div>

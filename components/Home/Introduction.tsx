@@ -3,89 +3,52 @@
 import Image from "next/image";
 import Button from "../ui/Button";
 import Link from "next/link";
+import SectionHeading from "../ui/SectionHeading";
 
 export default function Introduction() {
   return (
-    <section className="bg-[#F8FAFC]">
-      <div className="py-12 sm:py-16 md:py-[62px] lg:py-[84px]">
+    <section className="bg-[#FBF9F6]">
+      <div className="py-16 sm:py-20 md:py-24 lg:py-28">
         <div className="container mx-auto px-5 sm:px-6 md:px-8">
-          {/* Section Label */}
-          <h1
-            className="
-              mb-3
-              font-sans
-              text-start
-              text-[16px]
-              font-semibold
-              leading-[100%]
-              text-[#000000B8]
-              sm:text-[18px]
-              md:mb-4
-              md:text-center
-              md:text-[20px]
-              lg:text-[24px]
-            "
-          >
-            Brief Introduction
-          </h1>
-
-          {/* Section Heading */}
-          <p
-            className="
-              mb-8
-              font-sans
-              text-start
-              text-[24px]
-              font-semibold
-              leading-[115%]
-              text-[#1A1A1A]
-              sm:text-[28px]
-              md:mb-8
-              md:text-center
-              md:text-[32px]
-              lg:mb-10
-            "
-          >
-            Building Beautiful Spaces Since 2017
-          </p>
-
           {/* Content */}
-          <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
             {/* Text */}
             <div className="order-2 flex flex-col md:order-1">
+              <SectionHeading
+                align="left"
+                eyebrow="Brief Introduction"
+                title="Building Beautiful Spaces Since 2017"
+                className="mb-6"
+              />
+
               <p
                 className="
                   mb-5
-                  font-inter
+                  font-sans
                   text-[16px]
                   font-normal
-                  leading-[145%]
-                  text-[#1A1A1ACC]
+                  leading-[160%]
+                  text-[#1A1A1A]/75
                   sm:text-[17px]
-                  lg:mb-6
-                  lg:text-[20px]
-                  lg:leading-[120%]
                 "
               >
                 Perfect Home Services started in 2017 as a painting and
-                wallpaper installation company. Through years of experience and
-                professional training, the company has grown into a trusted
-                interior design and construction finishing brand serving homes,
-                offices, commercial buildings, and industrial facilities.
+                wallpaper installation company. Through years of experience
+                and professional training, the company has grown into a
+                trusted interior design and construction finishing brand
+                serving homes, offices, commercial buildings, and industrial
+                facilities.
               </p>
 
               <p
                 className="
-                  mb-6
-                  font-inter
+                  mb-7
+                  font-sans
                   text-[16px]
                   font-normal
-                  leading-[145%]
-                  text-[#1A1A1ACC]
+                  leading-[160%]
+                  text-[#1A1A1A]/75
                   sm:text-[17px]
-                  lg:mb-7
-                  lg:text-[20px]
-                  lg:leading-[120%]
                 "
               >
                 Today, we continue to deliver practical design solutions that
@@ -98,16 +61,15 @@ export default function Introduction() {
                   <Button
                     style="danger"
                     type="button"
+                    text="text-[#1A1A1A]"
                     css="
                     w-full
                     max-w-[220px]
-                    px-5
-                    py-3
+                    px-6
+                    py-3.5
                     text-[14px]
                     font-sans
                     font-semibold
-                    leading-[100%]
-                    text-[#1A1A1A]
                     sm:text-[16px]
                   "
                   >
@@ -121,22 +83,23 @@ export default function Introduction() {
             <div
               className="
                 order-1
-                h-[260px]
+                h-[280px]
                 w-full
                 overflow-hidden
-                rounded-[8px]
-                sm:h-[320px]
+                rounded-[16px]
+                shadow-[0_24px_48px_-24px_rgba(26,26,26,0.25)]
+                sm:h-[340px]
                 md:order-2
-                md:h-[300px]
-                lg:h-[399px]
+                md:h-[380px]
+                lg:h-[440px]
               "
             >
               <Image
-                src="/images/intro.jpg"
+                src="/images/introduction.jpg"
                 alt="Interior of a beautiful home"
                 width={632}
-                height={399}
-                className="h-full w-full rounded-[8px] object-cover"
+                height={440}
+                className="h-full w-full object-cover"
                 priority
               />
             </div>

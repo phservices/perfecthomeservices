@@ -13,16 +13,21 @@
  
   
 body {
-  font-family: var(--font-bricolage), sans-serif;
+  font-family: var(--font-dmsans), sans-serif;
+  background-color: #FBF9F6;
+  color: #1A1A1A;
 }
 
 @theme {
- --font-sans: var(--font-bricolage);
- --font-inter: var(--font-inter);
+ --font-sans: var(--font-dmsans);
+ --font-inter: var(--font-dmsans);
+ --font-display: var(--font-playfair);
 
   --color-primary:#F89A0B;
-  --color-secondary: #0E738C; 
+  --color-secondary: #0E738C;
   --color-accent: #1F2937;
+  --color-ink: #1A1A1A;
+  --color-cream: #FBF9F6;
   --color-white:#FFFFFF;
   --color-grey-50:#F8FAFC;
   --color-grey-100:#E5E7EB;
@@ -33,27 +38,6 @@ body {
  .container {
     @apply mx-auto max-w-[1200px] md:max-w-[1400px] px-4 md:px-2 lg:px-4 xl:px-8;
   }
-.bg-mobile-hero {
-  position: relative;
-  background-image: url("/images/Hero-bg.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: bottom;
-}
-
-.bg-mobile-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #00000080;
-  z-index: 0;
-}
-
-.bg-mobile-hero > * {
-  position: relative;
-  z-index: 1;
-}
-
 .bg-cta {
   background-image: linear-gradient(#0000007A, #0000007A), url("/images/cta.jpg");
   background-size: cover;
@@ -72,6 +56,18 @@ body {
     url("/images/listingHero.jpg") center / cover no-repeat;
 }
 
+.bg-interior {
+  background:
+    linear-gradient(#00000080, #00000080),
+    url("/images/interior.jpg") center / cover no-repeat;
+}
+
+.bg-academy {
+  background:
+    linear-gradient(#00000080, #00000080),
+    url("/images/academy-1.jpg") center / cover no-repeat;
+}
+
 /* Hide scrollbar but keep scrolling */
 .scrollbar-hide {
   -ms-overflow-style: none; /* IE and Edge */
@@ -82,17 +78,6 @@ body {
   display: none; /* Chrome, Safari, Opera */
 }
 
-@media (min-width: 768px) {
-  .bg-mobile-hero {
-    background-position: center;
-  }
-}
-
-@media (min-width: 1024px) {
-  .bg-mobile-hero {
-    background-position: center;
-  }
-}
 }
 
 @layer base {

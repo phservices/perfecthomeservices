@@ -1,14 +1,98 @@
 "use client";
 
+import Link from "next/link";
 import Header from "../Header";
+import Button from "../ui/Button";
 
 export default function AcademyHero() {
   return (
-    <section className="bg-about pt-5 sm:pt-7 md:pt-10 lg:pt-[50px] h-[206px]">
+    <section className="bg-academy pt-5 sm:pt-7 md:pt-10 lg:pt-[50px]">
       <Header />
 
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
-        <div className=""></div>
+        <div className="py-16 sm:py-20 md:py-24 lg:pt-[72px] lg:pb-[86px]">
+          {/* Heading */}
+          <h1
+            className="
+                     mb-4
+                     w-full
+                     max-w-[881px]
+                     font-bold
+                     leading-[105%]
+                     text-[28px]
+                     text-white
+                     sm:text-[32px]
+                     md:text-[40px]
+                     lg:text-[48px]
+                   "
+          >
+            Interior Design Academy
+          </h1>
+
+          {/* Description */}
+          <p
+            className="
+                     mb-8
+                     w-full
+                     max-w-[881px]
+                     font-inter
+                     text-[16px]
+                     leading-[150%]
+                     text-white
+                     sm:text-[17px]
+                     md:mb-9
+                     md:text-[18px]
+                     md:leading-[145%]
+                     lg:text-[20px]
+                     lg:leading-[120%]
+                   "
+          >
+            Our 3-month Interior Design Academy combines classroom learning,
+            practical training, and site visits to prepare aspiring interior
+            designers with the skills needed to build successful careers.
+            Students receive a Certificate of Completion after graduation.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex w-full flex-col gap-3 sm:flex-row sm:gap-4">
+            <Link href="/Contact">
+              <Button
+                style="danger"
+                type="button"
+                text="text-[#F8FAFC]"
+                css="
+                w-full
+                sm:w-auto
+                sm:min-w-[165px]
+                px-[24.29px]
+                py-[15.55px]
+                text-[12px]
+                font-bold
+              "
+              >
+                Join the Academy
+              </Button>
+            </Link>
+
+            <Link href="/Contact">
+              <Button
+                style="primary"
+                type="button"
+                css="
+                w-full
+                sm:w-auto
+                sm:min-w-[165px]
+                px-[24.29px]
+                py-[15.55px]
+                text-[12px]
+                font-bold
+              "
+              >
+                Talk to an Advisor
+              </Button>
+            </Link>
+          </div>
+        </div>
       </div>
     </section>
   );

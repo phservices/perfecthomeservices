@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import Academy from "@/components/Home/Academy";
 import Cta from "@/components/Home/Cta";
 import FeaturedService from "@/components/Home/FeaturedService";
-import Founder from "@/components/Home/Founder";
+// import Founder from "@/components/Home/Founder";
 import Hero from "@/components/Home/Hero";
 import Introduction from "@/components/Home/Introduction";
 import ServiceArea from "@/components/Home/ServiceArea";
@@ -21,7 +21,7 @@ export default function Page() {
       <WhyChooseUs />
       <FeaturedService />
       <Academy />
-      <Founder />
+      {/* <Founder /> */}
       <Testimonials />
       <ServiceArea />
       <Cta />

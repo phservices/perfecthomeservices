@@ -11,22 +11,25 @@ export default function Header() {
 
   return (
     <>
-      <header className="relative z-[100] mx-3 mt-3 rounded-[99px] bg-[#1A1A1A80] sm:mx-5 md:mx-8 lg:mx-10">
-        <div className="mx-auto flex h-[70px] items-center justify-between px-5 sm:px-6 lg:h-[84.85px] lg:px-8">
-          {/* Desktop Left Navigation */}
-          <nav className="hidden items-center gap-5 lg:flex xl:gap-8">
-            {navLinks.slice(0, 2).map((link) => (
+      <header className="relative z-[100] mx-3 mt-4 rounded-full border border-white/10 bg-[#151515]/70 backdrop-blur-md sm:mx-5 md:mx-8 lg:mx-10">
+        <div className="mx-auto flex h-[68px] items-center justify-between px-5 sm:px-6 lg:h-[76px] lg:px-8">
+          {/* Logo */}
+          <Logo />
+
+          {/* Desktop Navigation */}
+          <nav className="hidden items-center gap-7 lg:flex xl:gap-9">
+            {navLinks.map((link) => (
               <div key={link.title} className="group relative">
                 <Link
                   href={link.router}
-                  className="flex items-center gap-1 font-sans text-base font-semibold text-white xl:text-[18px]"
+                  className="flex items-center gap-1 font-sans text-[15px] font-medium text-white/85 transition-colors hover:text-white xl:text-[16px]"
                 >
-                  {link.title}
+                  {link.title === "Aboutus" ? "About Us" : link.title}
 
                   {link.dropdown && (
                     <ChevronDown
-                      size={12}
-                      strokeWidth={1.5}
+                      size={13}
+                      strokeWidth={1.75}
                       className="transition-transform duration-200 group-hover:rotate-180"
                     />
                   )}
@@ -34,16 +37,14 @@ export default function Header() {
 
                 {link.dropdown && (
                   <>
-                    {/* Invisible bridge so the pointer stays over the group
-                        while it crosses the gap to reach the dropdown */}
-                    <div className="absolute left-0 top-full h-5 min-w-[240px]" />
+                    <div className="absolute left-0 top-full h-5 min-w-[260px]" />
 
-                    <div className="invisible absolute left-0 top-[calc(100%+20px)] z-[100] min-w-[240px] rounded-lg bg-white p-2 opacity-0 shadow-xl transition-all duration-200 group-hover:visible group-hover:opacity-100">
+                    <div className="invisible absolute left-0 top-[calc(100%+16px)] z-[100] min-w-[260px] translate-y-1 rounded-2xl bg-white p-2 opacity-0 shadow-2xl shadow-black/20 ring-1 ring-black/5 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
                       {link.dropdown.map((item) => (
                         <Link
                           key={item.title}
                           href={item.router}
-                          className="block rounded-md px-4 py-3 text-sm text-[#1A1A1A] transition hover:bg-gray-100 xl:text-base"
+                          className="block rounded-xl px-4 py-3 font-sans text-sm text-[#1A1A1A] transition hover:bg-[#F89A0B14] hover:text-[#F89A0B]"
                         >
                           {item.title}
                         </Link>
@@ -53,48 +54,36 @@ export default function Header() {
                 )}
               </div>
             ))}
-          </nav>
-
-          {/* Logo */}
-          <div className="absolute left-1/2 -translate-x-1/2">
-            <Logo />
-          </div>
-
-          {/* Desktop Right Navigation */}
-          <nav className="hidden items-center gap-5 lg:flex xl:gap-8">
-            <Link
-              href="/Aboutus"
-              className="font-sans text-base font-semibold text-white transition-opacity hover:opacity-70 xl:text-[18px]"
-            >
-              About Us
-            </Link>
 
             <Link
               href="/Contact"
-              className="font-sans text-base font-semibold text-white transition-opacity hover:opacity-70 xl:text-[18px]"
+              className="font-sans text-[15px] font-medium text-white/85 transition-colors hover:text-white xl:text-[16px]"
             >
               Contact
             </Link>
+          </nav>
 
+          {/* Desktop CTA */}
+          <div className="hidden lg:block">
             <Link
               href="/Contact"
-              className="rounded-full border border-white/40 bg-[#F89A0B52] px-4 py-2.5 text-sm text-[#F8FAFC] transition hover:bg-[#a77a3e] xl:px-5 xl:py-3 xl:text-base"
+              className="rounded-full bg-[#F89A0B] px-5 py-2.5 font-sans text-sm font-semibold text-[#1A1A1A] shadow-[0_8px_20px_-8px_rgba(248,154,11,0.6)] transition hover:bg-white xl:px-6 xl:py-3 xl:text-base"
             >
               Book a Consultation
             </Link>
-          </nav>
+          </div>
 
           {/* Mobile Menu Button */}
           <button
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
-            className="ml-auto flex h-10 w-10 items-center justify-center text-white lg:hidden"
+            className="flex h-10 w-10 items-center justify-center text-white lg:hidden"
           >
             {isOpen ? (
-              <X size={25} strokeWidth={1.5} />
+              <X size={24} strokeWidth={1.75} />
             ) : (
-              <Menu size={25} strokeWidth={1.5} />
+              <Menu size={24} strokeWidth={1.75} />
             )}
           </button>
         </div>
@@ -102,7 +91,7 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[90] bg-[#0A0A0A] transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 z-[90] bg-[#151515] transition-opacity duration-300 lg:hidden ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -112,16 +101,16 @@ export default function Header() {
           }`}
         >
           <nav className="flex flex-col">
-            {navLinks.slice(0, 2).map((link) => (
+            {navLinks.map((link) => (
               <div key={link.title} className="border-b border-white/10">
                 <Link
                   href={link.router}
                   onClick={() => setIsOpen(false)}
                   className="flex items-center justify-between py-5 font-sans text-2xl font-semibold text-white"
                 >
-                  {link.title}
+                  {link.title === "Aboutus" ? "About Us" : link.title}
 
-                  {link.dropdown && <ChevronDown size={20} strokeWidth={1.5} />}
+                  {link.dropdown && <ChevronDown size={20} strokeWidth={1.75} />}
                 </Link>
 
                 {link.dropdown && (
@@ -131,7 +120,7 @@ export default function Header() {
                         key={item.title}
                         href={item.router}
                         onClick={() => setIsOpen(false)}
-                        className="py-2.5 text-base text-white/60 transition hover:text-white"
+                        className="py-2.5 font-sans text-base text-white/60 transition hover:text-white"
                       >
                         {item.title}
                       </Link>
@@ -140,14 +129,6 @@ export default function Header() {
                 )}
               </div>
             ))}
-
-            <Link
-              href="/Aboutus"
-              onClick={() => setIsOpen(false)}
-              className="border-b border-white/10 py-5 font-sans text-2xl font-semibold text-white"
-            >
-              About Us
-            </Link>
 
             <Link
               href="/Contact"
@@ -163,7 +144,7 @@ export default function Header() {
             <Link
               href="/Contact"
               onClick={() => setIsOpen(false)}
-              className="block rounded-full border border-white/30 bg-[#F89A0B52] px-6 py-4 text-center font-sans text-base font-semibold text-white transition hover:bg-[#a77a3e]"
+              className="block rounded-full bg-[#F89A0B] px-6 py-4 text-center font-sans text-base font-semibold text-[#1A1A1A] transition hover:bg-white"
             >
               Book a Consultation
             </Link>

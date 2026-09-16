@@ -1,110 +1,46 @@
-
 "use client";
 
 import { FeaturedServices } from "@/utils/Content/HomePage.Content";
 import Image from "next/image";
+import SectionHeading from "../ui/SectionHeading";
 
 export default function FeaturedService() {
   return (
-    <section className="bg-[#FFF9F1]">
-      <div className="py-12 sm:py-14 md:py-16 lg:py-[84px]">
+    <section className="bg-[#FBF9F6]">
+      <div className="py-16 sm:py-20 md:py-24 lg:py-28">
         <div className="container mx-auto px-5 sm:px-6 md:px-8">
-          
-          {/* Section Label */}
-          <h3
-            className="
-              mb-3
-              text-start
-              font-sans
-              text-[16px]
-              font-semibold
-              leading-[110%]
-              text-[#000000B8]
-              sm:text-[18px]
-              md:mb-4
-              md:text-center
-              md:text-[20px]
-              lg:text-[24px]
-            "
-          >
-            Featured Services
-          </h3>
-
-          {/* Main Heading */}
-          <h2
-            className="
-              mx-0
-              mb-3
-              max-w-[1000px]
-              text-start
-              font-sans
-              text-[23px]
-              font-semibold
-              leading-[115%]
-              text-[#000000]
-              sm:text-[26px]
-              md:mx-auto
-              md:mb-2
-              md:text-center
-              md:text-[30px]
-              lg:text-[32px]
-              lg:leading-[110%]
-            "
-          >
-            Everything You Need to Create and Maintain Exceptional Spaces.
-          </h2>
-
-          {/* Description */}
-          <p
-            className="
-              mx-0
-              mb-8
-              w-full
-              max-w-[996px]
-              text-start
-              font-inter
-              text-[16px]
-              font-normal
-              leading-[145%]
-              text-[#1A1A1A]
-              sm:text-[17px]
-              md:mx-auto
-              md:mb-10
-              md:text-center
-              lg:mb-[50px]
-              lg:text-[20px]
-              lg:leading-[120%]
-            "
-          >
-            Whether you&apos;re starting from scratch, refreshing an existing
-            space, or ensuring your environment stays clean and healthy, our
-            team is equipped to deliver results you&apos;ll love.
-          </p>
+          <SectionHeading
+            eyebrow="Featured Services"
+            title="Everything You Need for Exceptional Spaces"
+            description="Whether you're starting from scratch, refreshing an existing space, or ensuring your environment stays clean and healthy, our team is equipped to deliver results you'll love."
+          />
 
           {/* Featured Services */}
           <div
             className="
+              mt-12
               grid
               grid-cols-1
-              gap-3
+              gap-5
               sm:grid-cols-2
-              sm:gap-3
+              md:mt-14
               lg:grid-cols-3
-              lg:gap-[9px]
             "
           >
             {FeaturedServices.map((service, index) => (
               <div
                 key={index}
                 className="
+                  group
                   relative
-                  h-[280px]
+                  h-[300px]
                   w-full
                   overflow-hidden
-                  rounded-[5px]
-                  sm:h-[300px]
-                  md:h-[340px]
-                  lg:h-[399px]
+                  rounded-2xl
+                  shadow-[0_20px_44px_-24px_rgba(26,26,26,0.3)]
+                  sm:h-[320px]
+                  md:h-[360px]
+                  lg:h-[420px]
                 "
               >
                 {/* Image */}
@@ -113,11 +49,11 @@ export default function FeaturedService() {
                   alt={service.title}
                   width={500}
                   height={500}
-                  className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
                 {/* Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
                 {/* Content */}
                 <div
@@ -126,22 +62,21 @@ export default function FeaturedService() {
                     bottom-0
                     left-0
                     right-0
-                    p-4
+                    p-5
                     text-white
-                    sm:p-5
-                    lg:p-6
+                    sm:p-6
+                    lg:p-7
                   "
                 >
                   <h3
                     className="
-                      font-sans
-                      text-[18px]
+                      font-display
+                      text-[19px]
                       font-semibold
-                      leading-[115%]
-                      text-[#F8FAFC]
-                      sm:text-[20px]
+                      leading-[118%]
+                      text-white
+                      sm:text-[21px]
                       lg:text-[24px]
-                      lg:leading-[100%]
                     "
                   >
                     {service.title}
@@ -150,15 +85,13 @@ export default function FeaturedService() {
                   <p
                     className="
                       mt-2
-                      font-inter
-                      text-[13px]
+                      font-sans
+                      text-[13.5px]
                       font-normal
-                      leading-[140%]
-                      text-white
-                      sm:text-[14px]
-                      lg:mt-[6px]
-                      lg:text-[16px]
-                      lg:leading-[120%]
+                      leading-[145%]
+                      text-white/80
+                      sm:text-[14.5px]
+                      lg:text-[15.5px]
                     "
                   >
                     {service.description}

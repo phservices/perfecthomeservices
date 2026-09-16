@@ -6,56 +6,52 @@ import Image from "next/image";
 
 export default function Founder() {
   return (
-    <section className="bg-[#FFF9F1]">
+    <section className="bg-[#FBF9F6]">
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
-        <div className="py-12 sm:py-16 md:py-20 lg:py-[96px]">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-x-8 lg:gap-x-[36px]">
-            {/* Mobile Heading */}
-            <h5 className="mb-0 block text-center font-sans text-[16px] font-semibold leading-[110%] text-[#000000B8] sm:text-[18px] md:hidden">
-              Meet the Founder
-            </h5>
-
+        <div className="py-16 sm:py-20 md:py-24 lg:py-28">
+          <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center md:gap-12 lg:gap-16">
             {/* Founder Image */}
-            <div className="h-[320px] w-full overflow-hidden rounded-[8px] sm:h-[380px] md:h-[420px] lg:h-[456px]">
+            <div className="h-[340px] w-full overflow-hidden rounded-2xl shadow-[0_24px_48px_-24px_rgba(26,26,26,0.3)] sm:h-[400px] md:h-[440px] lg:h-[480px]">
               <Image
-                src="/images/founder.jpg"
+                src="/images/founder-1.jpg"
                 alt="Founder"
                 width={500}
                 height={500}
-                className="h-full w-full object-cover object-top grayscale"
+                className="h-full w-full object-cover object-top"
               />
             </div>
 
             {/* Founder Content */}
             <div className="flex flex-col items-start justify-center">
-              {/* Desktop Heading */}
-              <h5 className="mb-3 hidden font-sans text-[18px] font-semibold leading-[110%] text-[#000000B8] md:block md:text-[20px] lg:text-[24px]">
+              <span className="mb-4 inline-flex items-center gap-2 font-sans text-[13px] font-semibold uppercase tracking-[0.14em] text-[#F89A0B] sm:text-[14px]">
+                <span className="h-[6px] w-[6px] rounded-full bg-[#F89A0B]" />
                 Meet the Founder
-              </h5>
+              </span>
 
-              <h3 className="mb-4 mt-0 font-sans text-[24px] font-bold leading-[115%] text-[#000000] sm:text-[28px] md:text-[30px] lg:text-[32px] lg:leading-[100%]">
-                Meet Somto Okafor
+              <h3 className="mb-5 font-display text-[28px] font-semibold leading-[112%] tracking-[-0.01em] text-[#1A1A1A] sm:text-[32px] md:text-[36px]">
+                Somto Okafor
               </h3>
 
-              <p className="mb-4 font-inter text-[16px] font-normal leading-[145%] text-[#1A1A1A] sm:text-[17px] md:text-[18px] lg:text-[20px] lg:leading-[120%]">
+              <p className="mb-4 font-sans text-[16px] font-normal leading-[160%] text-[#1A1A1A]/75 sm:text-[17px]">
                 Founder and CEO of Perfect Home Services, Somto Okafor has led
                 the company&apos;s growth from a painting business into a
-                trusted interior design, construction finishing, cleaning, and
-                real estate brand.
+                trusted interior design, construction finishing, cleaning,
+                and real estate brand.
               </p>
 
-              <p className="mb-6 font-inter text-[16px] font-normal leading-[145%] text-[#1A1A1A] sm:text-[17px] md:text-[18px] lg:text-[20px] lg:leading-[120%]">
+              <p className="mb-7 font-sans text-[16px] font-normal leading-[160%] text-[#1A1A1A]/75 sm:text-[17px]">
                 His vision is to build one of Africa&apos;s leading interior
                 design companies by delivering excellence, innovation, and
                 exceptional client service.
               </p>
 
-              <div className="flex w-full items-center justify-center md:justify-start">
+              <div className="flex w-full items-center justify-start">
                 <Link href="/Listing">
                   <Button
                     style="danger"
                     type="button"
-                    css="w-full max-w-[300px] sm:w-[220px] md:w-[165px] px-[24.29px] py-[15.55px] text-[12px] font-bold text-[#1A1A1A] font-sans"
+                    text="text-[#1A1A1A]"
+                    css="w-full sm:w-auto px-7 py-3.5 text-[14px] font-sans font-semibold"
                   >
                     Read Our Services
                   </Button>

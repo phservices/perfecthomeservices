@@ -1,18 +1,18 @@
 
 import type { Metadata } from "next";
-import { Bricolage_Grotesque, Inter } from "next/font/google";
+import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ScrollReveal from "@/components/ScrollReveal";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
-const bricolageGrotesque = Bricolage_Grotesque({
-  variable: "--font-bricolage",
+const dmSans = DM_Sans({
+  variable: "--font-dmsans",
   subsets: ["latin"],
   display: "swap",
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const playfairDisplay = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
   display: "swap",
 });
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${bricolageGrotesque.variable} ${inter.variable} h-full antialiased`}
+      className={`${dmSans.variable} ${playfairDisplay.variable} h-full antialiased`}
     >
       <body>
         {children}

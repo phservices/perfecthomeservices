@@ -8,17 +8,17 @@ export const navLinks = [
         router: "/Listing",
       },
       {
-        title: "Explore Interior Design Services",
-        router: "/Listing/interior-design",
-      },
-      {
-        title: "Book a Cleaning Service & Learn More",
-        router: "/Listing/cleaning",
-      },
-      {
-        title: "Explore Real Estate Services",
-        router: "/Listing/real-estate",
-      },
+        title: "Our Projects",
+        router: "/Listing/Our-Projects",
+      }
+      // {
+      //   title: "Book a Cleaning Service & Learn More",
+      //   router: "/Listing/cleaning",
+      // },
+      // {
+      //   title: "Explore Real Estate Services",
+      //   router: "/Listing/real-estate",
+      // },
     ],
   },
   {
@@ -88,7 +88,7 @@ export const perfectHomeServices = [
 
 export const FeaturedServices = [
   {
-    img: "/images/img-1.jpg",
+    img: "/images/img.jpg",
     title: "Interior Design",
     description:
       "We transform homes, offices, apartments, and commercial spaces through thoughtful design, quality finishing, lighting, furniture selection, renovations, and space planning.",
