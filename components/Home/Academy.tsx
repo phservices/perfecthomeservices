@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Button from "../ui/Button";
 import { Play } from "lucide-react";
 import Link from "next/link";
@@ -17,6 +17,23 @@ export default function Academy() {
     setIsPlaying(true);
     videoRef.current?.play();
   };
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (!entries[0].isIntersecting && !video.paused) {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="bg-white">
