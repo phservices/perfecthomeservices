@@ -23,10 +23,10 @@ export default function Values() {
                 bg-[#F89A0B29]
                 px-4
                 pb-6
-                pt-[70px]
-                sm:pt-[80px]
+                pt-[40px]
+                sm:pt-[40px]
                 lg:col-span-3
-                lg:pt-[80px]
+                lg:pt-[40px]
                 ${index === 4 ? "lg:col-start-3" : ""}
                 ${index === 5 ? "lg:col-start-6" : ""}
                 ${index === 6 ? "lg:col-start-9" : ""}

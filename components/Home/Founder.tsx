@@ -29,11 +29,11 @@ export default function Founder() {
               </span>
 
               <h3 className="mb-5 font-display text-[28px] font-semibold leading-[112%] tracking-[-0.01em] text-[#1A1A1A] sm:text-[32px] md:text-[36px]">
-                Somto Okafor
+                Somtochukwu Okafor
               </h3>
 
               <p className="mb-4 font-sans text-[16px] font-normal leading-[160%] text-[#1A1A1A]/75 sm:text-[17px]">
-                Founder and CEO of Perfect Home Services, Somto Okafor has led
+                Founder and CEO of Perfect Home Services, Somtochukwu Okafor has led
                 the company&apos;s growth from a painting business into a
                 trusted interior design, construction finishing, cleaning,
                 and real estate brand.
@@ -53,7 +53,7 @@ export default function Founder() {
                     text="text-[#1A1A1A]"
                     css="w-full sm:w-auto px-7 py-3.5 text-[14px] font-sans font-semibold"
                   >
-                    Read Our Services
+                    work with us
                   </Button>
                 </Link>
               </div>

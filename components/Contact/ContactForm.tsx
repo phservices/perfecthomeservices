@@ -1,85 +1,37 @@
 "use client";
 
-import { useState, type ChangeEvent, type SubmitEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
+import { Check } from "lucide-react";
 import Button from "../ui/Button";
 
 type FormState = {
+  service: string;
+  propertyType: string;
+  budget: string;
+  timeline: string;
+  location: string;
+  message: string;
   name: string;
   phone: string;
   email: string;
-  service: string;
-  location: string;
-  message: string;
 };
 
 type FormErrors = Partial<Record<keyof FormState, string>>;
 
 const initialForm: FormState = {
+  service: "",
+  propertyType: "",
+  budget: "",
+  timeline: "",
+  location: "",
+  message: "",
   name: "",
   phone: "",
   email: "",
-  service: "",
-  location: "",
-  message: "",
 };
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneDigitsRegex = /^\+?\d{10,15}$/;
-
-function validate(form: FormState): FormErrors {
-  const errors: FormErrors = {};
-
-  if (!form.name.trim()) {
-    errors.name = "Full name is required";
-  } else if (form.name.trim().length < 2) {
-    errors.name = "Enter a valid name";
-  }
-
-  const phoneDigitsOnly = form.phone.trim().replace(/[\s-]/g, "");
-  if (!form.phone.trim()) {
-    errors.phone = "Phone number is required";
-  } else if (!phoneDigitsRegex.test(phoneDigitsOnly)) {
-    errors.phone = "Enter a valid phone number";
-  }
-
-  if (!form.email.trim()) {
-    errors.email = "Email address is required";
-  } else if (!emailRegex.test(form.email.trim())) {
-    errors.email = "Enter a valid email address";
-  }
-
-  if (!form.service) {
-    errors.service = "Please select a service";
-  }
-
-  if (!form.location.trim()) {
-    errors.location = "Property location is required";
-  }
-
-  if (!form.message.trim()) {
-    errors.message = "Please tell us about your project";
-  } else if (form.message.trim().length < 10) {
-    errors.message = "Message should be at least 10 characters";
-  }
-
-  return errors;
-}
-
-const baseInputClass =
-  "w-full rounded-[8px] border bg-white px-4 py-3 font-inter text-[15px] text-[#1A1A1A] outline-none placeholder:text-[#1A1A1A80] transition-colors duration-150 sm:text-[16px]";
-
-function getInputClass(hasError: boolean) {
-  return `${baseInputClass} ${
-    hasError
-      ? "border-red-500 focus:border-red-500"
-      : "border-[#1A1A1A33] focus:border-[#F89A0B]"
-  }`;
-}
-
-const labelClass =
-  "mb-2 block font-inter text-[14px] font-medium text-[#1A1A1A] sm:text-[15px]";
-
-const errorClass = "mt-1.5 font-inter text-[13px] text-red-600";
 
 const serviceOptions = [
   "Interior Design",
@@ -88,6 +40,28 @@ const serviceOptions = [
   "Fumigation",
   "Real Estate",
   "Interior Design Academy",
+];
+
+const propertyTypeOptions = [
+  "Residential Home",
+  "Corporate Office",
+  "Commercial Space (Spa, Hospitality, Retail)",
+  "Real Estate / Land",
+];
+
+const budgetOptions = [
+  "Under ₦1,000,000",
+  "₦1,000,000 - ₦5,000,000",
+  "₦5,000,000 - ₦15,000,000",
+  "Above ₦15,000,000",
+  "Not sure yet",
+];
+
+const timelineOptions = [
+  "As soon as possible",
+  "Within 1-3 months",
+  "Within 3-6 months",
+  "Just exploring options",
 ];
 
 const socialLinks = [
@@ -108,39 +82,198 @@ const socialLinks = [
   },
 ];
 
+const steps = [
+  { key: "service", title: "What service do you need?" },
+  { key: "propertyType", title: "What type of space is this for?" },
+  { key: "budget", title: "What's your budget & timeline?" },
+  { key: "details", title: "Tell us about your project" },
+  { key: "contact", title: "How can we reach you?" },
+] as const;
+
+const baseInputClass =
+  "w-full rounded-[8px] border bg-white px-4 py-3 font-inter text-[15px] text-[#1A1A1A] outline-none placeholder:text-[#1A1A1A80] transition-colors duration-150 sm:text-[16px]";
+
+function getInputClass(hasError: boolean) {
+  return `${baseInputClass} ${
+    hasError
+      ? "border-red-500 focus:border-red-500"
+      : "border-[#1A1A1A33] focus:border-[#F89A0B]"
+  }`;
+}
+
+const labelClass =
+  "mb-2 block font-inter text-[14px] font-medium text-[#1A1A1A] sm:text-[15px]";
+
+const errorClass = "mt-1.5 font-inter text-[13px] text-red-600";
+
+function validateStep(step: number, form: FormState): FormErrors {
+  const errors: FormErrors = {};
+
+  if (step === 0 && !form.service) {
+    errors.service = "Please select a service";
+  }
+
+  if (step === 1 && !form.propertyType) {
+    errors.propertyType = "Please select a property type";
+  }
+
+  if (step === 2) {
+    if (!form.budget) errors.budget = "Please select a budget range";
+    if (!form.timeline) errors.timeline = "Please select a timeline";
+  }
+
+  if (step === 3) {
+    if (!form.location.trim()) {
+      errors.location = "Property location is required";
+    }
+    if (!form.message.trim()) {
+      errors.message = "Please tell us about your project";
+    } else if (form.message.trim().length < 10) {
+      errors.message = "Message should be at least 10 characters";
+    }
+  }
+
+  if (step === 4) {
+    if (!form.name.trim()) {
+      errors.name = "Full name is required";
+    } else if (form.name.trim().length < 2) {
+      errors.name = "Enter a valid name";
+    }
+
+    const phoneDigitsOnly = form.phone.trim().replace(/[\s-]/g, "");
+    if (!form.phone.trim()) {
+      errors.phone = "Phone number is required";
+    } else if (!phoneDigitsRegex.test(phoneDigitsOnly)) {
+      errors.phone = "Enter a valid phone number";
+    }
+
+    if (!form.email.trim()) {
+      errors.email = "Email address is required";
+    } else if (!emailRegex.test(form.email.trim())) {
+      errors.email = "Enter a valid email address";
+    }
+  }
+
+  return errors;
+}
+
+function OptionCard({
+  label,
+  selected,
+  onClick,
+}: {
+  label: string;
+  selected: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`flex w-full items-center justify-between gap-3 rounded-[8px] border px-4 py-4 text-left font-inter text-[15px] font-medium transition-colors duration-150 sm:text-[16px] ${
+        selected
+          ? "border-[#F89A0B] bg-[#F89A0B14] text-[#1A1A1A]"
+          : "border-[#1A1A1A33] bg-white text-[#1A1A1A] hover:border-[#F89A0B]"
+      }`}
+    >
+      {label}
+      <span
+        className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full border ${
+          selected
+            ? "border-[#F89A0B] bg-[#F89A0B] text-white"
+            : "border-[#1A1A1A33] text-transparent"
+        }`}
+      >
+        <Check size={13} strokeWidth={3} />
+      </span>
+    </button>
+  );
+}
+
 export default function ContactForm() {
+  const [step, setStep] = useState(0);
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
+    "idle"
+  );
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: undefined }));
-    setSubmitted(false);
+  const isLastStep = step === steps.length - 1;
+
+  const setField = (field: keyof FormState, value: string) => {
+    setForm((prev) => ({ ...prev, [field]: value }));
+    setErrors((prev) => ({ ...prev, [field]: undefined }));
   };
 
-  const handleSubmit = (e: SubmitEvent) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setField(name as keyof FormState, value);
+  };
+
+  const goNext = () => {
+    const stepErrors = validateStep(step, form);
+    if (Object.keys(stepErrors).length > 0) {
+      setErrors(stepErrors);
+      return;
+    }
+    setErrors({});
+    setStep((prev) => Math.min(prev + 1, steps.length - 1));
+  };
+
+  const goBack = () => {
+    setErrors({});
+    setStep((prev) => Math.max(prev - 1, 0));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
-    const validationErrors = validate(form);
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
+    const stepErrors = validateStep(step, form);
+    if (Object.keys(stepErrors).length > 0) {
+      setErrors(stepErrors);
       return;
     }
 
     setErrors({});
-    setSubmitted(true);
-    setForm(initialForm);
+    setStatus("submitting");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        throw new Error(data?.error || "Something went wrong. Please try again.");
+      }
+
+      setStatus("success");
+      setForm(initialForm);
+      setStep(0);
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
+    }
   };
 
   return (
     <section id="contact-form" className="scroll-mt-28">
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
         <div className="py-12 sm:py-16 md:py-[50px] lg:py-[75px]">
-          <p className="font-inter text-[24px] text-[#000000] leading-[36px] font-normal">Get Started</p>
+          <p className="font-inter text-[24px] text-[#000000] leading-[36px] font-normal">
+            Get Started
+          </p>
           {/* Heading + Socials */}
           <div className="mb-10 flex flex-col gap-6 lg:mb-14 lg:flex-row lg:items-center lg:justify-between">
             <h1
@@ -195,7 +328,7 @@ export default function ContactForm() {
             </div>
           </div>
 
-          {/* Form */}
+          {/* Multistep Form */}
           <form
             onSubmit={handleSubmit}
             noValidate
@@ -203,7 +336,7 @@ export default function ContactForm() {
               flex
               w-full
               flex-col
-              gap-4
+              gap-6
               rounded-[8px]
               border
               border-[#F89A0B]
@@ -213,136 +346,245 @@ export default function ContactForm() {
               md:p-8
             "
           >
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              <div>
-                <label htmlFor="name" className={labelClass}>
-                  Full Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Enter your full name"
-                  aria-invalid={!!errors.name}
-                  className={getInputClass(!!errors.name)}
-                />
-                {errors.name && <p className={errorClass}>{errors.name}</p>}
+            {/* Step Progress */}
+            <div>
+              <div className="mb-2 flex items-center justify-between">
+                <p className="font-inter text-[13px] font-semibold text-[#1A1A1A] sm:text-[14px]">
+                  Step {step + 1} of {steps.length}
+                </p>
+                <p className="font-inter text-[13px] text-[#1A1A1A80] sm:text-[14px]">
+                  {Math.round(((step + 1) / steps.length) * 100)}%
+                </p>
               </div>
-
-              <div>
-                <label htmlFor="phone" className={labelClass}>
-                  Phone Number
-                </label>
-                <input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={form.phone}
-                  onChange={handleChange}
-                  placeholder="Enter your phone number"
-                  aria-invalid={!!errors.phone}
-                  className={getInputClass(!!errors.phone)}
+              <div className="h-1.5 w-full overflow-hidden rounded-full bg-[#1A1A1A1A]">
+                <div
+                  className="h-full rounded-full bg-[#F89A0B] transition-all duration-300"
+                  style={{ width: `${((step + 1) / steps.length) * 100}%` }}
                 />
-                {errors.phone && <p className={errorClass}>{errors.phone}</p>}
               </div>
+            </div>
 
-              <div>
-                <label htmlFor="email" className={labelClass}>
-                  Email Address
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="Enter your email"
-                  aria-invalid={!!errors.email}
-                  className={getInputClass(!!errors.email)}
-                />
-                {errors.email && <p className={errorClass}>{errors.email}</p>}
-              </div>
+            <h2 className="font-sans text-[20px] font-bold leading-[120%] text-[#1A1A1A] sm:text-[24px] md:text-[28px]">
+              {steps[step].title}
+            </h2>
 
+            {/* Step 1: Service */}
+            {step === 0 && (
               <div>
-                <label htmlFor="service" className={labelClass}>
-                  Service Required
-                </label>
-                <select
-                  id="service"
-                  name="service"
-                  value={form.service}
-                  onChange={handleChange}
-                  aria-invalid={!!errors.service}
-                  className={`${getInputClass(!!errors.service)} ${
-                    form.service ? "text-[#1A1A1A]" : "text-[#1A1A1A80]"
-                  }`}
-                >
-                  <option value="" disabled>
-                    Select a service
-                  </option>
-                  {serviceOptions.map((service) => (
-                    <option key={service} value={service}>
-                      {service}
-                    </option>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {serviceOptions.map((option) => (
+                    <OptionCard
+                      key={option}
+                      label={option}
+                      selected={form.service === option}
+                      onClick={() => setField("service", option)}
+                    />
                   ))}
-                </select>
+                </div>
                 {errors.service && (
                   <p className={errorClass}>{errors.service}</p>
                 )}
               </div>
-            </div>
+            )}
 
-            <div>
-              <label htmlFor="location" className={labelClass}>
-                Property Location
-              </label>
-              <input
-                id="location"
-                name="location"
-                type="text"
-                value={form.location}
-                onChange={handleChange}
-                placeholder="Enter your property location"
-                aria-invalid={!!errors.location}
-                className={getInputClass(!!errors.location)}
-              />
-              {errors.location && (
-                <p className={errorClass}>{errors.location}</p>
+            {/* Step 2: Property Type */}
+            {step === 1 && (
+              <div>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {propertyTypeOptions.map((option) => (
+                    <OptionCard
+                      key={option}
+                      label={option}
+                      selected={form.propertyType === option}
+                      onClick={() => setField("propertyType", option)}
+                    />
+                  ))}
+                </div>
+                {errors.propertyType && (
+                  <p className={errorClass}>{errors.propertyType}</p>
+                )}
+              </div>
+            )}
+
+            {/* Step 3: Budget & Timeline */}
+            {step === 2 && (
+              <div className="flex flex-col gap-5">
+                <div>
+                  <label className={labelClass}>Estimated Budget</label>
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    {budgetOptions.map((option) => (
+                      <OptionCard
+                        key={option}
+                        label={option}
+                        selected={form.budget === option}
+                        onClick={() => setField("budget", option)}
+                      />
+                    ))}
+                  </div>
+                  {errors.budget && <p className={errorClass}>{errors.budget}</p>}
+                </div>
+
+                <div>
+                  <label className={labelClass}>Timeline</label>
+                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                    {timelineOptions.map((option) => (
+                      <OptionCard
+                        key={option}
+                        label={option}
+                        selected={form.timeline === option}
+                        onClick={() => setField("timeline", option)}
+                      />
+                    ))}
+                  </div>
+                  {errors.timeline && (
+                    <p className={errorClass}>{errors.timeline}</p>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Step 4: Project Details */}
+            {step === 3 && (
+              <div className="flex flex-col gap-4">
+                <div>
+                  <label htmlFor="location" className={labelClass}>
+                    Property Location
+                  </label>
+                  <input
+                    id="location"
+                    name="location"
+                    type="text"
+                    value={form.location}
+                    onChange={handleChange}
+                    placeholder="Enter your property location"
+                    aria-invalid={!!errors.location}
+                    className={getInputClass(!!errors.location)}
+                  />
+                  {errors.location && (
+                    <p className={errorClass}>{errors.location}</p>
+                  )}
+                </div>
+
+                <div>
+                  <label htmlFor="message" className={labelClass}>
+                    Project Details
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    value={form.message}
+                    onChange={handleChange}
+                    placeholder="Tell us about your project or anything else you want us to know"
+                    aria-invalid={!!errors.message}
+                    className={`${getInputClass(!!errors.message)} resize-none`}
+                  />
+                  {errors.message && (
+                    <p className={errorClass}>{errors.message}</p>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Step 5: Contact Info */}
+            {step === 4 && (
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                  <label htmlFor="name" className={labelClass}>
+                    Full Name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={form.name}
+                    onChange={handleChange}
+                    placeholder="Enter your full name"
+                    aria-invalid={!!errors.name}
+                    className={getInputClass(!!errors.name)}
+                  />
+                  {errors.name && <p className={errorClass}>{errors.name}</p>}
+                </div>
+
+                <div>
+                  <label htmlFor="phone" className={labelClass}>
+                    Phone Number
+                  </label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={form.phone}
+                    onChange={handleChange}
+                    placeholder="Enter your phone number"
+                    aria-invalid={!!errors.phone}
+                    className={getInputClass(!!errors.phone)}
+                  />
+                  {errors.phone && <p className={errorClass}>{errors.phone}</p>}
+                </div>
+
+                <div className="sm:col-span-2">
+                  <label htmlFor="email" className={labelClass}>
+                    Email Address
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    placeholder="Enter your email"
+                    aria-invalid={!!errors.email}
+                    className={getInputClass(!!errors.email)}
+                  />
+                  {errors.email && <p className={errorClass}>{errors.email}</p>}
+                </div>
+              </div>
+            )}
+
+            {/* Navigation */}
+            <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <Button
+                style="reverseLight"
+                type="button"
+                fn={goBack}
+                disabled={step === 0 || status === "submitting"}
+                css={`w-full sm:w-[140px] text-[16px] font-bold text-[#1A1A1A] font-sans ${
+                  step === 0 ? "opacity-40 pointer-events-none" : ""
+                }`}
+              >
+                Previous
+              </Button>
+
+              {!isLastStep ? (
+                <Button
+                  style="danger"
+                  type="button"
+                  fn={goNext}
+                  css="w-full sm:w-[140px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+                >
+                  Next
+                </Button>
+              ) : (
+                <Button
+                  style="danger"
+                  type="submit"
+                  loading={status === "submitting"}
+                  css="w-full sm:w-[220px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+                >
+                  {status === "submitting" ? "Sending..." : "Send Message"}
+                </Button>
               )}
             </div>
 
-            <div>
-              <label htmlFor="message" className={labelClass}>
-                Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Tell us about your project or anything else you want us to know"
-                aria-invalid={!!errors.message}
-                className={`${getInputClass(!!errors.message)} resize-none`}
-              />
-              {errors.message && (
-                <p className={errorClass}>{errors.message}</p>
-              )}
-            </div>
-
-            <Button
-              style="danger"
-              type="submit"
-              css="w-full sm:w-[220px] text-[16px] font-bold text-[#1A1A1A] font-sans"
-            >
-              Send Message
-            </Button>
-
-            {submitted && (
+            {status === "success" && (
               <p className="font-inter text-[14px] text-green-700">
                 Thanks for reaching out! We&apos;ll get back to you shortly.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="font-inter text-[14px] text-red-600">
+                {errorMessage}
               </p>
             )}
           </form>

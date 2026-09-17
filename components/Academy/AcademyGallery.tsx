@@ -9,7 +9,7 @@ export default function AcademyGallery() {
             Student Gallery
           </h2>
 
-          <p className="mx-auto max-w-[440px] text-center text-[13px] sm:text-[14px] lg:text-[15px] font-inter font-normal leading-[150%] text-[#1A1A1ACC] mb-[28px] sm:mb-[36px]">
+          <p className="mx-auto max-w-[440px] text-center text-[16px] sm:text-[16px] lg:text-[15px] font-inter font-normal leading-[150%] text-[#1A1A1ACC] mb-[28px] sm:mb-[36px]">
             View highlights from our training sessions, practical classes,
             graduation ceremonies, and site visits.
           </p>

@@ -20,7 +20,7 @@ export default function AcademyStory() {
                   {section.body.map((paragraph, i) => (
                     <p
                       key={i}
-                      className="text-[16px] sm:text-[18px] lg:text-[20px] font-inter font-normal leading-[120%] text-[#1A1A1A] mb-[12px] last:mb-0 max-w-[60ch]"
+                      className="text-[16px] sm:text-[18px] lg:text-[20px] font-inter font-normal leading-[150%] text-[#1A1A1A] mb-[12px] last:mb-0 max-w-[60ch]"
                     >
                       {paragraph}
                     </p>

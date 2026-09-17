@@ -12,7 +12,7 @@ export default function OurProjects() {
             Our Projects
           </h2>
 
-          <p className="mx-auto max-w-[560px] text-center text-[14px] sm:text-[15px] lg:text-[16px] font-inter font-normal leading-[150%] text-[#000000CC] mb-[32px] sm:mb-[40px]">
+          <p className="mx-auto max-w-[560px] text-center text-[16px] sm:text-[16px] lg:text-[16px] font-inter font-normal leading-[150%] text-[#000000CC] mb-[32px] sm:mb-[40px]">
             Explore our completed projects and see how we&apos;ve transformed
             residential and commercial spaces through thoughtful design, quality
             finishing, and expert craftsmanship.
@@ -45,7 +45,7 @@ export default function OurProjects() {
                     {project.title}
                   </h3>
 
-                  <p className="mb-[16px] text-[13px] leading-[150%] text-[#333333]">
+                  <p className="mb-[16px] text-[16px] leading-[150%] text-[#333333]">
                     {project.description}
                   </p>
 

@@ -89,11 +89,11 @@ function ServiceBlock({ service, flipped = false }: ServiceBlockProps) {
           {service.title}
         </h2>
 
-        <p className="mt-3 max-w-[52ch] text-sm leading-[120%] text-[#1A1A1A] sm:text-[20px]">
+        <p className="mt-3 max-w-[52ch] text-[16px] leading-[150%] text-[#1A1A1A] sm:text-[20px]">
           {service.description}
         </p>
 
-        <ul className="mt-6 flex flex-wrap gap-2">
+        {/* <ul className="mt-6 flex flex-wrap gap-2">
           {service.tags.map((tag) => (
             <li
               key={tag}
@@ -102,11 +102,11 @@ function ServiceBlock({ service, flipped = false }: ServiceBlockProps) {
               {tag}
             </li>
           ))}
-        </ul>
+        </ul> */}
 
         <a
           href={service.href}
-          className="mt-7 inline-flex items-center rounded-full text-[#1A1A1A] bg-[#F89A0B52] px-5 py-2.5 text-xs font-semibold  transition-colors hover:bg-[#EE8B22] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EE8B22] sm:text-[13px]"
+          className="mt-7 inline-flex items-center rounded-full bg-[#F89A0B] px-6 py-3 text-[16px] font-extrabold leading-none tracking-tight text-[#1A1A1A] shadow-sm transition-all duration-200 hover:bg-[#EE8B22] hover:text-white hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EE8B22] sm:px-7 sm:py-3.5 sm:text-[17px]"
         >
           {service.cta}
         </a>

@@ -15,7 +15,7 @@ export default function Hero() {
       <video
         className="absolute inset-0 -z-20 h-full w-full object-cover"
         src={HERO_VIDEO_URL}
-        poster="/images/Hero-bg.jpg"
+        // poster="/images/Hero-bg.jpg"
         autoPlay
         muted
         loop
@@ -57,7 +57,7 @@ export default function Hero() {
           </h1>
 
           {/* Description */}
-          <p
+          {/* <p
             className="
               mb-9
               w-full
@@ -74,7 +74,7 @@ export default function Hero() {
             based in Enugu State, Nigeria — delivering home improvement,
             construction finishing, industrial cleaning, fumigation, real
             estate, and interior design training under one trusted brand.
-          </p>
+          </p> */}
 
           {/* Buttons */}
           <div className="flex w-full flex-col gap-3 sm:flex-row sm:gap-4">
@@ -123,7 +123,7 @@ export default function Hero() {
             {[
               { value: "2017", label: "Founded In" },
               { value: "3", label: "Core Service Lines" },
-              { value: "Enugu", label: "Home Base, Nigeria" },
+              // { value: "Enugu", label: "Home Base, Nigeria" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <span className="font-display text-2xl font-semibold text-white sm:text-3xl">

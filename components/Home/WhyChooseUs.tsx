@@ -16,26 +16,6 @@ export default function WhyChooseUs() {
             title="Why Clients Choose Us, Every Time"
           />
 
-          {/* CTA */}
-          <div className="mt-8 flex justify-center">
-            <Link href="/Contact">
-              <Button
-                style="danger"
-                type="button"
-                text="text-[#1A1A1A]"
-                css="
-                  h-[52px]
-                  px-7
-                  text-[14px]
-                  font-sans
-                  font-semibold
-                "
-              >
-                Let&apos;s Discuss Your Project
-              </Button>
-            </Link>
-          </div>
-
           {/* Service Cards */}
           <div
             className="
@@ -111,6 +91,26 @@ export default function WhyChooseUs() {
                 </p>
               </div>
             ))}
+          </div>
+
+           {/* CTA */}
+          <div className="mt-8 flex justify-center">
+            <Link href="/Contact">
+              <Button
+                style="danger"
+                type="button"
+                text="text-[#1A1A1A]"
+                css="
+                  h-[52px]
+                  px-7
+                  text-[14px]
+                  font-sans
+                  font-semibold
+                "
+              >
+                Let&apos;s Discuss Your Project
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -7,56 +7,37 @@ export default function Mission() {
       <div className="px-4 py-14 sm:px-6 sm:py-16 lg:px-8 lg:py-[84px]">
         <div className="container mx-auto max-w-6xl">
           {/* Heading */}
-          <h1 className="mb-8 text-center font-sans text-3xl font-semibold leading-[100%] text-[#000000] sm:text-[32px] lg:mb-10">
+          {/* <h1 className="mb-8 text-center font-sans text-3xl font-semibold leading-[100%] text-[#000000] sm:text-[32px] lg:mb-10">
             Mission & Vision
-          </h1>
+          </h1> */}
 
           {/* Cards */}
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="flex flex-col items-center text-center">
             {/* Vision */}
-            <div className="flex flex-col rounded-lg border border-[#F89A0B29] bg-[#F89A0B29] px-4 pt-[113px] pb-[16px] sm:px-5 lg:h-full lg:px-6">
-              <div className="mb-[10px] h-[48px] w-[48px]">
-                <Image
-                  src="/images/Vector(12).png"
-                  width={500}
-                  height={500}
-                  alt="Vision icon"
-                  className="h-full w-full object-contain"
-                />
-              </div>
-
-              <h2 className="mb-[10px] font-sans text-xl font-semibold leading-[100%] text-[#000000] sm:text-2xl">
+            <div className="flex max-w-[750px] flex-col items-center">
+              <h2 className="mb-[24px] font-sans text-3xl font-semibold leading-[100%] text-black sm:text-4xl lg:text-[40px]">
                 Our Vision
               </h2>
 
-              <p className="font-inter text-base font-normal leading-[120%] text-[#1A1A1A] sm:text-lg lg:text-xl">
-                To become one of Africa&apos;s foremost interior design and
-                construction finishing companies, setting the benchmark for
-                excellence, innovation, integrity, and client satisfaction.
+              <p className="font-inter text-base font-normal leading-[150%] text-[#1A1A1A] sm:text-lg lg:text-[18px]">
+                To be a global brand known for creating personalized interior
+                environments that increase productivity and overall quality of
+                life.
               </p>
             </div>
 
-            {/* Mission */}
-            <div className="flex flex-col items-end rounded-lg border border-[#F89A0B29] bg-[#F89A0B29] px-4 pt-[113px] pb-[16px] text-right sm:px-5 lg:h-full lg:px-6">
-              <div className="mb-[10px] h-[48px] w-[48px]">
-                <Image
-                  src="/images/symbols.png"
-                  width={500}
-                  height={500}
-                  alt="Mission icon"
-                  className="h-full w-full object-cover"
-                />
-              </div>
+            {/* Space between Vision and Mission */}
+            <div className="h-[190px] sm:h-[200px] lg:h-[205px]" />
 
-              <h2 className="mb-[10px] font-sans text-xl font-semibold leading-[100%] text-[#000000] sm:text-2xl">
+            {/* Mission */}
+            <div className="flex max-w-[750px] flex-col items-center">
+              <h2 className="mb-[24px] font-sans text-3xl font-semibold leading-[100%] text-black sm:text-4xl lg:text-[40px]">
                 Our Mission
               </h2>
 
-              <p className="font-inter text-base font-normal leading-[120%] text-[#1A1A1A] sm:text-lg lg:text-xl">
-                To create functional, beautiful, and healthy spaces by
-                delivering quality interior design, construction finishing,
-                cleaning, fumigation, and real estate solutions that exceed our
-                clients&apos; expectations.
+              <p className="font-inter text-base font-normal leading-[150%] text-[#1A1A1A] sm:text-lg lg:text-[18px]">
+                To create and implement personalized designs using materials
+                that will give the best user experience.
               </p>
             </div>
           </div>
