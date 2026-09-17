@@ -292,7 +292,7 @@ export default function ContactForm() {
               Get in touch with us. We&apos;re here to assist you.
             </h1>
 
-            <div className="flex items-center flex-col gap-3 lg:shrink-0">
+            <div className="flex flex-row items-center gap-3 lg:shrink-0">
               {socialLinks.map(({ label, href, path }) => (
                 <a
                   key={label}
