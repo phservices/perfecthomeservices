@@ -8,17 +8,17 @@ export const navLinks = [
         router: "/Listing",
       },
       {
-        title: "Our Projects",
-        router: "/Listing/Our-Projects",
-      }
-      // {
-      //   title: "Book a Cleaning Service & Learn More",
-      //   router: "/Listing/cleaning",
-      // },
-      // {
-      //   title: "Explore Real Estate Services",
-      //   router: "/Listing/real-estate",
-      // },
+        title: "Interior-design",
+        router: "/Listing/interior-design",
+      },
+      {
+        title: "Book a Cleaning Service & Learn More",
+        router: "/Listing/cleaning",
+      },
+      {
+        title: "Explore Real Estate Services",
+        router: "/Listing/real-estate",
+      },
     ],
   },
   {
@@ -29,6 +29,10 @@ export const navLinks = [
     title: "Aboutus",
     router: "/Aboutus",
   },
+  {
+    title:"Our Projects",
+    router:"/Listing/Our-Projects"
+  }
 ];
 
 export const services = [
@@ -49,28 +53,10 @@ export const perfectHomeServices = [
       "Every project begins by understanding your vision before recommending solutions that fit your goals.",
   },
   {
-    icon: "/images/Vector(8).png",
-    title: "Quality Construction Finishing",
-    description:
-      "Our multidisciplinary team brings industry expertise, creativity, and technical excellence to every project.",
-  },
-  {
     icon: "/images/Vector(9).png",
     title: "Practical Space Planning",
     description:
       "From planning to execution, we maintain high standards to ensure lasting results.",
-  },
-  {
-    icon: "/images/Vector(10).png",
-    title: "Professional Cleaning & Fumigation",
-    description:
-      "Design, cleaning, fumigation, and training—all under one trusted company.",
-  },
-  {
-    icon: "/images/Vector(11).png",
-    title: "Real Estate Solutions",
-    description:
-      "Design, cleaning, fumigation, and training—all under one trusted company.",
   },
   {
     icon: "/images/Vector(11).png",
@@ -79,10 +65,10 @@ export const perfectHomeServices = [
       "Design, cleaning, fumigation, and training—all under one trusted company.",
   },
   {
-    icon: "/images/Vector(11).png",
-    title: "Customer-Focused Service",
+    icon: "/images/Vector(8).png",
+    title: "Quality Construction Finishing",
     description:
-      "Design, cleaning, fumigation, and training—all under one trusted company.",
+      "Our multidisciplinary team brings industry expertise, creativity, and technical excellence to every project.",
   },
 ];
 

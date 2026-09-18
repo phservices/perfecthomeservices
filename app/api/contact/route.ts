@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 type ContactPayload = {
-  service: string;
+  services: string[];
   propertyType: string;
   budget: string;
   timeline: string;
@@ -12,8 +12,7 @@ type ContactPayload = {
   email: string;
 };
 
-const requiredFields: (keyof ContactPayload)[] = [
-  "service",
+const requiredFields: Exclude<keyof ContactPayload, "services">[] = [
   "propertyType",
   "budget",
   "timeline",
@@ -33,6 +32,13 @@ export async function POST(request: NextRequest) {
     body = await request.json();
   } catch {
     return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
+  }
+
+  if (!Array.isArray(body.services) || body.services.length === 0) {
+    return NextResponse.json(
+      { error: "Missing required field: services" },
+      { status: 400 }
+    );
   }
 
   for (const field of requiredFields) {
@@ -60,7 +66,7 @@ export async function POST(request: NextRequest) {
 
   const payload = {
     submittedAt: new Date().toISOString(),
-    service: String(body.service).trim(),
+    service: body.services!.map((service) => service.trim()).join(", "),
     propertyType: String(body.propertyType).trim(),
     budget: String(body.budget).trim(),
     timeline: String(body.timeline).trim(),

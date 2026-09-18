@@ -5,7 +5,7 @@ import { Check } from "lucide-react";
 import Button from "../ui/Button";
 
 type FormState = {
-  service: string;
+  services: string[];
   propertyType: string;
   budget: string;
   timeline: string;
@@ -19,7 +19,7 @@ type FormState = {
 type FormErrors = Partial<Record<keyof FormState, string>>;
 
 const initialForm: FormState = {
-  service: "",
+  services: [],
   propertyType: "",
   budget: "",
   timeline: "",
@@ -83,7 +83,7 @@ const socialLinks = [
 ];
 
 const steps = [
-  { key: "service", title: "What service do you need?" },
+  { key: "services", title: "What services do you need?" },
   { key: "propertyType", title: "What type of space is this for?" },
   { key: "budget", title: "What's your budget & timeline?" },
   { key: "details", title: "Tell us about your project" },
@@ -109,8 +109,8 @@ const errorClass = "mt-1.5 font-inter text-[13px] text-red-600";
 function validateStep(step: number, form: FormState): FormErrors {
   const errors: FormErrors = {};
 
-  if (step === 0 && !form.service) {
-    errors.service = "Please select a service";
+  if (step === 0 && form.services.length === 0) {
+    errors.services = "Please select at least one service";
   }
 
   if (step === 1 && !form.propertyType) {
@@ -211,6 +211,16 @@ export default function ContactForm() {
   ) => {
     const { name, value } = e.target;
     setField(name as keyof FormState, value);
+  };
+
+  const toggleService = (option: string) => {
+    setForm((prev) => ({
+      ...prev,
+      services: prev.services.includes(option)
+        ? prev.services.filter((service) => service !== option)
+        : [...prev.services, option],
+    }));
+    setErrors((prev) => ({ ...prev, services: undefined }));
   };
 
   const goNext = () => {
@@ -368,21 +378,24 @@ export default function ContactForm() {
               {steps[step].title}
             </h2>
 
-            {/* Step 1: Service */}
+            {/* Step 1: Services */}
             {step === 0 && (
               <div>
+                <p className="-mt-2 mb-1 font-inter text-[13px] text-[#1A1A1A80] sm:text-[14px]">
+                  Select all that apply
+                </p>
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                   {serviceOptions.map((option) => (
                     <OptionCard
                       key={option}
                       label={option}
-                      selected={form.service === option}
-                      onClick={() => setField("service", option)}
+                      selected={form.services.includes(option)}
+                      onClick={() => toggleService(option)}
                     />
                   ))}
                 </div>
-                {errors.service && (
-                  <p className={errorClass}>{errors.service}</p>
+                {errors.services && (
+                  <p className={errorClass}>{errors.services}</p>
                 )}
               </div>
             )}

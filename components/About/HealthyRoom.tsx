@@ -40,7 +40,7 @@ export default function HealthyRoom() {
                       max-w-[169px]
                       px-5
                       py-3
-                      text-[12px]
+                      text-[16px]
                       font-bold
                     "
                   >

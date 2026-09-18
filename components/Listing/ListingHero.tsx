@@ -67,7 +67,7 @@ export default function ListingHero() {
                 sm:min-w-[165px]
                 px-[24.29px]
                 py-[15.55px]
-                text-[12px]
+                text-[16px]
                 font-bold
               "
               >
@@ -85,7 +85,7 @@ export default function ListingHero() {
                 sm:min-w-[165px]
                 px-[24.29px]
                 py-[15.55px]
-                text-[12px]
+                text-[16px]
                 font-bold
               "
               >

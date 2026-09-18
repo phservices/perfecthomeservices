@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Button from "../ui/Button";
 import Link from "next/link";
-import SectionHeading from "../ui/SectionHeading";
+// import SectionHeading from "../ui/SectionHeading";
 
 export default function Introduction() {
   return (
@@ -14,12 +14,12 @@ export default function Introduction() {
           <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-12 lg:gap-16">
             {/* Text */}
             <div className="order-2 flex flex-col md:order-1">
-              <SectionHeading
+              {/* <SectionHeading
                 align="left"
                 eyebrow="Brief Introduction"
                 title="Building Beautiful Spaces Since 2017"
                 className="mb-6"
-              />
+              /> */}
 
               <p
                 className="
@@ -67,10 +67,9 @@ export default function Introduction() {
                     max-w-[220px]
                     px-6
                     py-3.5
-                    text-[14px]
+                    text-[16px]
                     font-sans
                     font-semibold
-                    sm:text-[16px]
                   "
                   >
                     Learn More About Us

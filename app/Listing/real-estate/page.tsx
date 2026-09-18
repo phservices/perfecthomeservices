@@ -14,7 +14,7 @@ export default function Page() {
       <RealHero />
       <RealDetails />
       <RealProject />
-      <WhyChooseUs />
+      <WhyChooseUs variant="real-estate" />
       <RealCta />
       <Footer />
     </>

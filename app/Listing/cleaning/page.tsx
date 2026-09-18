@@ -13,7 +13,7 @@ export default function Page() {
       <CleanHero />
       <CleanDetails />
       <CleanProject />
-      <WhyChooseUs />
+      <WhyChooseUs variant="cleaning" />
       <CleanCta />
       <Footer />
     </>

@@ -6,7 +6,35 @@ import { perfectHomeServices } from "@/utils/Content/HomePage.Content";
 import Link from "next/link";
 import SectionHeading from "../ui/SectionHeading";
 
-export default function WhyChooseUs() {
+type WhyChooseUsVariant = "default" | "cleaning" | "real-estate";
+
+const ctaByVariant: Record<
+  WhyChooseUsVariant,
+  { text: string; href: string }
+> = {
+  default: {
+    text: "Let's Discuss Your Project",
+    href: "/Contact",
+  },
+  cleaning: {
+    text: "Schedule a Cleaning Service",
+    href: "/Contact",
+  },
+  "real-estate": {
+    text: "Speak With a Property Consultant",
+    href: "/Contact",
+  },
+};
+
+interface WhyChooseUsProps {
+  variant?: WhyChooseUsVariant;
+}
+
+export default function WhyChooseUs({
+  variant = "default",
+}: Readonly<WhyChooseUsProps>) {
+  const cta = ctaByVariant[variant];
+
   return (
     <section className="bg-white">
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
@@ -95,7 +123,7 @@ export default function WhyChooseUs() {
 
            {/* CTA */}
           <div className="mt-8 flex justify-center">
-            <Link href="/Contact">
+            <Link href={cta.href}>
               <Button
                 style="danger"
                 type="button"
@@ -103,12 +131,12 @@ export default function WhyChooseUs() {
                 css="
                   h-[52px]
                   px-7
-                  text-[14px]
+                  text-[16px]
                   font-sans
                   font-semibold
                 "
               >
-                Let&apos;s Discuss Your Project
+                {cta.text}
               </Button>
             </Link>
           </div>

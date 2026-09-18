@@ -10,7 +10,7 @@ export default function ContactHero() {
       <Header />
 
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
-        <div className="py-16 sm:py-20 md:py-24 lg:pt-[72px] lg:pb-[86px]">
+        <div className="flex flex-col items-center py-16 text-center sm:py-20 md:py-24 lg:pb-[86px] lg:pt-[72px]">
           {/* Heading */}
           <h1
             className="
@@ -53,7 +53,7 @@ export default function ContactHero() {
           </p>
 
           {/* Buttons */}
-          <div className="flex w-full flex-col gap-3 sm:flex-row sm:gap-4">
+          <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
             <Link href="#contact-form">
               <Button
                 style="danger"
@@ -65,7 +65,7 @@ export default function ContactHero() {
                 sm:min-w-[165px]
                 px-[24.29px]
                 py-[15.55px]
-                text-[12px]
+                text-[16px]
                 font-bold
               "
               >
@@ -83,7 +83,7 @@ export default function ContactHero() {
                 sm:min-w-[165px]
                 px-[24.29px]
                 py-[15.55px]
-                text-[12px]
+                text-[16px]
                 font-bold
               "
               >

@@ -33,7 +33,7 @@ export default function Hero() {
           {/* Eyebrow */}
           <span className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-sans text-xs font-medium uppercase tracking-[0.14em] text-white backdrop-blur-sm sm:text-sm">
             <span className="h-[6px] w-[6px] rounded-full bg-[#F89A0B]" />
-            Interior &amp; Exterior Design Studio
+            Interior &amp; Exterior Design Studio Since 2017
           </span>
 
           {/* Heading */}
@@ -53,7 +53,7 @@ export default function Hero() {
               lg:text-[64px]
             "
           >
-            Creating Healthy Rooms for Perfect Living.
+            Creating Healthy Homes for Perfect Living.
           </h1>
 
           {/* Description */}
@@ -89,7 +89,7 @@ export default function Hero() {
                 sm:min-w-[190px]
                 px-7
                 py-4
-                text-[14px]
+                text-[16px]
                 font-sans
                 font-semibold
               "
@@ -108,7 +108,7 @@ export default function Hero() {
                   sm:min-w-[190px]
                   px-7
                   py-4
-                  text-[14px]
+                  text-[16px]
                   font-sans
                   font-semibold
                 "
@@ -123,7 +123,7 @@ export default function Hero() {
             {[
               { value: "2017", label: "Founded In" },
               { value: "3", label: "Core Service Lines" },
-              // { value: "Enugu", label: "Home Base, Nigeria" },
+              { value: "200+", label: "delivered projects" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <span className="font-display text-2xl font-semibold text-white sm:text-3xl">

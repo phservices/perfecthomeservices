@@ -11,11 +11,11 @@ const quickLinks = [
   { label: "Contact", href: "/Contact" },
 ];
 
-// const services = [
-//   { label: "Interior & Exterior Design", href: "/Listing/interior-design" },
-//   { label: "Industrial Cleaning & Fumigation", href: "/Listing/cleaning" },
-//   { label: "Real Estate", href: "/Listing/real-estate" },
-// ];
+const services = [
+  { label: "Interior & Exterior Design", href: "/Listing/interior-design" },
+  { label: "Industrial Cleaning & Fumigation", href: "/Listing/cleaning" },
+  { label: "Real Estate", href: "/Listing/real-estate" },
+];
 
 type LinkItem = {
   label: string;
@@ -75,7 +75,7 @@ export default function Footer() {
 
             <div className="grid grid-cols-2 gap-6 sm:gap-10">
               <LinkColumn title="Quick Links" links={quickLinks} />
-              {/* <LinkColumn title="Services" links={services} /> */}
+              <LinkColumn title="Services" links={services} />
             </div>
           </div>
 
@@ -92,7 +92,7 @@ export default function Footer() {
 
             <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
               {/* Phone + Email */}
-              <ul className="space-y-4">
+              <ul className="flex flex-col gap-4">
                 <li className="flex items-center gap-3">
                   <IconBadge>
                     <PhoneIcon />
@@ -100,7 +100,7 @@ export default function Footer() {
 
                   <a
                     href="tel:+2348063744335"
-                    className="font-sans text-sm leading-[120%] font-normal text-white/80 transition-colors hover:text-white"
+                    className="whitespace-nowrap font-sans text-sm leading-[120%] font-normal text-white/80 transition-colors hover:text-white"
                   >
                     +234 8063744335
                   </a>

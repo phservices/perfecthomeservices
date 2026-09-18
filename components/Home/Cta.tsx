@@ -33,7 +33,7 @@ export default function Cta() {
                 style="danger"
                 type="button"
                 text="text-[#1A1A1A]"
-                css="w-full sm:w-auto sm:min-w-[190px] px-7 py-4 text-[14px] font-sans font-semibold"
+                css="w-full sm:w-auto sm:min-w-[190px] px-7 py-4 text-[16px] font-sans font-semibold"
               >
                 Book a Consultation
               </Button>
@@ -43,7 +43,7 @@ export default function Cta() {
               <Button
                 style="primary"
                 type="button"
-                css="w-full sm:w-auto sm:min-w-[190px] px-7 py-4 text-[14px] font-sans font-semibold"
+                css="w-full sm:w-auto sm:min-w-[190px] px-7 py-4 text-[16px] font-sans font-semibold"
               >
                 Call Our Team
               </Button>

@@ -94,7 +94,7 @@ export default function Academy() {
                 style="danger"
                 type="button"
                 text="text-[#1A1A1A]"
-                css="w-full max-w-[280px] sm:w-auto sm:min-w-[200px] px-7 py-4 text-[14px] font-sans font-semibold"
+                css="w-full max-w-[280px] sm:w-auto sm:min-w-[200px] px-7 py-4 text-[16px] font-sans font-semibold"
               >
                 Join the Academy
               </Button>

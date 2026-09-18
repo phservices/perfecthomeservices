@@ -72,10 +72,10 @@ export default function OurStory() {
                   text="text-[#1A1A1A]"
                   css="
                   w-full
-                  max-w-[169px]
+                  max-w-[220px]
                   px-5
                   py-3
-                  text-[12px]
+                  text-[16px]
                   font-bold
                 "
                 >

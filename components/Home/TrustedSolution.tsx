@@ -11,7 +11,7 @@ export default function TrustedSolution() {
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
         <div className="py-16 sm:py-20 md:py-24 lg:py-28">
           <SectionHeading
-            eyebrow="Trusted Solutions"
+            eyebrow=""
             title="Complete Interior Design & Property Solutions"
             description="Perfect Home Services delivers professional solutions for residential, commercial, and industrial properties. Every project is handled with careful planning, quality workmanship, and attention to detail."
           />
@@ -53,7 +53,7 @@ export default function TrustedSolution() {
                 css="
                 h-[52px]
                 px-8
-                text-[14px]
+                text-[16px]
                 font-sans
                 font-semibold
               "

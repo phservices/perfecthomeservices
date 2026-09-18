@@ -68,6 +68,18 @@ body {
     url("/images/academy-1.jpg") center / cover no-repeat;
 }
 
+.bg-clean {
+  background:
+    linear-gradient(#00000080, #00000080),
+    url("/images/industrial-cleaning.jpg") center / cover no-repeat;
+}
+
+.bg-real {
+  background:
+    linear-gradient(#00000080, #00000080),
+    url("/images/real-estate.jpg") center / cover no-repeat;
+}
+
 /* Hide scrollbar but keep scrolling */
 .scrollbar-hide {
   -ms-overflow-style: none; /* IE and Edge */

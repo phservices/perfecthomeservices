@@ -6,7 +6,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Visit Our Office",
-    detail: "Enugu, Nigeria",
+    detail: "Block A2 Suite B4 Foretold Plaza, Beside New Kenyetta Market, Enugu",
   },
   {
     icon: Phone,
