@@ -6,7 +6,7 @@ import Button from "../ui/Button";
 
 export default function AboutHero() {
   return (
-    <section className="bg-about pt-5 sm:pt-7 md:pt-10 lg:pt-[50px]">
+    <section className="bg-about-1 pt-5 sm:pt-7 md:pt-10 lg:pt-[50px]">
       <Header />
 
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
@@ -48,9 +48,9 @@ export default function AboutHero() {
                    "
           >
             Since 2017, Perfect Home Services has grown from a painting and
-            wallpaper company into a full-service interior design,
-            construction finishing, cleaning, fumigation, and real estate
-            company trusted across Enugu and Nigeria.
+            wallpaper company into a full-service interior design, construction
+            finishing, cleaning, fumigation, and real estate company trusted
+            across Enugu and Nigeria.
           </p>
 
           {/* Buttons */}

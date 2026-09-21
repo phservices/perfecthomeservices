@@ -39,7 +39,7 @@ export default function AcademyGallery() {
 const gallery = [
   {
     id: 1,
-    src: "/images/our-story.jpg",
+    src: "/images/our-storys-1.jpg",
     alt: "Two students working together during a classroom session",
   },
   {
@@ -64,7 +64,7 @@ const gallery = [
   },
   {
     id: 6,
-    src: "/images/our-story-6.jpg",
+    src: "/images/our-storys-3.jpg",
     alt: "Students touring a lighting showroom on a site visit",
   },
 ];

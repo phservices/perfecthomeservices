@@ -4,9 +4,9 @@ import Image from "next/image";
 
 export default function ListingStory() {
   const images = [
-    "/images/Listing-1.jpg",
-    "/images/Listing-2.jpg",
-    "/images/Listing-3.jpg",
+    "/images/Listing-4.jpg",
+    "/images/Listing-5.jpg",
+    "/images/Listing-6.jpg",
   ];
 
   return (

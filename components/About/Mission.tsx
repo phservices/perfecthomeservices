@@ -27,7 +27,7 @@ export default function Mission() {
             </div>
 
             {/* Space between Vision and Mission */}
-            <div className="h-[190px] sm:h-[200px] lg:h-[205px]" />
+            <div className="h-[90px] sm:h-[100px] lg:h-[105px]" />
 
             {/* Mission */}
             <div className="flex max-w-[750px] flex-col items-center">

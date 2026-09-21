@@ -1,0 +1,36 @@
+import type { MetadataRoute } from "next";
+import { getPublishedPosts } from "@/lib/blog-queries";
+import { SITE_URL } from "@/lib/site";
+
+export const revalidate = 3600;
+
+const staticPaths = [
+  "",
+  "/Aboutus",
+  "/Academy",
+  "/Contact",
+  "/Listing",
+  "/Listing/interior-design",
+  "/Listing/cleaning",
+  "/Listing/real-estate",
+  "/Listing/Our-Projects",
+  "/blog",
+];
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const posts = await getPublishedPosts();
+
+  return [
+    ...staticPaths.map((path) => ({
+      url: `${SITE_URL}${path}`,
+      changeFrequency: "monthly" as const,
+      priority: path === "" ? 1 : 0.7,
+    })),
+    ...posts.map((p) => ({
+      url: `${SITE_URL}/blog/${p.slug}`,
+      lastModified: new Date(p.updated_at),
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+  ];
+}

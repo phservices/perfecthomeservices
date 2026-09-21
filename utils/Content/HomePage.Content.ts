@@ -32,7 +32,11 @@ export const navLinks = [
   {
     title:"Our Projects",
     router:"/Listing/Our-Projects"
-  }
+  },
+  {
+    title: "Blog",
+    router: "/blog",
+  },
 ];
 
 export const services = [
@@ -80,13 +84,13 @@ export const FeaturedServices = [
       "We transform homes, offices, apartments, and commercial spaces through thoughtful design, quality finishing, lighting, furniture selection, renovations, and space planning.",
   },
   {
-    img: "/images/img-2.jpg",
+    img: "/images/cleaning.jpg",
     title: "Industrial Cleaning & Fumigation",
     description:
       "Professional post-construction cleaning, deep cleaning, industrial cleaning, residential cleaning, fumigation, and pest control services delivered by trained professionals.",
   },
   {
-    img: "/images/img-3.jpg",
+    img: "/images/real-estate.jpg",
     title: "Real Estate Services",
     description:
       "Property buying, selling, management, leasing, and tenant sourcing delivered with professionalism and transparency.",
@@ -96,18 +100,18 @@ export const FeaturedServices = [
 export const testimonials = [
   {
     quote:
-      "The transformation exceeded our expectations. The team was professional from consultation to completion, and every detail was handled with care.",
-    name: "Client Name",
+      "I got to know perfect services through instagram and from the moment I put that call across, I was convinced that something could be perfect! From making my home look heavenly to making my shop perfect 👌. I look forward to working on more projects with you guys",
+    name: "Chinny | Business Owner",
   },
   {
     quote:
-      "Their cleaning service completely changed our workspace. Efficient, reliable, and highly recommended.",
-    name: "Client Name",
+      "My experience with Perfect Home Services has been truly rewarding! I recently completed their interior design program, and it went beyond my expectations. The instructors were supportive, the training was hands-on, and every class helped me build real confidence in design. I also love how inspiring their content is on Instagram, it keeps me motivated! I'm so grateful for everything I've learned.",
+    name: "Kamsi | Academy Graduate",
   },
   {
     quote:
-      "The Academy gave me practical knowledge I could immediately apply in my business.",
-    name: "Client Name",
+      "Perfect home services worked on my new house and did a great job overall — screeding, POP, painting, tiling, plumbing, woodwork, cleaning, and fumigation. I really appreciate how patient he was with my budget and how quickly he responded whenever I had a complaint. His finishing was neat and the house turned out beautiful in the end.",
+    name: "Mrs U.Bose | HomeOwner",
   },
 ];
 
@@ -275,7 +279,7 @@ export const sections = [
     body: [
       "At the end of the three-month training, students participate in a graduation ceremony and receive a Certificate of Completion in recognition of their successful participation in both the theoretical and practical aspects of the program.",
     ],
-    image: "/images/story-3.jpg",
+    image: "/images/graduation.jpg",
     alt: "Graduates in academic gowns at the certification ceremony",
     reverse: false,
   },

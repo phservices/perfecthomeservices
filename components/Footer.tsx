@@ -8,6 +8,7 @@ const quickLinks = [
   { label: "About", href: "/Aboutus" },
   { label: "Services", href: "/Listing" },
   { label: "Academy", href: "/Academy" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/Contact" },
 ];
 
@@ -43,7 +44,15 @@ function LinkColumn({ title, links }: { title: string; links: LinkItem[] }) {
   );
 }
 
-function SocialLink({ href, label }: { href: string; label: string }) {
+function SocialLink({
+  href,
+  label,
+  children,
+}: {
+  href: string;
+  label: string;
+  children: ReactNode;
+}) {
   return (
     <a
       href={href}
@@ -52,7 +61,7 @@ function SocialLink({ href, label }: { href: string; label: string }) {
       aria-label={label}
       className="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white/70 transition-colors hover:border-[#F89A0B] hover:text-[#F89A0B]"
     >
-      <InstagramIcon />
+      {children}
     </a>
   );
 }
@@ -61,16 +70,40 @@ export default function Footer() {
   return (
     <footer className="rounded-t-[32px] bg-[#151515] text-white sm:rounded-t-[40px]">
       <div className="mx-auto max-w-7xl px-6 py-14 sm:px-8 sm:py-16 md:px-10 md:py-20">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1fr_1.4fr] md:gap-10 lg:gap-20">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-1 lg:grid-cols-[1fr_1.4fr] md:gap-10 lg:gap-20">
           {/* Left: Logo + Navigation */}
           <div className="flex flex-col gap-10">
             <div className="flex flex-col gap-5">
               <Logo />
+
               <p className="max-w-[32ch] font-sans text-sm leading-[150%] text-white/60">
                 Interior design, construction finishing, cleaning, and real
                 estate services built around your space.
               </p>
-              <SocialLink href="https://instagram.com" label="Instagram" />
+
+              {/* Social Media */}
+              <div className="flex items-center gap-3">
+                <SocialLink
+                  href="https://instagram.com"
+                  label="Instagram"
+                >
+                  <InstagramIcon />
+                </SocialLink>
+
+                <SocialLink
+                  href="https://facebook.com"
+                  label="Facebook"
+                >
+                  <FacebookIcon />
+                </SocialLink>
+
+                <SocialLink
+                  href="https://tiktok.com"
+                  label="TikTok"
+                >
+                  <TikTokIcon />
+                </SocialLink>
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-6 sm:gap-10">
@@ -80,7 +113,7 @@ export default function Footer() {
           </div>
 
           {/* Right: Contact Card */}
-          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 md:p-10">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 md:p-5">
             <h2 className="font-display text-xl font-semibold leading-[120%] text-white md:text-2xl lg:text-[32px]">
               We&apos;d Love to Hear From You
             </h2>
@@ -143,7 +176,11 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 font-sans text-xs text-white/40 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Perfect Home Services. All rights reserved.</p>
+          <p>
+            © {new Date().getFullYear()} Perfect Home Services. All rights
+            reserved.
+          </p>
+
           <p>Enugu, Nigeria</p>
         </div>
       </div>
@@ -200,10 +237,46 @@ function PinIcon() {
 
 function InstagramIcon() {
   return (
-    <svg {...iconProps} className="shrink-0" width={18} height={18}>
+    <svg
+      {...iconProps}
+      width={18}
+      height={18}
+      viewBox="0 0 24 24"
+      fill="none"
+    >
       <rect x="2" y="2" width="20" height="20" rx="5" />
       <circle cx="12" cy="12" r="4" />
       <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" />
+    </svg>
+  );
+}
+
+function FacebookIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <path d="M14 8h3V4h-3c-3.314 0-5 1.686-5 5v3H6v4h3v8h4v-8h3.2l.8-4H13V9c0-.552.448-1 1-1Z" />
+    </svg>
+  );
+}
+
+function TikTokIcon() {
+  return (
+    <svg
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden="true"
+      className="shrink-0"
+    >
+      <path d="M16.5 3c.3 1.7 1.3 3.2 3 4.1.6.3 1.3.5 2 .6v3.4c-1.7 0-3.4-.5-4.8-1.4v6.5c0 4-3.2 6.8-7.1 6.8-3.8 0-6.6-2.8-6.6-6.3 0-3.6 2.8-6.4 6.5-6.4.4 0 .8 0 1.2.1v3.5c-.4-.1-.8-.2-1.2-.2-1.6 0-2.9 1.1-2.9 2.8 0 1.5 1.2 2.7 2.8 2.7 1.8 0 3.1-1.1 3.1-3.5V3h4Z" />
     </svg>
   );
 }

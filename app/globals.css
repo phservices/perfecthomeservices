@@ -67,6 +67,11 @@ body {
     linear-gradient(#00000080, #00000080),
     url("/images/academy-1.jpg") center / cover no-repeat;
 }
+.bg-about-1 {
+background:
+    linear-gradient(#00000080, #00000080),
+    url("/images/About.jpg") center / cover no-repeat;
+}
 
 .bg-clean {
   background:
@@ -121,4 +126,46 @@ body {
   50% {
     box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
   }
+}
+/* Blog article body (public post page + admin editor) */
+@layer components {
+  .blog-content {
+    font-family: var(--font-dmsans), sans-serif;
+    font-size: 18px;
+    line-height: 1.75;
+    color: #1a1a1acc;
+  }
+  .blog-content > * + * { margin-top: 1.25em; }
+  .blog-content h2 {
+    font-family: var(--font-playfair), serif;
+    font-size: 1.7em; line-height: 1.2; font-weight: 600;
+    color: #1a1a1a; margin-top: 2em;
+  }
+  .blog-content h3 {
+    font-family: var(--font-playfair), serif;
+    font-size: 1.3em; line-height: 1.3; font-weight: 600;
+    color: #1a1a1a; margin-top: 1.6em;
+  }
+  .blog-content a { color: #b96f00; text-decoration: underline; text-underline-offset: 3px; }
+  .blog-content strong { color: #1a1a1a; font-weight: 700; }
+  .blog-content ul { list-style: disc; padding-left: 1.5em; }
+  .blog-content ol { list-style: decimal; padding-left: 1.5em; }
+  .blog-content li + li { margin-top: 0.4em; }
+  .blog-content blockquote {
+    border-left: 4px solid #f89a0b; padding-left: 1.1em;
+    font-style: italic; color: #1a1a1a;
+  }
+  .blog-content img { width: 100%; height: auto; border-radius: 16px; }
+  .blog-content hr { border: 0; border-top: 1px solid #1a1a1a1a; margin: 2em 0; }
+  .blog-content p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    color: #1a1a1a55; float: left; height: 0; pointer-events: none;
+  }
+  .blog-content:focus, .ProseMirror:focus { outline: none; }
+}
+
+.bg-blog {
+  background:
+    linear-gradient(#00000080, #00000080),
+    url("/images/listingHero.jpg") center / cover no-repeat;
 }

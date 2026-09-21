@@ -29,7 +29,7 @@ export default function SectionHeading({
           isLight ? "text-[#F89A0B]" : "text-[#F89A0B]"
         } ${isCenter ? "justify-center" : ""}`}
       >
-        <span className="h-[6px] w-[6px] rounded-full bg-[#F89A0B]" />
+        {/* <span className="h-[6px] w-[6px] rounded-full bg-[#F89A0B]" /> */}
         {eyebrow}
       </span>
 
