@@ -3,8 +3,11 @@ import WhyChooseUs from "@/components/Home/WhyChooseUs";
 import InteriorCta from "@/components/Interior/InteriorCta";
 // import InteriorDetails from "@/components/Interior/InteriorDetails";
 import InteriorHero from "@/components/Interior/InteriorHero";
-import OurProjects from "@/components/Interior/OurProjects";
+import ProjectsGallery from "@/components/Projects/ProjectsGallery";
+import { getProjectCategories, getPublishedProjects } from "@/lib/project-queries";
 import { pageMetadata } from "@/lib/seo";
+
+export const revalidate = 300;
 
 export const metadata = pageMetadata({
   title: "Our Projects & Portfolio",
@@ -14,12 +17,17 @@ export const metadata = pageMetadata({
   image: "/images/interior.jpg",
 });
 
-export default function Page() {
+export default async function Page() {
+  const [projects, categories] = await Promise.all([
+    getPublishedProjects(),
+    getProjectCategories(),
+  ]);
+
   return (
     <>
       <InteriorHero />
       {/* <InteriorDetails /> */}
-      <OurProjects />
+      <ProjectsGallery projects={projects} categories={categories} />
       <WhyChooseUs />
       <InteriorCta />
       <Footer />

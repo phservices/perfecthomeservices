@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getPublishedPosts } from "@/lib/blog-queries";
+import { getPublishedProjects } from "@/lib/project-queries";
 import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 3600;
@@ -18,7 +19,7 @@ const staticPaths = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const posts = await getPublishedPosts();
+  const [posts, projects] = await Promise.all([getPublishedPosts(), getPublishedProjects()]);
 
   return [
     ...staticPaths.map((path) => ({
@@ -31,6 +32,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(p.updated_at),
       changeFrequency: "monthly" as const,
       priority: 0.8,
+    })),
+    ...projects.map((p) => ({
+      url: `${SITE_URL}/Listing/Our-Projects/${p.slug}`,
+      lastModified: new Date(p.updated_at),
+      changeFrequency: "monthly" as const,
+      priority: 0.75,
     })),
   ];
 }
