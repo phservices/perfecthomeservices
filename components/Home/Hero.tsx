@@ -53,7 +53,7 @@ export default function Hero() {
               lg:text-[64px]
             "
           >
-            Creating Healthy Homes for Perfect Living.
+            Transforming Spaces.Creating Perfect Homes.
           </h1>
 
           {/* Description */}
