@@ -11,7 +11,8 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         <p className="mt-3 text-[#1A1A1A]/70">
           Add <code>NEXT_PUBLIC_SUPABASE_URL</code> and <code>NEXT_PUBLIC_SUPABASE_ANON_KEY</code> to
           <code> .env.local</code>, run <code>supabase/schema.sql</code> and{" "}
-          <code>supabase/projects-schema.sql</code> in the Supabase SQL editor, then restart the server.
+          <code>supabase/projects-schema.sql</code> and{" "}
+          <code>supabase/site-content-schema.sql</code> in the Supabase SQL editor, then restart the server.
         </p>
       </main>
     );
@@ -36,12 +37,21 @@ export default async function PanelLayout({ children }: { children: React.ReactN
             </form>
           </div>
         </div>
-        <nav className="mx-auto flex max-w-[1000px] items-center gap-1 px-4 pb-3">
+        <nav className="mx-auto flex max-w-[1000px] flex-wrap items-center gap-1 px-4 pb-3">
           <Link href="/admin" className="rounded-full px-3 py-1.5 text-sm font-semibold hover:bg-black/5">
             Posts
           </Link>
           <Link href="/admin/projects" className="rounded-full px-3 py-1.5 text-sm font-semibold hover:bg-black/5">
             Projects
+          </Link>
+          <Link href="/admin/quotes" className="rounded-full px-3 py-1.5 text-sm font-semibold hover:bg-black/5">
+            Quotes
+          </Link>
+          <Link href="/admin/academy" className="rounded-full px-3 py-1.5 text-sm font-semibold hover:bg-black/5">
+            Academy
+          </Link>
+          <Link href="/admin/credentials" className="rounded-full px-3 py-1.5 text-sm font-semibold hover:bg-black/5">
+            Certifications
           </Link>
           <span className="mx-1 h-4 w-px bg-black/10" />
           <Link href="/blog" target="_blank" className="rounded-full px-3 py-1.5 text-sm font-semibold hover:bg-black/5">

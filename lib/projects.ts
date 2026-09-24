@@ -6,6 +6,7 @@ export type Project = {
   description: string;
   cover_image_url: string | null;
   cover_image_alt: string;
+  youtube_url: string | null;
   status: "draft" | "published";
   sort_order: number;
   published_at: string | null;

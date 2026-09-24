@@ -4,6 +4,10 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { slugify } from "@/lib/blog";
 import { createAuthClient } from "@/lib/supabase/server";
+import { getYouTubeId } from "@/lib/youtube";
+import { CREDENTIAL_KINDS } from "@/lib/credentials";
+import type { AcademyFaq } from "@/lib/academy";
+import { QUOTE_PHOTO_BUCKET } from "@/lib/quotes";
 
 export type FormState = { error?: string } | undefined;
 
@@ -170,6 +174,11 @@ export async function saveProject(_: FormState, formData: FormData): Promise<For
   if (!title) return { error: "Please give the project a title." };
   if (!slug) return { error: "The web address (slug) can't be empty." };
 
+  const youtubeUrl = String(formData.get("youtube_url") ?? "").trim();
+  if (youtubeUrl && !getYouTubeId(youtubeUrl)) {
+    return { error: "That YouTube link doesn't look right. Copy the link from the video's Share button." };
+  }
+
   const galleryImages = parseJsonArray<GalleryImageInput>(formData.get("gallery_images")).filter(
     (g) => g.image_url
   );
@@ -184,6 +193,7 @@ export async function saveProject(_: FormState, formData: FormData): Promise<For
     description,
     cover_image_url: String(formData.get("cover_image_url") ?? "") || null,
     cover_image_alt: String(formData.get("cover_image_alt") ?? "").trim(),
+    youtube_url: youtubeUrl || null,
     sort_order: Number(formData.get("sort_order") ?? 0) || 0,
     status: intent === "publish" ? "published" : "draft",
     updated_at: new Date().toISOString(),
@@ -291,4 +301,105 @@ export async function deleteProject(formData: FormData) {
 
   refreshProjectPages();
   redirect("/admin/projects?msg=deleted");
+}
+
+// ─── Credentials (About page) ────────────────────────────────────────────────
+
+async function requireAdmin() {
+  const supabase = await createAuthClient();
+  const { data: auth } = await supabase.auth.getUser();
+  if (!auth.user) redirect("/admin/login");
+  return supabase;
+}
+
+export async function saveCredential(formData: FormData) {
+  const supabase = await requireAdmin();
+
+  const id = String(formData.get("id") ?? "");
+  const kind = String(formData.get("kind") ?? "");
+  const row = {
+    title: String(formData.get("title") ?? "").trim(),
+    issuer: String(formData.get("issuer") ?? "").trim(),
+    year: String(formData.get("year") ?? "").trim(),
+    kind: (CREDENTIAL_KINDS as readonly string[]).includes(kind) ? kind : "Certification",
+    sort_order: Number(formData.get("sort_order") ?? 0) || 0,
+  };
+  if (!row.title) redirect("/admin/credentials?msg=missing-title");
+
+  const { error } = id
+    ? await supabase.from("credentials").update(row).eq("id", id)
+    : await supabase.from("credentials").insert(row);
+  if (error) redirect("/admin/credentials?msg=error");
+
+  revalidatePath("/Aboutus");
+  redirect(`/admin/credentials?msg=${id ? "updated" : "added"}`);
+}
+
+export async function deleteCredential(formData: FormData) {
+  const supabase = await requireAdmin();
+  await supabase.from("credentials").delete().eq("id", String(formData.get("id")));
+  revalidatePath("/Aboutus");
+  redirect("/admin/credentials?msg=deleted");
+}
+
+// ─── Academy details ────────────────────────────────────────────────────────
+
+/** One item per line in the textarea; blank lines dropped. */
+function lines(value: FormDataEntryValue | null) {
+  return String(value ?? "")
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean);
+}
+
+export async function saveAcademy(_: FormState, formData: FormData): Promise<FormState> {
+  const supabase = await requireAdmin();
+
+  const nextBatch = String(formData.get("next_batch_date") ?? "").trim();
+  const faqs = parseJsonArray<AcademyFaq>(formData.get("faqs"))
+    .map((f) => ({ question: String(f.question ?? "").trim(), answer: String(f.answer ?? "").trim() }))
+    .filter((f) => f.question && f.answer);
+
+  const { error } = await supabase.from("academy_settings").upsert({
+    id: 1,
+    course_fee: String(formData.get("course_fee") ?? "").trim(),
+    fee_note: String(formData.get("fee_note") ?? "").trim(),
+    duration: String(formData.get("duration") ?? "").trim(),
+    next_batch_date: /^\d{4}-\d{2}-\d{2}$/.test(nextBatch) ? nextBatch : null,
+    next_batch_note: String(formData.get("next_batch_note") ?? "").trim(),
+    who_can_apply: lines(formData.get("who_can_apply")),
+    curriculum: lines(formData.get("curriculum")),
+    what_you_receive: lines(formData.get("what_you_receive")),
+    bank_name: String(formData.get("bank_name") ?? "").trim(),
+    account_name: String(formData.get("account_name") ?? "").trim(),
+    account_number: String(formData.get("account_number") ?? "").trim(),
+    payment_note: String(formData.get("payment_note") ?? "").trim(),
+    faqs,
+    updated_at: new Date().toISOString(),
+  });
+  if (error) return { error: `Couldn't save: ${error.message}` };
+
+  revalidatePath("/Academy");
+  redirect("/admin/academy?msg=saved");
+}
+
+// ─── Quote requests ─────────────────────────────────────────────────────────
+
+export async function setQuoteStatus(formData: FormData) {
+  const supabase = await requireAdmin();
+  const status = formData.get("status") === "handled" ? "handled" : "new";
+  await supabase.from("quote_requests").update({ status }).eq("id", String(formData.get("id")));
+  redirect("/admin/quotes");
+}
+
+export async function deleteQuote(formData: FormData) {
+  const supabase = await requireAdmin();
+  const id = String(formData.get("id"));
+
+  const { data } = await supabase.from("quote_requests").select("photo_paths").eq("id", id).maybeSingle();
+  if (data?.photo_paths?.length) {
+    await supabase.storage.from(QUOTE_PHOTO_BUCKET).remove(data.photo_paths);
+  }
+  await supabase.from("quote_requests").delete().eq("id", id);
+  redirect("/admin/quotes?msg=deleted");
 }

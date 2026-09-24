@@ -1,87 +1,64 @@
-"use client";
-
 import Image from "next/image";
+import Link from "next/link";
+import type { Project } from "@/lib/projects";
+import Button from "../ui/Button";
+import SectionHeading from "../ui/SectionHeading";
 
-export default function FeaturedProject() {
+export default function FeaturedProject({ projects }: { projects: Project[] }) {
+  if (projects.length === 0) return null;
+
   return (
-    <section className="bg-[#FFF9F1]">
-      <div className="py-[56px] md:py-[40px] lg:py-[84px]">
-        <div className="container mx-auto">
-          <h3 className="text-[16px] md:text-[20px] lg:text-[24px] leading-[100%] text-[#000000B8] font-semibold mb-[16px] text-start md:text-center lg:text-center font-sans">
-            Featured Projects
-          </h3>
-          <h2 className="text-[20px] md:text-[24px] lg:text-[32px] text-[#000000] leading-[100%] text-[20px] font-semibold text-start md:text-center lg:text-center mb-[8px] font-sans">
-            Turning Ideas Into Spaces People Love.
-          </h2>
-          <p className="text-[16px] md:text-[16px] lg:text-[20px] text-start md:text-center lg:text-center font-inter leading-[120%] text-[#1A1A1A] w-full max-w-full md:max-w-full lg:max-w-[996px] mx-auto mb-[20px]">
-            Every project tells a story. Explore some of the homes, offices, and
-            commercial environments we&apos;ve transformed through thoughtful
-            design and professional execution.
-          </p>
+    <section className="bg-white">
+      <div className="py-16 sm:py-20 md:py-24 lg:py-28">
+        <div className="container mx-auto px-5 sm:px-6 md:px-8">
+          <SectionHeading
+            eyebrow="Featured Projects"
+            title="Turning Ideas Into Spaces People Love"
+            description="Every project tells a story. Explore some of the homes, offices, and commercial spaces we've transformed through thoughtful design and professional execution."
+          />
 
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-[9px]">
-            {/* Box 1 */}
-            <div className="relative w-full h-[234px] md:h-[227px] lg:h-[399px] mx-auto rounded-[4.69px] overflow-hidden  bg-green-600">
-              <Image
-                src="/images/office-1.png"
-                alt="Interior and Exterior Design"
-                className="w-full h-full object-cover"
-                width={500}
-                height={500}
-              />
+          <div className="mt-12 grid grid-cols-1 gap-5 md:mt-14 md:grid-cols-2">
+            {projects.map((project) => (
+              <Link
+                key={project.id}
+                href={`/Listing/Our-Projects/${project.slug}`}
+                className="group relative block h-[300px] w-full overflow-hidden rounded-2xl bg-[#EFE7DE] shadow-[0_20px_44px_-24px_rgba(26,26,26,0.3)] sm:h-[360px] lg:h-[460px]"
+              >
+                {project.cover_image_url && (
+                  <Image
+                    src={project.cover_image_url}
+                    alt={project.cover_image_alt || project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
 
-              <div className="absolute bottom-0 left-0 w-full p-[12px] md:p-[14px] lg:p-[18px]">
-                <h3 className="text-white text-[12px] md:text-[13px] lg:text-[16px] font-medium leading-tight">
-                  Interior & Exterior Design
-                </h3>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
-                <p className="text-[#F89A0B] text-[9px] md:text-[10px] lg:text-[12px] mt-[2px]">
-                  Office Table Section
-                </p>
-              </div>
-            </div>
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-white sm:p-6 lg:p-7">
+                  <span className="mb-1.5 inline-block text-[11px] font-bold uppercase tracking-[0.1em] text-[#F89A0B]">
+                    {project.category}
+                  </span>
+                  <h3 className="font-display text-[19px] font-semibold leading-[118%] text-white sm:text-[21px] lg:text-[24px]">
+                    {project.title}
+                  </h3>
+                </div>
+              </Link>
+            ))}
+          </div>
 
-            {/* Box 2 */}
-            <div className="relative w-full  h-[234px] md:h-[227px] bg-green-600 lg:h-[399px] mx-auto rounded-[4.69px] overflow-hidden">
-              <Image
-                src="/images/office-2.png"
-                alt="Interior and Exterior Design"
-                className="w-full h-full object-cover"
-                width={500}
-                height={500}
-              />
-
-              <div className="absolute bottom-0 left-0 w-full p-[12px] md:p-[14px] lg:p-[18px]">
-                <h3 className="text-white text-[12px] md:text-[13px] lg:text-[16px] font-medium leading-tight">
-                  Interior & Exterior Design
-                </h3>
-
-                <p className="text-[#F89A0B] text-[9px] md:text-[10px] lg:text-[12px] mt-[2px]">
-                  Minimalist Chandelier
-                </p>
-              </div>
-            </div>
-
-            {/* Box 3 */}
-            <div className="relative w-full  bg-green-600 h-[234px] md:h-[227px] lg:h-[399px] mx-auto rounded-[4.69px] overflow-hidden">
-              <Image
-                src="/images/office-3.png"
-                alt="Interior and Exterior Design"
-                className="w-full h-full object-cover"
-                width={500}
-                height={500}
-              />
-
-              <div className="absolute bottom-0 left-0 w-full p-[12px] md:p-[14px] lg:p-[18px]">
-                <h3 className="text-white text-[12px] md:text-[13px] lg:text-[16px] font-medium leading-tight">
-                  Interior & Exterior Design
-                </h3>
-
-                <p className="text-[#F89A0B] text-[9px] md:text-[10px] lg:text-[12px] mt-[2px]">
-                  Luxurious Office Space
-                </p>
-              </div>
-            </div>
+          <div className="mt-10 flex justify-center md:mt-12">
+            <Link href="/Listing/Our-Projects">
+              <Button
+                style="danger"
+                type="button"
+                text="text-[#1A1A1A]"
+                css="px-6 py-3.5 text-[16px] font-sans font-semibold"
+              >
+                View More Projects
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

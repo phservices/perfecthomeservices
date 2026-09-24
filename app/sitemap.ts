@@ -10,6 +10,7 @@ const staticPaths = [
   "/Aboutus",
   "/Academy",
   "/Contact",
+  "/Request-a-Quote",
   "/Listing",
   "/Listing/interior-design",
   "/Listing/cleaning",

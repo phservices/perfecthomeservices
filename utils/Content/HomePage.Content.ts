@@ -52,27 +52,30 @@ export const services = [
 export const perfectHomeServices = [
   {
     icon: "/images/Vector(7).png",
-    title: "Experienced Interior Design Professionals",
+    title: "Professional Expertise",
     description:
-      "Every project begins by understanding your vision before recommending solutions that fit your goals.",
+      "Our experienced team provides expert solutions tailored to your vision, needs, and goals.",
   },
+
   {
     icon: "/images/Vector(9).png",
-    title: "Practical Space Planning",
+    title: "Quality Workmanship",
     description:
-      "From planning to execution, we maintain high standards to ensure lasting results.",
+      "We deliver every project with attention to detail, high standards, and lasting quality.",
   },
+
   {
     icon: "/images/Vector(11).png",
-    title: "Reliable Project Delivery",
+    title: "End-to-End Project Management",
     description:
-      "Design, cleaning, fumigation, and training—all under one trusted company.",
+      "From planning and design to execution, cleaning, fumigation, and training, we manage it all.",
   },
+
   {
     icon: "/images/Vector(8).png",
-    title: "Quality Construction Finishing",
+    title: "Client-Focused Service",
     description:
-      "Our multidisciplinary team brings industry expertise, creativity, and technical excellence to every project.",
+      "We listen to your needs and work closely with you to deliver a smooth, reliable experience.",
   },
 ];
 
@@ -198,38 +201,59 @@ export const servicesInt = [
     description:
       "We create functional and visually appealing spaces through thoughtful planning, quality finishing, and professional design solutions. Our team manages projects from concept development to final installation.",
     tags: [
-      "Interior Design",
-      "Home Renovation",
-      "Construction Finishing",
-      "Furniture Installation",
+      "Residential Interior Design",
+      "Commercial Interior Design",
+      "Space Planning",
+      "3D Visualization",
+      "Furniture Design & Selection",
       "Lighting Design",
-      "Painting & Wallpaper Installation",
-      "Interior & Exterior Finishing",
+      "Kitchen & Wardrobe Design",
+      "Renovation",
+      "Interior Finishing",
+      "Project Management",
     ],
     cta: "Explore Interior Design Services",
     image: "/images/interior-design.png",
     imageAlt: "Team installing a decorative interior ceiling feature",
   },
+
+  {
+    id: "construction-finishing",
+    title: "Construction Finishing",
+    description:
+      "We provide professional construction finishing services that transform spaces into polished, functional, and visually appealing environments. From ceilings and painting to flooring, wall finishes, and carpentry, we handle the finishing details with precision and care.",
+    tags: [
+      "POP/Gypsum",
+      "Painting",
+      "Flooring",
+      "Wall Finishes",
+      "Joinery/Carpentry",
+      "Other Finishing Works",
+    ],
+    cta: "Explore Construction Finishing Services",
+    image: "/images/construction-finishing.jpg",
+    imageAlt: "Professional construction finishing and interior work",
+  },
+
   {
     id: "industrial-cleaning",
-    title: "Industrial Cleaning & Fumigation",
+    title: "Cleaning, Fumigation & Pest Control",
     description:
       "Our cleaning and fumigation services help maintain clean, healthy, and safe environments for homes, offices, commercial buildings, and industrial facilities.",
     tags: [
-      "Post-Construction Cleaning",
-      "Deep Cleaning",
       "Residential Cleaning",
-      "Commercial Cleaning",
-      "Industrial Cleaning",
+      "Commercial/Office Cleaning",
+      "Post-Construction Cleaning",
+      "Sofa/Rug/Carpet Cleaning",
       "Fumigation",
       "Pest Control",
-      "Sofa Cleaning",
-      "Rug & Carpet Cleaning",
+      "Disinfection",
     ],
-    cta: "Book a Cleaning Service or Learn more",
+    cta: "Book a Cleaning Service or Learn More",
     image: "/images/industrial-cleaning.jpg",
     imageAlt: "Technician fumigating a wall surface in protective gear",
   },
+
   {
     id: "real-estate",
     title: "Real Estate Services in Enugu",
@@ -239,9 +263,8 @@ export const servicesInt = [
       "Property Sales",
       "Property Purchase",
       "Property Management",
-      "Tenant Sourcing",
       "Property Leasing",
-      "Property Advisory",
+      "Tenant Sourcing",
     ],
     cta: "Explore Real Estate Services",
     image: "/images/real-estate.jpg",

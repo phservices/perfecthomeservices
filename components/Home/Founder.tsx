@@ -31,6 +31,9 @@ export default function Founder() {
               <h3 className="mb-5 font-display text-[28px] font-semibold leading-[112%] tracking-[-0.01em] text-[#1A1A1A] sm:text-[32px] md:text-[36px]">
                 Somtochukwu Okafor
               </h3>
+              <p className="-mt-3 mb-5 font-sans text-[15px] font-semibold uppercase tracking-[0.1em] text-[#6F4322]">
+                Founder &amp; CEO
+              </p>
 
               <p className="mb-4 font-sans text-[16px] font-normal leading-[160%] text-[#1A1A1A]/75 sm:text-[17px]">
                 Founder and CEO of Perfect Home Services, Somtochukwu Okafor has led

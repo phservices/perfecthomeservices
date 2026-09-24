@@ -55,7 +55,7 @@ export default function AcademyHero() {
 
           {/* Buttons */}
           <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
-            <Link href="/Contact">
+            <Link href="#apply">
               <Button
                 style="danger"
                 type="button"

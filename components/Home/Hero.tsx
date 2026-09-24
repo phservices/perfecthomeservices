@@ -53,7 +53,7 @@ export default function Hero() {
               lg:text-[64px]
             "
           >
-            Transforming Spaces.Creating Perfect Homes.
+           Transforming Spaces. Creating Perfect Homes
           </h1>
 
           {/* Description */}

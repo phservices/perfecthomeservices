@@ -12,7 +12,7 @@ export default function AcademyCta() {
           </h1>
 
           <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-[12px] sm:gap-[15px]">
-            <Link href="/Contact">
+            <Link href="#apply">
               <Button
                 style="danger"
                 type="button"

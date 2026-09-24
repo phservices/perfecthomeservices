@@ -3,12 +3,14 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import Logo from "./ui/Logo";
+import { SOCIALS } from "@/lib/site";
 
 const quickLinks = [
   { label: "About", href: "/Aboutus" },
   { label: "Services", href: "/Listing" },
   { label: "Academy", href: "/Academy" },
   { label: "Blog", href: "/blog" },
+  { label: "Request a Quote", href: "/Request-a-Quote" },
   { label: "Contact", href: "/Contact" },
 ];
 
@@ -84,21 +86,21 @@ export default function Footer() {
               {/* Social Media */}
               <div className="flex items-center gap-3">
                 <SocialLink
-                  href="https://instagram.com"
+                  href={SOCIALS.instagram}
                   label="Instagram"
                 >
                   <InstagramIcon />
                 </SocialLink>
 
                 <SocialLink
-                  href="https://facebook.com"
+                  href={SOCIALS.facebook}
                   label="Facebook"
                 >
                   <FacebookIcon />
                 </SocialLink>
 
                 <SocialLink
-                  href="https://tiktok.com"
+                  href={SOCIALS.tiktok}
                   label="TikTok"
                 >
                   <TikTokIcon />

@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import Academy from "@/components/Home/Academy";
 import Cta from "@/components/Home/Cta";
 import Faq from "@/components/Home/Faq";
+import FeaturedProject from "@/components/Home/FeaturedProject";
 import FeaturedService from "@/components/Home/FeaturedService";
 // import Founder from "@/components/Home/Founder";
 import Hero from "@/components/Home/Hero";
@@ -13,6 +14,9 @@ import WhyChooseUs from "@/components/Home/WhyChooseUs";
 import { pageMetadata } from "@/lib/seo";
 import JsonLd from "@/components/JsonLd";
 import { faqs } from "@/utils/Content/faqs";
+import { getPublishedProjects } from "@/lib/project-queries";
+
+export const revalidate = 300;
 
 export const metadata = pageMetadata({
   title: "Interior Design, Cleaning & Real Estate in Enugu, Nigeria",
@@ -22,7 +26,9 @@ export const metadata = pageMetadata({
   keywords: ["interior design Enugu", "cleaning services Enugu", "fumigation Nigeria", "real estate Enugu", "Perfect Home Services"],
 });
 
-export default function Page() {
+export default async function Page() {
+  const featuredProjects = (await getPublishedProjects()).slice(0, 2);
+
   return (
     <>
       <JsonLd
@@ -41,6 +47,7 @@ export default function Page() {
       <Introduction />
       <WhyChooseUs />
       <FeaturedService />
+      <FeaturedProject projects={featuredProjects} />
       <Academy />
       {/* <Founder /> */}
       <Testimonials />

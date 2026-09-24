@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getPublishedProject, getPublishedProjects } from "@/lib/project-queries";
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
+import { getYouTubeId } from "@/lib/youtube";
 
 export const revalidate = 300;
 
@@ -55,6 +56,7 @@ export default async function ProjectPage({ params }: Props) {
   const project = await getPublishedProject(slug);
   if (!project) notFound();
 
+  const youtubeId = project.youtube_url ? getYouTubeId(project.youtube_url) : null;
   const hasGallery = project.gallery.length > 0 || project.beforeAfter.length > 0;
   const url = `${SITE_URL}/Listing/Our-Projects/${project.slug}`;
 
@@ -111,6 +113,20 @@ export default async function ProjectPage({ params }: Props) {
           <p className="mt-8 whitespace-pre-line text-[16px] leading-[170%] text-[#333333] sm:text-[18px]">
             {project.description}
           </p>
+        )}
+
+        {youtubeId && (
+          <div className="relative mt-10 aspect-video overflow-hidden rounded-2xl bg-black">
+            <iframe
+              src={`https://www.youtube-nocookie.com/embed/${youtubeId}`}
+              title={`${project.title} — video`}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="absolute inset-0 h-full w-full"
+            />
+          </div>
         )}
 
         <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">

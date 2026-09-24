@@ -101,6 +101,7 @@ export default function ProjectEditor({ project }: { project?: ProjectWithMedia 
   const [sortOrder, setSortOrder] = useState(project?.sort_order ?? 0);
   const [coverUrl, setCoverUrl] = useState(project?.cover_image_url ?? "");
   const [coverAlt, setCoverAlt] = useState(project?.cover_image_alt ?? "");
+  const [youtubeUrl, setYoutubeUrl] = useState(project?.youtube_url ?? "");
   const [coverUploading, setCoverUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
 
@@ -324,6 +325,23 @@ export default function ProjectEditor({ project }: { project?: ProjectWithMedia 
             placeholder="Describe the picture in a few words (helps Google & screen readers)"
             className={`${inputCls} mt-3`}
           />
+        </div>
+
+        <div>
+          <label className={labelCls} htmlFor="youtube_url">YouTube video (optional)</label>
+          <input
+            id="youtube_url"
+            name="youtube_url"
+            type="url"
+            inputMode="url"
+            value={youtubeUrl}
+            onChange={(e) => setYoutubeUrl(e.target.value)}
+            placeholder="e.g. https://youtu.be/abc123XYZ00"
+            className={inputCls}
+          />
+          <p className={hintCls}>
+            Paste the link from the video&apos;s Share button. It plays on the project&apos;s page, below the description. Leave empty if there&apos;s no video.
+          </p>
         </div>
       </div>
 

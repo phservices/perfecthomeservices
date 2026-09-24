@@ -3,6 +3,7 @@
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { Check } from "lucide-react";
 import Button from "../ui/Button";
+import { SOCIALS, whatsappLink } from "@/lib/site";
 
 type FormState = {
   services: string[];
@@ -67,12 +68,12 @@ const timelineOptions = [
 const socialLinks = [
   {
     label: "Facebook",
-    href: "https://facebook.com",
+    href: SOCIALS.facebook,
     path: "M22 12.06C22 6.51 17.52 2 12 2S2 6.51 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.44 2.91h-2.34V22c4.78-.79 8.44-4.94 8.44-9.94Z",
   },
   {
     label: "Instagram",
-    href: "https://instagram.com",
+    href: SOCIALS.instagram,
     path: "M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.25 1.22.6 1.77 1.15.5.5.85 1.02 1.15 1.77.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.25-.66.6-1.22 1.15-1.77a4.9 4.9 0 0 1 1.77-1.15c.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2Zm0 3.5A6.5 6.5 0 1 0 12 18.5 6.5 6.5 0 0 0 12 5.5Zm0 10.72a4.22 4.22 0 1 1 0-8.44 4.22 4.22 0 0 1 0 8.44Zm6.76-10.98a1.52 1.52 0 1 1-3.04 0 1.52 1.52 0 0 1 3.04 0Z",
   },
   {
@@ -194,10 +195,8 @@ export default function ContactForm() {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<FormErrors>({});
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">(
-    "idle"
-  );
-  const [errorMessage, setErrorMessage] = useState("");
+  // The WhatsApp link we last opened, kept so the visitor can reopen it if a popup was blocked.
+  const [sentLink, setSentLink] = useState("");
 
   const isLastStep = step === steps.length - 1;
 
@@ -238,7 +237,7 @@ export default function ContactForm() {
     setStep((prev) => Math.max(prev - 1, 0));
   };
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
     const stepErrors = validateStep(step, form);
@@ -246,34 +245,30 @@ export default function ContactForm() {
       setErrors(stepErrors);
       return;
     }
-
     setErrors({});
-    setStatus("submitting");
-    setErrorMessage("");
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+    const message = [
+      "Hello Perfect Home Services, I'd like to discuss a project.",
+      "",
+      `*Name:* ${form.name.trim()}`,
+      `*Phone:* ${form.phone.trim()}`,
+      `*Email:* ${form.email.trim()}`,
+      "",
+      `*Services:* ${form.services.join(", ")}`,
+      `*Property type:* ${form.propertyType}`,
+      `*Budget:* ${form.budget}`,
+      `*Timeline:* ${form.timeline}`,
+      `*Location:* ${form.location.trim()}`,
+      "",
+      "*Project details:*",
+      form.message.trim(),
+    ].join("\n");
 
-      const data = await response.json().catch(() => ({}));
-
-      if (!response.ok) {
-        throw new Error(data?.error || "Something went wrong. Please try again.");
-      }
-
-      setStatus("success");
-      setForm(initialForm);
-      setStep(0);
-    } catch (error) {
-      setStatus("error");
-      setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again."
-      );
+    const link = whatsappLink(message);
+    setSentLink(link);
+    // Opened straight from the click so browsers don't block it; fall back to same-tab if they do.
+    if (!window.open(link, "_blank", "noopener,noreferrer")) {
+      window.location.href = link;
     }
   };
 
@@ -561,7 +556,7 @@ export default function ContactForm() {
                 style="reverseLight"
                 type="button"
                 fn={goBack}
-                disabled={step === 0 || status === "submitting"}
+                disabled={step === 0}
                 css={`w-full sm:w-[140px] text-[16px] font-bold text-[#1A1A1A] font-sans ${
                   step === 0 ? "opacity-40 pointer-events-none" : ""
                 }`}
@@ -582,22 +577,19 @@ export default function ContactForm() {
                 <Button
                   style="danger"
                   type="submit"
-                  loading={status === "submitting"}
-                  css="w-full sm:w-[220px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+                  css="w-full sm:w-[240px] text-[16px] font-bold text-[#1A1A1A] font-sans"
                 >
-                  {status === "submitting" ? "Sending..." : "Send Message"}
+                  Send on WhatsApp
                 </Button>
               )}
             </div>
 
-            {status === "success" && (
+            {sentLink && (
               <p className="font-inter text-[14px] text-green-700">
-                Thanks for reaching out! We&apos;ll get back to you shortly.
-              </p>
-            )}
-            {status === "error" && (
-              <p className="font-inter text-[14px] text-red-600">
-                {errorMessage}
+                WhatsApp has opened with your details. Just tap Send and we&apos;ll get back to you shortly.{" "}
+                <a href={sentLink} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2">
+                  Didn&apos;t open? Tap here.
+                </a>
               </p>
             )}
           </form>

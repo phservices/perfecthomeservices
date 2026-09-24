@@ -3,6 +3,7 @@ import Academy from "@/components/Home/Academy";
 import Cta from "@/components/Home/Cta";
 import ListingHero from "@/components/Listing/ListingHero";
 import ListingStory from "@/components/Listing/ListingStory";
+import OurProcess from "@/components/Listing/OurProcess";
 import ServiceBlock from "@/components/Listing/ServiceBlock";
 import { pageMetadata } from "@/lib/seo";
 
@@ -20,6 +21,7 @@ export default function Page() {
       <ListingHero />
       <ListingStory />
       <ServiceBlock />
+      <OurProcess />
       <Academy />
       <Cta />
       <Footer />

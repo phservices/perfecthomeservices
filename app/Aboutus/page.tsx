@@ -1,13 +1,18 @@
 import AboutHero from "@/components/About/AboutHero";
+import Credentials from "@/components/About/Credentials";
 import HealthyRoom from "@/components/About/HealthyRoom";
 import Mission from "@/components/About/Mission";
+import OurJourney from "@/components/About/OurJourney";
 import OurStory from "@/components/About/OurStory";
 import Values from "@/components/About/Values";
 import WhyTrust from "@/components/About/WhyTrust";
 import Founder from "@/components/Home/Founder";
 import Cta from "@/components/Home/Cta";
 import Footer from "@/components/Footer";
+import { getCredentials } from "@/lib/credentials";
 import { pageMetadata } from "@/lib/seo";
+
+export const revalidate = 300;
 
 export const metadata = pageMetadata({
   title: "About Us",
@@ -18,14 +23,18 @@ export const metadata = pageMetadata({
 });
 // import Values from "@/components/About/Values";
 
-export default function Page() {
+export default async function Page() {
+  const credentials = await getCredentials();
+
   return (
     <>
       <AboutHero />
       <OurStory />
+      <OurJourney />
       <Mission />
       <Values />
       <Founder />
+      <Credentials credentials={credentials} />
       <WhyTrust />
       <HealthyRoom />
       <Cta />

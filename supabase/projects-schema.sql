@@ -10,6 +10,7 @@ create table if not exists public.projects (
   description text not null default '',
   cover_image_url text,
   cover_image_alt text not null default '',
+  youtube_url text,
   status text not null default 'draft' check (status in ('draft', 'published')),
   sort_order integer not null default 0,
   published_at timestamptz,
@@ -19,6 +20,10 @@ create table if not exists public.projects (
 
 create index if not exists projects_status_sort_idx
   on public.projects (status, sort_order, published_at desc);
+
+-- Optional YouTube video shown on the project's page. (Adds the column to
+-- databases created before it existed; safe to re-run.)
+alter table public.projects add column if not exists youtube_url text;
 
 -- Extra photos shown on a project's "full gallery" page.
 create table if not exists public.project_gallery_images (

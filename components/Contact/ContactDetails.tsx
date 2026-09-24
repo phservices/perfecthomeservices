@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowLeft } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Button from "../ui/Button";
 
@@ -40,13 +41,26 @@ export default function ContactDetails() {
             We&apos;d love to hear from you.
           </p>
 
-          <Button
-              style="danger"
-              type="button"
-              css="w-full sm:w-[255px] text-[16px] font-bold text-[#1A1A1A] font-sans"
-            >
-            Book a Consultation
-            </Button>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <Link href="/Request-a-Quote">
+              <Button
+                style="danger"
+                type="button"
+                css="w-full sm:w-[220px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+              >
+                Request a Quote
+              </Button>
+            </Link>
+            <Link href="#contact-form">
+              <Button
+                style="reverseLight"
+                type="button"
+                css="w-full sm:w-[255px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+              >
+                Book a Consultation
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </section>
