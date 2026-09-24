@@ -58,7 +58,7 @@ export const services: Service[] = [
 
   {
     id: "industrial-cleaning",
-    title: "Cleaning, Fumigation & Pest Control",
+    title: "industrial cleaning and fumigation",
     description:
       "Our cleaning and fumigation services help maintain clean, healthy, and safe environments for homes, offices, commercial buildings, and industrial facilities.",
     tags: [

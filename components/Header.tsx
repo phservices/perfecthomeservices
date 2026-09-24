@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ChevronDown, Menu, X } from "lucide-react";
 import Logo from "./ui/Logo";
@@ -8,6 +8,24 @@ import { navLinks } from "@/utils/Content/HomePage.Content";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+
+  // Lock page scroll behind the mobile menu and allow closing with Escape
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [isOpen]);
 
   return (
     <>
@@ -78,6 +96,7 @@ export default function Header() {
             type="button"
             onClick={() => setIsOpen(!isOpen)}
             aria-label={isOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isOpen}
             className="flex h-10 w-10 items-center justify-center text-white lg:hidden"
           >
             {isOpen ? (
@@ -91,7 +110,7 @@ export default function Header() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[90] bg-[#151515] transition-opacity duration-300 lg:hidden ${
+        className={`fixed inset-0 z-[90] overflow-y-auto overscroll-contain bg-[#151515] transition-opacity duration-300 lg:hidden ${
           isOpen ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       >

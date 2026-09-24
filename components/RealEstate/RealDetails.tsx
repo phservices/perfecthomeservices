@@ -59,6 +59,6 @@ const services = [
   "Property Sales",
   "Property Purchase",
   "Property Management",
-  "Tenant Sourcing",
-  "Property Leasing"
+  "Property Leasing",
+  "Tenant Sourcing"
 ];

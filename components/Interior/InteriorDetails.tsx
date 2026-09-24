@@ -58,16 +58,14 @@ export default function InteriorDetails() {
 }
 
 const services = [
-  "Interior Design",
-  "Exterior Design",
+  "Residential Interior Design",
+  "Commercial Interior Design",
   "Space Planning",
-  "3D Visualisation",
-  "Home Renovation",
-  "Industrial Cleaning",
-  "Construction Finishing",
-  "Interior & Exterior Painting",
-  "Wallpaper Installation",
-  "Furniture Selection & Installation",
+  "3D Visualization",
+  "Furniture Design & Selection",
   "Lighting Design",
-  "Ceiling Design",
+  "Kitchen & Wardrobe Design",
+  "Renovation",
+  "Interior Finishing",
+  "Project Management"
 ];

@@ -56,15 +56,11 @@ export default function CleanDetails() {
 }
 
 const services = [
-  "Post-Construction Cleaning",
-  "Deep Cleaning",
   "Residential Cleaning",
-  "Commercial Cleaning",
-  "Industrial Cleaning",
-  "Office Cleaning",
-  "Sofa Cleaning",
-  "Rug & Carpet Cleaning",
-  "Fumigation Services",
+  "Commercial/Office Cleaning",
+  "Post-Construction Cleaning",
+  "Sofa/Rug/Carpet Cleaning",
+  "Fumigation",
   "Pest Control",
-  "Disinfection Services",
+  "Disinfection"
 ];

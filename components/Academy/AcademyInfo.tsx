@@ -120,7 +120,7 @@ export default function AcademyInfo({ settings }: { settings: AcademySettings })
               <p className="mt-2 text-[15px] leading-[155%] text-white/70">
                 Register on WhatsApp and our team will guide you through the next steps.
               </p>
-              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-6 flex flex-col  gap-1 xl:flex-row">
                 <a
                   href={applyLink}
                   target="_blank"

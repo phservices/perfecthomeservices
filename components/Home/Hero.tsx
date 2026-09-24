@@ -77,46 +77,52 @@ export default function Hero() {
           </p> */}
 
           {/* Buttons */}
-          <div className="flex w-full flex-col gap-3 sm:flex-row sm:gap-4">
-            <Link href="/Contact">
-              <Button
-                style="danger"
-                type="button"
-                text="text-[#1A1A1A]"
-                css="
-                w-full
-                sm:w-auto
-                sm:min-w-[190px]
-                px-7
-                py-4
-                text-[16px]
-                font-sans
-                font-semibold
-              "
-              >
-                Book a Consultation
-              </Button>
-            </Link>
+       <div className="flex w-full flex-col gap-3 sm:flex-row sm:gap-4">
+  <Link href="/Contact" className="w-full sm:w-auto">
+    <Button
+      style="danger"
+      type="button"
+      text="text-[#1A1A1A]"
+      css="
+        w-full
+        sm:w-auto
+        sm:min-w-[190px]
+        px-5
+        py-3
+        sm:px-7
+        sm:py-4
+        text-[14px]
+        sm:text-[16px]
+        font-sans
+        font-semibold
+      "
+    >
+      Book a Consultation
+    </Button>
+  </Link>
 
-            <Link href="/Listing">
-              <Button
-                style="primary"
-                type="button"
-                css="
-                  w-full
-                  sm:w-auto
-                  sm:min-w-[190px]
-                  px-7
-                  py-4
-                  text-[16px]
-                  font-sans
-                  font-semibold
-                "
-              >
-                Explore Our Services
-              </Button>
-            </Link>
-          </div>
+  <Link href="/Listing" className="w-full sm:w-auto">
+    <Button
+      style="primary"
+      type="button"
+      css="
+        w-full
+        sm:w-auto
+        sm:min-w-[190px]
+        px-5
+        py-3
+        sm:px-7
+        sm:py-4
+        text-[14px]
+        sm:text-[16px]
+        font-sans
+        font-semibold
+      "
+    >
+      Explore Our Services
+    </Button>
+  </Link>
+</div>
 
           {/* Stat strip */}
           <div className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-white/15 pt-8 sm:mt-16 md:mt-20">
