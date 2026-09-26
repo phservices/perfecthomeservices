@@ -25,7 +25,7 @@ export default function CleanHero() {
                      lg:text-[48px]
                    "
           >
-            Industrial Cleaning &amp; Fumigation
+            Cleaning, Fumigation & Pest Control
           </h1>
 
           {/* Description */}

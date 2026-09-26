@@ -20,7 +20,7 @@ export default function CleanDetails() {
           </button>
 
           <h1 className="text-[#1A1A1A] text-[28px] sm:text-[36px] md:text-[42px] lg:text-[48px] leading-[120%] sm:leading-[110%] lg:leading-[100%] font-bold font-sans mb-[12px] sm:mb-[16px]">
-            Industrial Cleaning & Fumigation Services in Enugu, Nigeria
+            Cleaning, Fumigation & Pest Control Services in Enugu, Nigeria
           </h1>
 
           <p className="text-[16px] sm:text-[18px] lg:text-[20px] font-inter font-normal leading-[140%] sm:leading-[130%] lg:leading-[120%] text-[#1A1A1ACC] mb-[8px] max-w-[75ch]">

@@ -16,7 +16,7 @@ const quickLinks = [
 
 const services = [
   { label: "Interior & Exterior Design", href: "/Listing/interior-design" },
-  { label: "Industrial Cleaning & Fumigation", href: "/Listing/cleaning" },
+  { label: "Cleaning, Fumigation & Pest Control", href: "/Listing/cleaning" },
   { label: "Real Estate", href: "/Listing/real-estate" },
 ];
 

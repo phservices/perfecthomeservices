@@ -55,10 +55,9 @@ export const services: Service[] = [
     image: "/images/clean-1.jpg",
     imageAlt: "Professional construction finishing and interior work",
   },
-
   {
     id: "industrial-cleaning",
-    title: "industrial cleaning and fumigation",
+    title: "Cleaning, Fumigation & Pest Control",
     description:
       "Our cleaning and fumigation services help maintain clean, healthy, and safe environments for homes, offices, commercial buildings, and industrial facilities.",
     tags: [
@@ -93,7 +92,6 @@ export const services: Service[] = [
     image: "/images/real-estate.jpg",
     imageAlt: "Modern residential apartment block in Enugu",
   },
-
   {
     id: "relocation-resale",
     title: "Relocation & Resale of Properties",

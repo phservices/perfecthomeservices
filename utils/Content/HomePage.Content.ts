@@ -12,7 +12,7 @@ export const navLinks = [
         router: "/Listing/interior-design",
       },
       {
-        title: "industrial cleaning and fumigation",
+        title: "Cleaning, Fumigation & Pest Controls",
         router: "/Listing/cleaning",
       },
       {
