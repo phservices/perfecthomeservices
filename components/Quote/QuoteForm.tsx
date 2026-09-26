@@ -1,16 +1,19 @@
 "use client";
 
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useState, useSyncExternalStore, type ChangeEvent, type FormEvent } from "react";
 import { ImagePlus, X } from "lucide-react";
-import { submitQuote, type QuoteInput } from "@/app/Request-a-Quote/actions";
+import { requestPhotoUploads, submitQuote, type QuoteInput } from "@/app/Request-a-Quote/actions";
 import {
   MAX_QUOTE_PHOTOS,
   MAX_QUOTE_PHOTO_BYTES,
+  MAX_QUOTE_PHOTO_INPUT_BYTES,
   QUOTE_BUDGETS,
   QUOTE_PHOTO_BUCKET,
+  QUOTE_PHOTO_UPLOAD_TYPES,
   QUOTE_PROPERTY_TYPES,
   QUOTE_SERVICES,
 } from "@/lib/quotes";
+import { shrinkImage } from "@/lib/shrink-image";
 import { whatsappLink } from "@/lib/site";
 import { createClient } from "@/lib/supabase/client";
 
@@ -33,21 +36,56 @@ const inputCls =
   "w-full rounded-[8px] border border-[#1A1A1A33] bg-white px-4 py-3 font-inter text-[15px] text-[#1A1A1A] outline-none transition-colors placeholder:text-[#1A1A1A80] focus:border-[#F89A0B] sm:text-[16px]";
 const labelCls = "mb-2 block font-inter text-[14px] font-medium text-[#1A1A1A] sm:text-[15px]";
 
-async function uploadPhoto(file: File): Promise<string> {
+const noopSubscribe = () => () => {};
+
+type Photo = {
+  name: string;
+  /** The shrunk image that gets uploaded. */
+  blob: Blob;
+  preview: string;
+  /** Set once uploaded, so a resubmit after a form error doesn't upload it again. */
+  path?: string;
+};
+
+/** Shrinks a picked file; falls back to the original if the browser can't decode it but it's already small. */
+async function preparePhoto(file: File): Promise<Photo | string> {
+  const shrunk = await shrinkImage(file);
+  const blob =
+    shrunk ??
+    (QUOTE_PHOTO_UPLOAD_TYPES.includes(file.type) && file.size <= MAX_QUOTE_PHOTO_BYTES ? file : null);
+  if (!blob) return `We couldn't read ${file.name}. Please choose a JPG or PNG photo.`;
+  if (blob.size > MAX_QUOTE_PHOTO_BYTES) return `${file.name} is too large even after resizing. Please choose another photo.`;
+  return { name: file.name, blob, preview: URL.createObjectURL(blob) };
+}
+
+/** Uploads any photos not uploaded yet, via signed URLs from the server. Returns every photo's path. */
+async function uploadPhotos(photos: Photo[]): Promise<Photo[]> {
+  const pending = photos.filter((p) => !p.path);
+  if (!pending.length) return photos;
+
+  const result = await requestPhotoUploads(pending.map((p) => p.blob.type));
+  if (!result.ok) throw new Error(result.error);
+
   const supabase = createClient();
-  const ext = file.name.split(".").pop()?.toLowerCase().replace(/[^a-z0-9]/g, "") || "jpg";
-  const month = new Date().toISOString().slice(0, 7);
-  const path = `${month}/${crypto.randomUUID()}.${ext}`;
-  const { error } = await supabase.storage
-    .from(QUOTE_PHOTO_BUCKET)
-    .upload(path, file, { contentType: file.type });
-  if (error) throw new Error(`Couldn't upload ${file.name}. Please try a smaller photo.`);
-  return path;
+  const uploaded = await Promise.all(
+    pending.map(async (photo, i) => {
+      const { path, token } = result.slots[i];
+      const { error } = await supabase.storage
+        .from(QUOTE_PHOTO_BUCKET)
+        .uploadToSignedUrl(path, token, photo.blob, { contentType: photo.blob.type });
+      if (error) throw new Error(`Couldn't upload ${photo.name}. Please try again.`);
+      return { ...photo, path };
+    })
+  );
+  return photos.map((p) => (p.path ? p : uploaded[pending.indexOf(p)]));
 }
 
 export default function QuoteForm() {
   const [fields, setFields] = useState<Fields>(emptyFields);
-  const [photos, setPhotos] = useState<{ file: File; preview: string }[]>([]);
+  const [photos, setPhotos] = useState<Photo[]>([]);
+  // Until React has loaded, a click would do a plain HTML submit that sends nothing.
+  const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false);
+  const [preparing, setPreparing] = useState(false);
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
   const [error, setError] = useState("");
 
@@ -55,22 +93,27 @@ export default function QuoteForm() {
     setFields((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function addPhotos(files: FileList | null) {
+  async function addPhotos(files: FileList | null) {
     if (!files) return;
     setError("");
     const picked = Array.from(files);
-    const tooBig = picked.find((f) => f.size > MAX_QUOTE_PHOTO_BYTES);
+    const tooBig = picked.find((f) => f.size > MAX_QUOTE_PHOTO_INPUT_BYTES);
     if (tooBig) {
-      setError(`${tooBig.name} is larger than 10 MB. Please choose a smaller photo.`);
+      setError(`${tooBig.name} is larger than 25 MB. Please choose a smaller photo.`);
       return;
     }
     const images = picked.filter((f) => f.type.startsWith("image/"));
     const room = MAX_QUOTE_PHOTOS - photos.length;
     if (images.length > room) setError(`You can attach up to ${MAX_QUOTE_PHOTOS} photos.`);
-    setPhotos((prev) => [
-      ...prev,
-      ...images.slice(0, room).map((file) => ({ file, preview: URL.createObjectURL(file) })),
-    ]);
+
+    setPreparing(true);
+    const prepared = await Promise.all(images.slice(0, room).map(preparePhoto));
+    setPreparing(false);
+
+    const failed = prepared.find((p): p is string => typeof p === "string");
+    if (failed) setError(failed);
+    const ready = prepared.filter((p): p is Photo => typeof p !== "string");
+    setPhotos((prev) => [...prev, ...ready].slice(0, MAX_QUOTE_PHOTOS));
   }
 
   function removePhoto(index: number) {
@@ -83,8 +126,9 @@ export default function QuoteForm() {
     setError("");
     setStatus("sending");
     try {
-      const photoPaths = await Promise.all(photos.map((p) => uploadPhoto(p.file)));
-      const result = await submitQuote({ ...fields, photoPaths });
+      const uploaded = await uploadPhotos(photos);
+      setPhotos(uploaded);
+      const result = await submitQuote({ ...fields, photoPaths: uploaded.map((p) => p.path!) });
       if (!result.ok) throw new Error(result.error);
       setStatus("sent");
       setFields(emptyFields);
@@ -106,7 +150,7 @@ export default function QuoteForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 rounded-full border border-black/15 px-6 py-3 text-[15px] font-semibold hover:bg-white"
+          className="mt-6 rounded-full border border-black/15 whitespace-nowrap px-5 py-2.5 font-sans text-[14px] font-semibold sm:px-6 sm:py-3 sm:text-[15px] hover:bg-white"
         >
           Send another request
         </button>
@@ -118,6 +162,7 @@ export default function QuoteForm() {
 
   return (
     <form
+      method="post"
       onSubmit={onSubmit}
       className="grid grid-cols-1 gap-5 rounded-2xl border border-[#F89A0B] bg-[#F89A0B0D] p-5 sm:grid-cols-2 sm:p-8"
     >
@@ -207,14 +252,19 @@ export default function QuoteForm() {
               <button
                 type="button"
                 onClick={() => removePhoto(i)}
-                aria-label={`Remove ${p.file.name}`}
+                aria-label={`Remove ${p.name}`}
                 className="absolute right-1 top-1 rounded-full bg-black/70 p-1 text-white hover:bg-black"
               >
                 <X size={14} />
               </button>
             </div>
           ))}
-          {photos.length < MAX_QUOTE_PHOTOS && (
+          {preparing && (
+            <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-white text-[12px] font-semibold text-[#1A1A1A]/60 ring-1 ring-black/10">
+              Preparing…
+            </div>
+          )}
+          {!preparing && photos.length < MAX_QUOTE_PHOTOS && (
             <label className="flex h-24 w-24 cursor-pointer flex-col items-center justify-center gap-1 rounded-lg border-2 border-dashed border-[#1A1A1A33] bg-white text-[12px] font-semibold text-[#1A1A1A]/70 transition hover:border-[#F89A0B]">
               <ImagePlus size={22} aria-hidden />
               Add photos
@@ -231,7 +281,7 @@ export default function QuoteForm() {
             </label>
           )}
         </div>
-        <p className="mt-2 text-[13px] text-[#1A1A1A]/55">Up to {MAX_QUOTE_PHOTOS} photos, 10 MB each. Only our team can see them.</p>
+        <p className="mt-2 text-[13px] text-[#1A1A1A]/55">Up to {MAX_QUOTE_PHOTOS} photos. Only our team can see them.</p>
       </div>
 
       {error && (
@@ -251,10 +301,10 @@ export default function QuoteForm() {
         </a>
         <button
           type="submit"
-          disabled={sending}
-          className="rounded-full bg-[#F89A0B] px-8 py-3.5 text-[16px] font-bold text-[#1A1A1A] shadow-[0_8px_20px_-8px_rgba(248,154,11,0.6)] transition hover:bg-[#E38A05] disabled:opacity-60"
+          disabled={!hydrated || sending || preparing}
+          className="rounded-full bg-[#F89A0B] whitespace-nowrap px-5 py-2.5 font-sans text-[14px] font-semibold sm:px-6 sm:py-3 sm:text-[15px] text-[#1A1A1A] shadow-[0_8px_20px_-8px_rgba(248,154,11,0.6)] transition hover:bg-[#E38A05] disabled:opacity-60"
         >
-          {sending ? (photos.length ? "Uploading photos…" : "Sending…") : "Request My Quote"}
+          {!hydrated ? "Loading…" : sending ? (photos.length ? "Uploading photos…" : "Sending…") : "Request My Quote"}
         </button>
       </div>
     </form>

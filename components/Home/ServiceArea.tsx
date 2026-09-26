@@ -35,7 +35,7 @@ export default function ServiceArea() {
                   style="danger"
                   type="button"
                   text="text-[#1A1A1A]"
-                  css="w-full sm:w-auto px-7 py-3.5 text-[16px] font-sans font-semibold"
+                  
                 >
                   Book a Consultation
                 </Button>

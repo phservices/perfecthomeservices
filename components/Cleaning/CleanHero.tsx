@@ -52,21 +52,13 @@ export default function CleanHero() {
           </p>
 
           {/* Buttons */}
-          <div className="flex w-full flex-col items-center gap-3 sm:flex-row sm:justify-center sm:gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <Link href="/Contact">
               <Button
                 style="danger"
                 type="button"
                 text="text-[#F8FAFC]"
-                css="
-                w-full
-                sm:w-auto
-                sm:min-w-[165px]
-                px-[24.29px]
-                py-[15.55px]
-                text-[16px]
-                font-bold
-              "
+                
               >
                 Schedule a Cleaning Service
               </Button>
@@ -76,15 +68,7 @@ export default function CleanHero() {
               <Button
                 style="primary"
                 type="button"
-                css="
-                w-full
-                sm:w-auto
-                sm:min-w-[165px]
-                px-[24.29px]
-                py-[15.55px]
-                text-[16px]
-                font-bold
-              "
+                
               >
                 Call Us Now
               </Button>

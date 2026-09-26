@@ -55,21 +55,13 @@ export default function ListingHero() {
           </p>
 
           {/* Buttons */}
-          <div className="flex w-full flex-col gap-3 sm:flex-row sm:gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link href="/Contact">
               <Button
                 style="danger"
                 type="button"
                 text="text-[#F8FAFC]"
-                css="
-                w-full
-                sm:w-auto
-                sm:min-w-[165px]
-                px-[24.29px]
-                py-[15.55px]
-                text-[16px]
-                font-bold
-              "
+                
               >
                 Book a Consultation
               </Button>
@@ -79,15 +71,7 @@ export default function ListingHero() {
               <Button
                 style="primary"
                 type="button"
-                css="
-                w-full
-                sm:w-auto
-                sm:min-w-[165px]
-                px-[24.29px]
-                py-[15.55px]
-                text-[16px]
-                font-bold
-              "
+                
               >
                 Request a Quote
               </Button>

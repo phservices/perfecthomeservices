@@ -11,12 +11,12 @@ export default function ContactCta() {
             Ready to transform your space?
           </h2>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-[12px] sm:gap-[15px]">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link href="/Request-a-Quote">
               <Button
                 style="danger"
                 type="button"
-                css="w-full sm:w-[225px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+                css="text-[#1A1A1A]"
               >
                 Request a Quote
               </Button>
@@ -30,7 +30,7 @@ export default function ContactCta() {
               <Button
                 style="primary"
                 type="button"
-                css="w-full sm:w-[245px] text-[16px] font-bold font-sans"
+                
               >
                 Chat on WhatsApp
               </Button>

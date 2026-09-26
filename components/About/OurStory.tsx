@@ -71,14 +71,7 @@ export default function OurStory() {
                   style="danger"
                   type="button"
                   text="text-[#1A1A1A]"
-                  css="
-                    w-full
-                    max-w-[220px]
-                    px-5
-                    py-3
-                    text-[16px]
-                    font-bold
-                  "
+                  
                 >
                   Explore Our Services
                 </Button>

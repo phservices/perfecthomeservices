@@ -139,7 +139,7 @@ export default async function PostPage({ params }: Props) {
           </p>
           <Link
             href="/Contact"
-            className="mt-6 inline-block rounded-full bg-[#F89A0B] px-7 py-3 font-semibold text-[#1A1A1A] transition hover:bg-white"
+            className="mt-6 inline-block rounded-full bg-[#F89A0B] whitespace-nowrap px-5 py-2.5 font-sans text-[14px] font-semibold sm:px-6 sm:py-3 sm:text-[15px] text-[#1A1A1A] transition hover:bg-white"
           >
             Book a Consultation
           </Link>

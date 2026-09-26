@@ -11,12 +11,12 @@ export default function AcademyCta() {
             Take the first step towards a career in interior design.
           </h1>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-[12px] sm:gap-[15px]">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link href="#apply">
               <Button
                 style="danger"
                 type="button"
-                css="w-full sm:w-[225px] text-[16px] font-bold text-white font-sans"
+                css="text-white"
               >
                 Apply for the Academy
               </Button>
@@ -26,7 +26,7 @@ export default function AcademyCta() {
               <Button
                 style="primary"
                 type="button"
-                css="w-full sm:w-[277px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+                css="text-[#1A1A1A]"
               >
                 Enquire About the Next Batch
               </Button>

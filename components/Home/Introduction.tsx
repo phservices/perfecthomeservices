@@ -62,15 +62,7 @@ export default function Introduction() {
                     style="danger"
                     type="button"
                     text="text-[#1A1A1A]"
-                    css="
-                    w-full
-                    max-w-[220px]
-                    px-6
-                    py-3.5
-                    text-[16px]
-                    font-sans
-                    font-semibold
-                  "
+                    
                   >
                     Learn More About Us
                   </Button>

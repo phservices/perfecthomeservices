@@ -551,13 +551,13 @@ export default function ContactForm() {
             )}
 
             {/* Navigation */}
-            <div className="flex flex-col-reverse gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div className="flex items-center justify-between gap-3">
               <Button
                 style="reverseLight"
                 type="button"
                 fn={goBack}
                 disabled={step === 0}
-                css={`w-full sm:w-[140px] text-[16px] font-bold text-[#1A1A1A] font-sans ${
+                css={`text-[#1A1A1A] ${
                   step === 0 ? "opacity-40 pointer-events-none" : ""
                 }`}
               >
@@ -569,7 +569,7 @@ export default function ContactForm() {
                   style="danger"
                   type="button"
                   fn={goNext}
-                  css="w-full sm:w-[140px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+                  css="text-[#1A1A1A]"
                 >
                   Next
                 </Button>
@@ -577,7 +577,7 @@ export default function ContactForm() {
                 <Button
                   style="danger"
                   type="submit"
-                  css="w-full sm:w-[240px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+                  css="text-[#1A1A1A]"
                 >
                   Send on WhatsApp
                 </Button>

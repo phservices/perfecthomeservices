@@ -103,16 +103,32 @@ create policy "Admin can manage quote requests"
   with check (true);
 
 -- Photo storage for quote requests: PRIVATE bucket (clients' home photos).
--- Visitors can upload images up to 10 MB; only the admin can view them.
+-- Visitors can't upload directly. The server hands out one signed upload URL
+-- per photo (rate limited, see quote_photo_uploads), photos are shrunk in the
+-- browser first, and the bucket rejects anything over 2 MB. Only the admin can view them.
 insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
-values ('quote-photos', 'quote-photos', false, 10485760, array['image/*'])
-on conflict (id) do nothing;
+values ('quote-photos', 'quote-photos', false, 2097152, array['image/jpeg', 'image/png', 'image/webp'])
+on conflict (id) do update
+  set file_size_limit = excluded.file_size_limit,
+      allowed_mime_types = excluded.allowed_mime_types;
 
 drop policy if exists "Public can upload quote photos" on storage.objects;
-create policy "Public can upload quote photos"
-  on storage.objects for insert
-  to anon, authenticated
-  with check (bucket_id = 'quote-photos');
+
+-- Every upload slot the server has handed out. Used for per-IP and daily
+-- rate limits, and to check a submitted quote only references real uploads.
+-- RLS on with no policies: only the service role key can touch it.
+create table if not exists public.quote_photo_uploads (
+  path text primary key,
+  ip text not null,
+  created_at timestamptz not null default now()
+);
+
+create index if not exists quote_photo_uploads_ip_idx
+  on public.quote_photo_uploads (ip, created_at desc);
+create index if not exists quote_photo_uploads_created_idx
+  on public.quote_photo_uploads (created_at desc);
+
+alter table public.quote_photo_uploads enable row level security;
 
 drop policy if exists "Admin can read quote photos" on storage.objects;
 create policy "Admin can read quote photos"

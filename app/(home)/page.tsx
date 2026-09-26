@@ -51,7 +51,7 @@ export default async function Page() {
       <Academy />
       {/* <Founder /> */}
       <Testimonials />
-      <ServiceArea />
+      
       <Faq />
       <Cta />
       <Footer />

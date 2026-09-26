@@ -41,12 +41,12 @@ export default function ContactDetails() {
             We&apos;d love to hear from you.
           </p>
 
-          <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="flex flex-wrap items-center gap-3">
             <Link href="/Request-a-Quote">
               <Button
                 style="danger"
                 type="button"
-                css="w-full sm:w-[220px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+                css="text-[#1A1A1A] w-[200px]"
               >
                 Request a Quote
               </Button>
@@ -55,7 +55,7 @@ export default function ContactDetails() {
               <Button
                 style="reverseLight"
                 type="button"
-                css="w-full sm:w-[255px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+                css="text-[#1A1A1A] w-full"
               >
                 Book a Consultation
               </Button>

@@ -70,23 +70,23 @@ export default function ContactInfo() {
           </h2>
 
           {/* WhatsApp first: it's how most clients reach us */}
-          <div className="mb-10 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+          <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
             <a
               href={whatsappLink("Hi, I'd like to know more about Perfect Home Services.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-[#25D366] px-8 py-4 text-[17px] font-bold text-white shadow-[0_10px_24px_-10px_rgba(37,211,102,0.8)] transition hover:bg-[#1EBE5A] sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full bg-[#25D366] px-5 py-2.5 font-sans text-[14px] font-semibold text-white shadow-[0_10px_24px_-10px_rgba(37,211,102,0.8)] transition hover:bg-[#1EBE5A] sm:px-6 sm:py-3 sm:text-[15px]"
             >
-              <svg viewBox="0 0 24 24" fill="currentColor" className="h-6 w-6" aria-hidden>
+              <svg viewBox="0 0 24 24" fill="currentColor" className="h-5 w-5" aria-hidden>
                 <path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.48 1.34 5L2 22l5.2-1.36a9.94 9.94 0 0 0 4.84 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2Zm5.83 14.24c-.24.68-1.4 1.32-1.94 1.4-.5.08-1.11.11-1.79-.11-.41-.13-.94-.3-1.6-.6-2.83-1.22-4.67-4.06-4.81-4.25-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.09.99-2.37.26-.28.57-.35.76-.35h.55c.18 0 .41-.07.64.49.24.57.81 1.97.88 2.11.07.14.11.3.02.49-.09.19-.14.3-.28.46-.14.16-.29.36-.42.48-.14.14-.28.29-.12.56.16.28.71 1.18 1.53 1.91 1.05.94 1.94 1.24 2.21 1.38.28.14.44.12.6-.07.16-.19.7-.82.89-1.1.19-.28.37-.23.63-.14.26.09 1.64.77 1.92.91.28.14.47.21.53.33.07.12.07.68-.17 1.36Z" />
               </svg>
               Chat with us on WhatsApp
             </a>
             <a
               href={`tel:${BUSINESS.phone}`}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#1A1A1A]/20 px-8 py-4 text-[17px] font-bold text-[#1A1A1A] transition hover:border-[#F89A0B] hover:text-[#F89A0B] sm:w-auto"
+              className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-[#1A1A1A]/20 px-5 py-2.5 font-sans text-[14px] font-semibold text-[#1A1A1A] transition hover:border-[#F89A0B] hover:text-[#F89A0B] sm:px-6 sm:py-3 sm:text-[15px]"
             >
-              <Phone className="h-5 w-5" aria-hidden />
+              <Phone className="h-4 w-4" aria-hidden />
               Call {PHONE_DISPLAY}
             </a>
           </div>

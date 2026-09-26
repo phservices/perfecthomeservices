@@ -27,13 +27,13 @@ export default function Cta() {
             beautiful, and built to last.
           </p>
 
-          <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-start sm:gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link href="/Contact">
               <Button
                 style="danger"
                 type="button"
                 text="text-[#1A1A1A]"
-                css="w-full sm:w-auto sm:min-w-[190px] px-7 py-4 text-[16px] font-sans font-semibold"
+                
               >
                 Book a Consultation
               </Button>
@@ -43,7 +43,7 @@ export default function Cta() {
               <Button
                 style="primary"
                 type="button"
-                css="w-full sm:w-auto sm:min-w-[190px] px-7 py-4 text-[16px] font-sans font-semibold"
+                
               >
                 Call Our Team
               </Button>

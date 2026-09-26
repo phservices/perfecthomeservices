@@ -35,14 +35,7 @@ export default function HealthyRoom() {
                     style="danger"
                     type="button"
                     text="text-[#1A1A1A]"
-                    css="
-                      w-full
-                      max-w-[169px]
-                      px-5
-                      py-3
-                      text-[16px]
-                      font-bold
-                    "
+                    
                   >
                     Learn More
                   </Button>

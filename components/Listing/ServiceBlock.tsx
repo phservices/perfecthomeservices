@@ -70,7 +70,7 @@ export const services: Service[] = [
       "Pest Control",
       "Disinfection",
     ],
-    cta: "Book a Cleaning Service or Learn More",
+    cta: "Book for Cleaning and fumigation",
     href: "/Listing/cleaning",
     image: "/images/industrial-cleaning.jpg",
     imageAlt: "Technician fumigating a wall surface in protective gear",
@@ -147,7 +147,7 @@ function ServiceBlock({ service, flipped = false }: ServiceBlockProps) {
 
         <a
           href={service.href}
-          className="mt-7 inline-flex items-center rounded-full bg-[#F89A0B] px-6 py-3 text-[16px] font-extrabold leading-none tracking-tight text-[#1A1A1A] shadow-sm transition-all duration-200 hover:bg-[#EE8B22] hover:text-white hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EE8B22] sm:px-7 sm:py-3.5 sm:text-[17px]"
+          className="mt-7 inline-flex items-center rounded-full bg-[#F89A0B] whitespace-nowrap px-5 py-2.5 font-sans text-[14px] font-extrabold sm:px-6 sm:py-3 sm:text-[15px] leading-none tracking-tight text-[#1A1A1A] shadow-sm transition-all duration-200 hover:bg-[#EE8B22] hover:text-white hover:shadow-md focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#EE8B22] sm:px-7 sm:py-3.5 sm:text-[17px]"
         >
           {service.cta}
         </a>

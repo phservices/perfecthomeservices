@@ -15,7 +15,7 @@ export default function Hero() {
       <video
         className="absolute inset-0 -z-20 h-full w-full object-cover"
         src={HERO_VIDEO_URL}
-        // poster="/images/Hero-bg.jpg"
+        poster="/images/Hero-bg.jpg"
         autoPlay
         muted
         loop
@@ -31,7 +31,7 @@ export default function Hero() {
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
         <div className="flex min-h-[560px] flex-col justify-center py-16 sm:py-20 md:min-h-[620px] md:py-24 lg:min-h-[680px] lg:py-0">
           {/* Eyebrow */}
-          <span className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-sans text-xs font-medium uppercase tracking-[0.14em] text-white backdrop-blur-sm sm:text-sm">
+          <span className="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-sans text-[8.5px] font-medium uppercase tracking-[0.14em] text-white backdrop-blur-sm sm:text-sm">
             <span className="h-[6px] w-[6px] rounded-full bg-[#F89A0B]" />
             Interior &amp; Exterior Design Studio Since 2017
           </span>
@@ -53,7 +53,7 @@ export default function Hero() {
               lg:text-[64px]
             "
           >
-           Transforming Spaces. Creating Perfect Homes
+            Transforming Spaces. Creating Perfect Homes
           </h1>
 
           {/* Description */}
@@ -77,59 +77,35 @@ export default function Hero() {
           </p> */}
 
           {/* Buttons */}
-       <div className="flex w-full flex-col gap-3 sm:flex-row sm:gap-4">
-  <Link href="/Contact" className="w-full sm:w-auto">
-    <Button
-      style="danger"
-      type="button"
-      text="text-[#1A1A1A]"
-      css="
-        w-full
-        sm:w-auto
-        sm:min-w-[190px]
-        px-5
-        py-3
-        sm:px-7
-        sm:py-4
-        text-[14px]
-        sm:text-[16px]
-        font-sans
-        font-semibold
-      "
-    >
-      Book a Consultation
-    </Button>
-  </Link>
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+            <Link href="/Contact">
+              <Button
+                style="danger"
+                type="button"
+                text="text-[#1A1A1A]"
+                
+              >
+                Book a Consultation
+              </Button>
+            </Link>
 
-  <Link href="/Listing" className="w-full sm:w-auto">
-    <Button
-      style="primary"
-      type="button"
-      css="
-        w-full
-        sm:w-auto
-        sm:min-w-[190px]
-        px-5
-        py-3
-        sm:px-7
-        sm:py-4
-        text-[14px]
-        sm:text-[16px]
-        font-sans
-        font-semibold
-      "
-    >
-      Explore Our Services
-    </Button>
-  </Link>
-</div>
+            <Link href="/Listing">
+              <Button
+                style="primary"
+                type="button"
+                
+              >
+                Explore Our Services
+              </Button>
+            </Link>
+          </div>
 
           {/* Stat strip */}
           <div className="mt-14 flex flex-wrap items-center gap-x-10 gap-y-4 border-t border-white/15 pt-8 sm:mt-16 md:mt-20">
             {[
               { value: "2017", label: "Founded In" },
               { value: "3", label: "Core Service Lines" },
-              { value: "200+", label: "delivered projects" },
+              { value: "400+", label: "delivered projects" },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <span className="font-display text-2xl font-semibold text-white sm:text-3xl">

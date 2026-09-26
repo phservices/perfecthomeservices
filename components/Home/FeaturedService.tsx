@@ -33,13 +33,13 @@ export default function FeaturedService() {
                 className="
                   group
                   relative
-                  h-[300px]
+                  h-[340px]
                   w-full
                   overflow-hidden
                   rounded-2xl
                   shadow-[0_20px_44px_-24px_rgba(26,26,26,0.3)]
-                  sm:h-[320px]
-                  md:h-[360px]
+                  sm:h-[360px]
+                  md:h-[380px]
                   lg:h-[420px]
                 "
               >
@@ -52,8 +52,8 @@ export default function FeaturedService() {
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
-                {/* Dark Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                {/* Dark Gradient Overlay: on small cards the text wraps higher, so the dark part reaches higher too */}
+                <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/60 via-55% to-black/10 xl:from-black/85 xl:via-black/30 xl:via-50% xl:to-transparent" />
 
                 {/* Content */}
                 <div

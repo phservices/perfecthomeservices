@@ -128,13 +128,7 @@ export default function WhyChooseUs({
                 style="danger"
                 type="button"
                 text="text-[#1A1A1A]"
-                css="
-                  h-[52px]
-                  px-7
-                  text-[16px]
-                  font-sans
-                  font-semibold
-                "
+                
               >
                 {cta.text}
               </Button>

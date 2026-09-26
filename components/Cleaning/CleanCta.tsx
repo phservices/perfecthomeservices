@@ -12,12 +12,12 @@ export default function CleanCta() {
             environment.
           </h1>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-[12px] sm:gap-[15px]">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link href="/Contact">
               <Button
                 style="danger"
                 type="button"
-                css="w-full sm:min-w-[165px] px-[24.29px] py-[15.55px] text-[16px] font-bold text-white font-sans"
+                css="text-white"
               >
                 Book a Consultation
               </Button>
@@ -27,7 +27,7 @@ export default function CleanCta() {
               <Button
                 style="primary"
                 type="button"
-                css="w-full sm:min-w-[165px] px-[24.29px] py-[15.55px] text-[16px] font-bold text-[#1A1A1A] font-sans"
+                css="text-[#1A1A1A]"
               >
                 Call our Team
               </Button>

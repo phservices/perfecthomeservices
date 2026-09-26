@@ -14,9 +14,9 @@ export default function ListingStory() {
       <div className="py-[84px]">
         <div className="container mx-auto px-4">
           {/* Heading */}
-          <h2 className="mb-[16px] text-center font-sans text-[24px] font-semibold leading-[100%] text-[#000000B8]">
+          {/* <h2 className="mb-[16px] text-center font-sans text-[24px] font-semibold leading-[100%] text-[#000000B8]">
             Our Story
-          </h2>
+          </h2> */}
 
           <p className="mb-[40px] text-center font-sans text-[32px] font-semibold leading-[100%] text-[#000000]">
             Complete Property Solutions Under One Roof

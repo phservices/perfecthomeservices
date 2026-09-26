@@ -11,6 +11,7 @@ import Cta from "@/components/Home/Cta";
 import Footer from "@/components/Footer";
 import { getCredentials } from "@/lib/credentials";
 import { pageMetadata } from "@/lib/seo";
+import ServiceArea from "@/components/Home/ServiceArea";
 
 export const revalidate = 300;
 
@@ -33,6 +34,7 @@ export default async function Page() {
       <OurJourney />
       <Mission />
       <Values />
+      <ServiceArea />
       <Founder />
       <Credentials credentials={credentials} />
       <WhyTrust />
