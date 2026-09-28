@@ -45,7 +45,7 @@ export const services = [
   "Space Planning",
   "3D Visualisation",
   "Home Renovation",
-  "Industrial Cleaning",
+  "Cleaning, Fumigation & Pest Control",
   "Fumigation",
 ];
 
@@ -88,9 +88,9 @@ export const FeaturedServices = [
   },
   {
     img: "/images/cleaning.jpg",
-    title: "Industrial Cleaning & Fumigation",
+    title: "Cleaning, Fumigation & Pest Control",
     description:
-      "Professional post-construction cleaning, deep cleaning, industrial cleaning, residential cleaning, fumigation, and pest control services delivered by trained professionals.",
+      "Professional post-construction cleaning, deep cleaning,residential cleaning, fumigation, and pest control services delivered by trained professionals.",
   },
   {
     img: "/images/real-estate.jpg",
@@ -237,7 +237,7 @@ export const servicesInt = [
 
   {
     id: "industrial-cleaning",
-    title: "industrial cleaning and fumigation",
+    title: "Cleaning, Fumigation & Pest Control",
     description:
       "Our cleaning and fumigation services help maintain clean, healthy, and safe environments for homes, offices, commercial buildings, and industrial facilities.",
     tags: [

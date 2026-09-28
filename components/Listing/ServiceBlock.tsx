@@ -33,7 +33,7 @@ export const services: Service[] = [
     ],
     cta: "Explore Interior Design Services",
     href: "/Listing/interior-design",
-    image: "/images/interior-design.png",
+    image: "/images/homes-1.jpg",
     imageAlt: "Team installing a decorative interior ceiling feature",
   },
 

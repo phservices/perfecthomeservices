@@ -47,32 +47,22 @@ export default function ListingHero() {
                    "
           >
             At Perfect Home Services, we provide professional interior and
-            exterior design, construction finishing, industrial cleaning,
-            fumigation, real estate, and interior design training services.
-            Every solution is tailored to deliver quality, functionality, and
-            lasting value for residential, commercial, and industrial
-            properties.
+            exterior design, construction finishing, Cleaning, Fumigation & Pest
+            Control, real estate, and interior design training services. Every
+            solution is tailored to deliver quality, functionality, and lasting
+            value for residential, commercial, and industrial properties.
           </p>
 
           {/* Buttons */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link href="/Contact">
-              <Button
-                style="danger"
-                type="button"
-                text="text-[#F8FAFC]"
-                
-              >
+              <Button style="danger" type="button" text="text-[#F8FAFC]">
                 Book a Consultation
               </Button>
             </Link>
 
             <Link href="/Contact">
-              <Button
-                style="primary"
-                type="button"
-                
-              >
+              <Button style="primary" type="button">
                 Request a Quote
               </Button>
             </Link>

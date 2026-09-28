@@ -29,7 +29,7 @@ export default function CleanDetails() {
           </p>
 
           <p className="text-[16px] sm:text-[18px] lg:text-[20px] font-inter font-normal leading-[140%] sm:leading-[130%] lg:leading-[120%] text-[#1A1A1ACC] mb-[20px] sm:mb-[24px] max-w-[75ch]">
-            Perfect Home Services provides professional industrial cleaning and
+            Perfect Home Services provides professional cleaning and
             fumigation services for residential, commercial, and industrial
             properties. Our team uses professional equipment and proven methods
             to deliver thorough cleaning and effective pest control solutions.
