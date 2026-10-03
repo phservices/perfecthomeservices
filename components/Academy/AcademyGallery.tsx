@@ -39,32 +39,32 @@ export default function AcademyGallery() {
 const gallery = [
   {
     id: 1,
-    src: "/images/our-storys-1.jpg",
-    alt: "Two students working together during a classroom session",
+    src: "/images/Interior-design-academy-enugu-1.jpg",
+    alt: "Interior design students collaborating during a classroom training session at Prefect Home Academy Enugu",
   },
   {
     id: 2,
-    src: "/images/our-story-2.jpg",
-    alt: "Student working on a design project on a laptop",
+    src: "/images/Interior-design-academy-enugu-2.jpg",
+    alt: "Interior design student creating a digital design project on a laptop at Prefect Home Academy Enugu",
   },
   {
     id: 3,
-    src: "/images/our-story-3.jpg",
-    alt: "Students in safety vests during a site visit",
+    src: "/images/Interior-design-academy-enugu-3.jpg",
+    alt: "Interior design academy students in safety vests during a construction site visit in Enugu",
   },
   {
     id: 4,
-    src: "/images/our-story-4.jpg",
-    alt: "Instructor presenting at a whiteboard during a training session",
+    src: "/images/Interior-design-academy-enugu-4.jpg",
+    alt: "Interior design instructor teaching students at a whiteboard during a professional training session in Enugu",
   },
   {
     id: 5,
-    src: "/images/our-story-5.jpg",
-    alt: "Students taking notes during a practical class",
+    src: "/images/Interior-design-academy-enugu-5.jpg",
+    alt: "Interior design students taking notes during a hands-on practical class at Prefect Home Academy Enugu",
   },
   {
     id: 6,
-    src: "/images/our-storys-3.jpg",
-    alt: "Students touring a lighting showroom on a site visit",
+    src: "/images/Interior-design-academy-enugu-6.jpg",
+    alt: "Interior design students exploring a lighting showroom during an industry site visit in Enugu",
   },
 ];

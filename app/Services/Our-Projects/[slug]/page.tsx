@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { getPublishedProject, getPublishedProjects } from "@/lib/project-queries";
 import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
@@ -31,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = project.title;
   const description = describe(project);
-  const url = `${SITE_URL}/Listing/Our-Projects/${project.slug}`;
+  const url = `${SITE_URL}/Services/Our-Projects/${project.slug}`;
   const image = project.cover_image_url || `${SITE_URL}${DEFAULT_OG_IMAGE}`;
 
   return {
@@ -58,7 +57,7 @@ export default async function ProjectPage({ params }: Props) {
 
   const youtubeId = project.youtube_url ? getYouTubeId(project.youtube_url) : null;
   const hasGallery = project.gallery.length > 0 || project.beforeAfter.length > 0;
-  const url = `${SITE_URL}/Listing/Our-Projects/${project.slug}`;
+  const url = `${SITE_URL}/Services/Our-Projects/${project.slug}`;
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -82,7 +81,7 @@ export default async function ProjectPage({ params }: Props) {
 
       <article className="mx-auto max-w-[900px] px-5 pb-16 pt-12 sm:px-6 lg:pt-16">
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-[#1A1A1A]/55">
-          <Link href="/Listing/Our-Projects" className="hover:text-[#F89A0B]">
+          <Link href="/Services/Our-Projects" className="hover:text-[#F89A0B]">
             Our Projects
           </Link>
           <span className="mx-2">/</span>
@@ -132,7 +131,7 @@ export default async function ProjectPage({ params }: Props) {
         <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
           {hasGallery ? (
             <Link
-              href={`/Listing/Our-Projects/${project.slug}/gallery`}
+              href={`/Services/Our-Projects/${project.slug}/gallery`}
               className="inline-flex items-center justify-center bg-[#6F4322] px-7 py-3.5 text-[14px] font-bold uppercase tracking-[0.05em] text-white transition-colors hover:bg-[#5A3519]"
             >
               View Full Gallery
@@ -149,7 +148,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </article>
 
-      <Footer />
+
     </>
   );
 }

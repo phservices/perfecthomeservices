@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PostCard from "@/components/Blog/PostCard";
 import { getPublishedPosts } from "@/lib/blog-queries";
@@ -69,7 +68,7 @@ export default async function BlogPage() {
           </div>
         )}
       </section>
-      <Footer />
+
     </>
   );
 }

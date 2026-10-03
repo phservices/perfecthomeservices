@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import BeforeAfterSlider from "@/components/Projects/BeforeAfterSlider";
 import ProjectGalleryGrid from "@/components/Projects/ProjectGalleryGrid";
@@ -23,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!project) return { title: "Project not found", robots: { index: false } };
 
   const title = `${project.title} — Full Gallery`;
-  const url = `${SITE_URL}/Listing/Our-Projects/${project.slug}/gallery`;
+  const url = `${SITE_URL}/Services/Our-Projects/${project.slug}/gallery`;
 
   return {
     title: { absolute: `${title} | ${SITE_NAME}` },
@@ -53,11 +52,11 @@ export default async function ProjectGalleryPage({ params }: Props) {
 
       <div className="mx-auto max-w-[1100px] px-5 pb-20 pt-12 sm:px-6 lg:pt-16">
         <nav aria-label="Breadcrumb" className="mb-6 text-sm text-[#1A1A1A]/55">
-          <Link href="/Listing/Our-Projects" className="hover:text-[#F89A0B]">
+          <Link href="/Services/Our-Projects" className="hover:text-[#F89A0B]">
             Our Projects
           </Link>
           <span className="mx-2">/</span>
-          <Link href={`/Listing/Our-Projects/${project.slug}`} className="hover:text-[#F89A0B]">
+          <Link href={`/Services/Our-Projects/${project.slug}`} className="hover:text-[#F89A0B]">
             {project.title}
           </Link>
           <span className="mx-2">/</span>
@@ -103,7 +102,7 @@ export default async function ProjectGalleryPage({ params }: Props) {
 
         <div className="mt-14 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
           <Link
-            href={`/Listing/Our-Projects/${project.slug}`}
+            href={`/Services/Our-Projects/${project.slug}`}
             className="text-[15px] font-semibold text-[#1A1A1A] underline underline-offset-4 hover:text-[#F89A0B]"
           >
             ← Back to project
@@ -117,7 +116,7 @@ export default async function ProjectGalleryPage({ params }: Props) {
         </div>
       </div>
 
-      <Footer />
+
     </>
   );
 }

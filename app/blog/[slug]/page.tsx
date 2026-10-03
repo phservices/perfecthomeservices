@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PostCard from "@/components/Blog/PostCard";
 import { formatDate, readingTime, stripHtml } from "@/lib/blog";
@@ -57,6 +56,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+const SERVICE_LINKS: Record<string, { label: string; href: string }> = {
+  "Interior Design": {
+    label: "Explore our interior design services in Enugu",
+    href: "/Services/interior-design-enugu",
+  },
+  "Cleaning": {
+    label: "View our cleaning and fumigation services",
+    href: "/Services/cleaning-fumigation-pest-control-enugu",
+  },
+  "Fumigation": {
+    label: "View our cleaning and fumigation services",
+    href: "/Services/cleaning-fumigation-pest-control-enugu",
+  },
+  "Pest Control": {
+    label: "View our cleaning and fumigation services",
+    href: "/Services/cleaning-fumigation-pest-control-enugu",
+  },
+  "Real Estate": {
+    label: "Explore our real estate services in Enugu",
+    href: "/Services/real-estate-enugu",
+  },
+  "Academy": {
+    label: "Learn about our Interior Design Academy in Enugu",
+    href: "/Interior-design-academy-enugu",
+  },
+};
+
 export default async function PostPage({ params }: Props) {
   const { slug } = await params;
   const post = await getPublishedPost(slug);
@@ -64,6 +90,7 @@ export default async function PostPage({ params }: Props) {
 
   const related = (await getPublishedPosts()).filter((p) => p.id !== post.id).slice(0, 3);
   const url = `${SITE_URL}/blog/${post.slug}`;
+  const serviceLink = post.category ? SERVICE_LINKS[post.category] : undefined;
 
   const jsonLd = [
     {
@@ -135,7 +162,7 @@ export default async function PostPage({ params }: Props) {
         <div className="mt-14 rounded-2xl bg-[#151515] p-8 text-center">
           <p className="font-display text-2xl font-semibold text-white">Ready to get started?</p>
           <p className="mx-auto mt-2 max-w-[460px] text-white/70">
-            Talk to the Prefect Homes team about your interior design, cleaning or real estate needs.
+            Talk to the Perfect Home Services team about your interior design, cleaning or real estate needs.
           </p>
           <Link
             href="/Contact"
@@ -143,6 +170,16 @@ export default async function PostPage({ params }: Props) {
           >
             Book a Consultation
           </Link>
+          {serviceLink && (
+            <p className="mt-4">
+              <Link
+                href={serviceLink.href}
+                className="font-sans text-[13px] text-white/55 underline underline-offset-2 hover:text-white/90 transition-colors"
+              >
+                {serviceLink.label}
+              </Link>
+            </p>
+          )}
         </div>
       </article>
 
@@ -156,7 +193,7 @@ export default async function PostPage({ params }: Props) {
           </div>
         </section>
       )}
-      <Footer />
+
     </>
   );
 }

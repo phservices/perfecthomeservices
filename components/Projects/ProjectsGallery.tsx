@@ -62,7 +62,7 @@ export default function ProjectsGallery({
               {filtered.map((project) => (
                 <Link
                   key={project.id}
-                  href={`/Listing/Our-Projects/${project.slug}`}
+                  href={`/Services/Our-Projects/${project.slug}`}
                   className="group relative block overflow-hidden bg-[#EFE7DE]"
                 >
                   <div className="relative aspect-[4/5] w-full">

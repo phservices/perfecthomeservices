@@ -39,62 +39,48 @@ export default function Hero() {
           {/* Heading */}
           <h1
             className="
-              mb-5
-              w-full
-              max-w-[820px]
-              font-display
-              font-semibold
-              leading-[112%]
-              tracking-[-0.01em]
-              text-[34px]
-              text-white
-              sm:text-[42px]
-              md:text-[52px]
-              lg:text-[64px]
-            "
+    mb-4
+    w-full
+    max-w-[860px]
+    font-display
+    font-semibold
+    leading-[112%]
+    tracking-[-0.01em]
+    text-[30px]
+    text-white
+    sm:text-[38px]
+    md:text-[48px]
+    lg:text-[58px]
+  "
           >
-            Transforming Spaces. Creating Perfect Homes
+            Interior Design, Cleaning, Real Estate &amp; More in Enugu
           </h1>
 
-          {/* Description */}
-          {/* <p
+          {/* Tagline */}
+          <p
             className="
-              mb-9
-              w-full
-              max-w-[640px]
-              font-sans
-              text-[16px]
-              leading-[160%]
-              text-white/80
-              sm:text-[17px]
-              md:text-[18px]
-            "
+    mb-9
+    font-display
+    text-[18px]
+    font-medium
+    text-white/80
+    sm:text-[20px]
+    md:text-[24px]
+  "
           >
-            Perfect Home Services is an interior and exterior design company
-            based in Enugu State, Nigeria — delivering home improvement,
-            construction finishing, industrial cleaning, fumigation, real
-            estate, and interior design training under one trusted brand.
-          </p> */}
+            Transforming Spaces. Creating Perfect Homes
+          </p>
 
           {/* Buttons */}
           <div className="flex flex-wrap items-center gap-3 sm:gap-4">
             <Link href="/Contact">
-              <Button
-                style="danger"
-                type="button"
-                text="text-[#1A1A1A]"
-                
-              >
+              <Button style="danger" type="button" text="text-[#1A1A1A]">
                 Book a Consultation
               </Button>
             </Link>
 
-            <Link href="/Listing">
-              <Button
-                style="primary"
-                type="button"
-                
-              >
+            <Link href="/Services">
+              <Button style="primary" type="button">
                 Explore Our Services
               </Button>
             </Link>

@@ -66,7 +66,7 @@ export default function OurStory() {
             </p>
 
             <div className="mt-6">
-              <Link href="/Listing">
+              <Link href="/Services">
                 <Button
                   style="danger"
                   type="button"

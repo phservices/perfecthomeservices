@@ -21,7 +21,7 @@ export default function FeaturedProject({ projects }: { projects: Project[] }) {
             {projects.map((project) => (
               <Link
                 key={project.id}
-                href={`/Listing/Our-Projects/${project.slug}`}
+                href={`/Services/Our-Projects/${project.slug}`}
                 className="group relative block h-[300px] w-full overflow-hidden rounded-2xl bg-[#EFE7DE] shadow-[0_20px_44px_-24px_rgba(26,26,26,0.3)] sm:h-[360px] lg:h-[460px]"
               >
                 {project.cover_image_url && (
@@ -49,7 +49,7 @@ export default function FeaturedProject({ projects }: { projects: Project[] }) {
           </div>
 
           <div className="mt-10 flex justify-center md:mt-12">
-            <Link href="/Listing/Our-Projects">
+            <Link href="/Services/Our-Projects">
               <Button
                 style="danger"
                 type="button"

@@ -57,7 +57,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
           <Link href="/blog" target="_blank" className="rounded-full px-3 py-1.5 text-sm font-semibold hover:bg-black/5">
             View blog ↗
           </Link>
-          <Link href="/Listing/Our-Projects" target="_blank" className="rounded-full px-3 py-1.5 text-sm font-semibold hover:bg-black/5">
+          <Link href="/Services/Our-Projects" target="_blank" className="rounded-full px-3 py-1.5 text-sm font-semibold hover:bg-black/5">
             View projects ↗
           </Link>
         </nav>

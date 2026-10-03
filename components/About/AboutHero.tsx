@@ -55,7 +55,7 @@ export default function AboutHero() {
 
           {/* Buttons */}
           <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-            <Link href="/Listing">
+            <Link href="/Services">
               <Button
                 style="danger"
                 type="button"

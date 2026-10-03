@@ -12,25 +12,32 @@ export default function CleanCta() {
             environment.
           </h1>
 
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-8">
             <Link href="/Contact">
-              <Button
-                style="danger"
-                type="button"
-                css="text-white"
-              >
-                Book a Consultation
+              <Button style="danger" type="button" css="text-white">
+                Book a Cleaning Service
               </Button>
             </Link>
 
-            <Link href="/Contact">
-              <Button
-                style="primary"
-                type="button"
-                css="text-[#1A1A1A]"
-              >
+            <Link href="tel:+2348063744335">
+              <Button style="primary" type="button" css="text-[#1A1A1A]">
                 Call our Team
               </Button>
+            </Link>
+          </div>
+
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            <Link
+              href="/blog?category=Cleaning"
+              className="font-sans text-[14px] text-white/75 underline underline-offset-2 hover:text-white transition-colors"
+            >
+              Read our cleaning &amp; fumigation articles
+            </Link>
+            <Link
+              href="/Request-a-Quote"
+              className="font-sans text-[14px] text-white/75 underline underline-offset-2 hover:text-white transition-colors"
+            >
+              Request a quote
             </Link>
           </div>
         </div>

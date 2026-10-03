@@ -8,14 +8,13 @@ export const revalidate = 3600;
 const staticPaths = [
   "",
   "/Aboutus",
-  "/Academy",
+  "/Interior-design-academy-enugu",
   "/Contact",
-  "/Request-a-Quote",
-  "/Listing",
-  "/Listing/interior-design",
-  "/Listing/cleaning",
-  "/Listing/real-estate",
-  "/Listing/Our-Projects",
+  "/Services",
+  "/Services/interior-design-enugu",
+  "/Services/cleaning-fumigation-pest-control-enugu",
+  "/Services/real-estate-enugu",
+  "/Services/Our-Projects",
   "/blog",
 ];
 

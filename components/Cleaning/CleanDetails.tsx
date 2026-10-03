@@ -60,6 +60,8 @@ const services = [
   "Commercial/Office Cleaning",
   "Post-Construction Cleaning",
   "Sofa/Rug/Carpet Cleaning",
+  "Professional Cleaning Services",
+  "Deep Cleaning",
   "Fumigation",
   "Pest Control",
   "Disinfection"

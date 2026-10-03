@@ -1,13 +1,10 @@
-import Footer from "@/components/Footer";
 import Academy from "@/components/Home/Academy";
 import Cta from "@/components/Home/Cta";
 import Faq from "@/components/Home/Faq";
 import FeaturedProject from "@/components/Home/FeaturedProject";
 import FeaturedService from "@/components/Home/FeaturedService";
-// import Founder from "@/components/Home/Founder";
 import Hero from "@/components/Home/Hero";
 import Introduction from "@/components/Home/Introduction";
-import ServiceArea from "@/components/Home/ServiceArea";
 import Testimonials from "@/components/Home/Testimonials";
 import TrustedSolution from "@/components/Home/TrustedSolution";
 import WhyChooseUs from "@/components/Home/WhyChooseUs";
@@ -19,11 +16,11 @@ import { getPublishedProjects } from "@/lib/project-queries";
 export const revalidate = 300;
 
 export const metadata = pageMetadata({
-  title: "Interior Design, Cleaning & Real Estate in Enugu, Nigeria",
+  title: "Perfect Home Services | Interior Design & More in Enugu",
   description:
-    "Perfect Home Services delivers interior & exterior design, industrial cleaning and fumigation, and real estate services in Enugu and across Nigeria. Book a free consultation.",
+    "Perfect Home Services offers interior design, cleaning, fumigation, pest control, real estate and interior design training in Enugu, Nigeria.",
   path: "/",
-  keywords: ["interior design Enugu", "cleaning services Enugu", "fumigation Nigeria", "real estate Enugu", "Perfect Home Services"],
+  keywords: ["interior design Enugu", "cleaning services Enugu", "fumigation Enugu Nigeria", "real estate Enugu", "Perfect Home Services"],
 });
 
 export default async function Page() {
@@ -51,10 +48,9 @@ export default async function Page() {
       <Academy />
       {/* <Founder /> */}
       <Testimonials />
-      
       <Faq />
       <Cta />
-      <Footer />
+
     </>
   );
 }

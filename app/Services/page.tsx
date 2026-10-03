@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import Academy from "@/components/Home/Academy";
 import Cta from "@/components/Home/Cta";
 import ListingHero from "@/components/Listing/ListingHero";
@@ -24,7 +23,7 @@ export default function Page() {
       <OurProcess />
       <Academy />
       <Cta />
-      <Footer />
+
     </>
   );
 }

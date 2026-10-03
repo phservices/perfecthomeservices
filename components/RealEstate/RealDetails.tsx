@@ -60,5 +60,8 @@ const services = [
   "Property Purchase",
   "Property Management",
   "Property Leasing",
-  "Tenant Sourcing"
+  "Property Relocation",
+  "Property Resale",
+  "Property Consultation",
+  "Property Investment",
 ];

@@ -1,15 +1,17 @@
-import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import QuoteForm from "@/components/Quote/QuoteForm";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { pageMetadata } from "@/lib/seo";
 
-export const metadata = pageMetadata({
-  title: "Request a Quote",
-  description:
-    "Request a free quote from Perfect Home Services for interior design, construction finishing, cleaning, fumigation or real estate in Enugu, Nigeria.",
-  path: "/Request-a-Quote",
-});
+export const metadata = {
+  ...pageMetadata({
+    title: "Request a Quote",
+    description:
+      "Request a free quote from Perfect Home Services for interior design, construction finishing, cleaning, fumigation or real estate in Enugu, Nigeria.",
+    path: "/Request-a-Quote",
+  }),
+  robots: { index: false, follow: true },
+};
 
 export default function Page() {
   return (
@@ -30,7 +32,7 @@ export default function Page() {
         </div>
       </main>
 
-      <Footer />
+
     </>
   );
 }

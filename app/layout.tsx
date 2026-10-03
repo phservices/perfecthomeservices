@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
-import { BUSINESS, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
+import PublicFooter from "@/components/PublicFooter";
+import { ADDRESS, BUSINESS, DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL, SOCIALS } from "@/lib/site";
 import ScrollReveal from "@/components/ScrollReveal";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
@@ -61,6 +62,7 @@ const organizationJsonLd = [
     email: BUSINESS.email,
     address: {
       "@type": "PostalAddress",
+      streetAddress: ADDRESS,
       addressLocality: BUSINESS.city,
       addressRegion: BUSINESS.region,
       addressCountry: BUSINESS.country,
@@ -69,6 +71,16 @@ const organizationJsonLd = [
       { "@type": "State", name: BUSINESS.region },
       { "@type": "Country", name: "Nigeria" },
     ],
+    sameAs: [SOCIALS.instagram, SOCIALS.facebook, SOCIALS.tiktok],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${SITE_URL}/#organization`,
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/images/logo.png`,
+    sameAs: [SOCIALS.instagram, SOCIALS.facebook, SOCIALS.tiktok],
   },
   {
     "@context": "https://schema.org",
@@ -93,6 +105,7 @@ export default function RootLayout({
       <body>
         <JsonLd data={organizationJsonLd} />
         {children}
+        <PublicFooter />
         <ScrollReveal />
         <WhatsAppButton />
       </body>

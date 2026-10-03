@@ -7,17 +7,17 @@ import { SOCIALS } from "@/lib/site";
 
 const quickLinks = [
   { label: "About", href: "/Aboutus" },
-  { label: "Services", href: "/Listing" },
-  { label: "Academy", href: "/Academy" },
+  { label: "Services", href: "/Services" },
+  { label: "Academy", href: "/Interior-design-academy-enugu" },
   { label: "Blog", href: "/blog" },
   { label: "Request a Quote", href: "/Request-a-Quote" },
   { label: "Contact", href: "/Contact" },
 ];
 
 const services = [
-  { label: "Interior & Exterior Design", href: "/Listing/interior-design" },
-  { label: "Cleaning, Fumigation & Pest Control", href: "/Listing/cleaning" },
-  { label: "Real Estate", href: "/Listing/real-estate" },
+  { label: "Interior & Exterior Design", href: "/Services/interior-design-enugu" },
+  { label: "Cleaning, Fumigation & Pest Control", href: "/Services/cleaning-fumigation-pest-control-enugu" },
+  { label: "Real Estate", href: "/Services/real-estate-enugu" },
 ];
 
 type LinkItem = {

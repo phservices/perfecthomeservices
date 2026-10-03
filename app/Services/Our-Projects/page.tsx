@@ -1,4 +1,3 @@
-import Footer from "@/components/Footer";
 import WhyChooseUs from "@/components/Home/WhyChooseUs";
 import InteriorCta from "@/components/Interior/InteriorCta";
 // import InteriorDetails from "@/components/Interior/InteriorDetails";
@@ -30,7 +29,7 @@ export default async function Page() {
       <ProjectsGallery projects={projects} categories={categories} />
       <WhyChooseUs />
       <InteriorCta />
-      <Footer />
+
     </>
   );
 }

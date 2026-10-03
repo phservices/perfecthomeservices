@@ -30,7 +30,7 @@ export default function HealthyRoom() {
               </h1>
 
               <div>
-                <Link href="/Academy">
+                <Link href="/Interior-design-academy-enugu">
                   <Button
                     style="danger"
                     type="button"

@@ -8,7 +8,6 @@ import Values from "@/components/About/Values";
 import WhyTrust from "@/components/About/WhyTrust";
 import Founder from "@/components/Home/Founder";
 import Cta from "@/components/Home/Cta";
-import Footer from "@/components/Footer";
 import { getCredentials } from "@/lib/credentials";
 import { pageMetadata } from "@/lib/seo";
 import ServiceArea from "@/components/Home/ServiceArea";
@@ -40,7 +39,7 @@ export default async function Page() {
       <WhyTrust />
       <HealthyRoom />
       <Cta />
-      <Footer />
+
     </>
   );
 }

@@ -10,6 +10,21 @@ export default function CleanHero() {
 
       <div className="container mx-auto px-5 sm:px-6 md:px-8">
         <div className="flex flex-col items-center py-16 text-center sm:py-20 md:py-24 lg:pb-[86px] lg:pt-[72px]">
+          {/* Breadcrumb */}
+          <nav aria-label="Breadcrumb" className="mb-5 w-full">
+            <ol className="flex flex-wrap items-center justify-center gap-1.5 font-sans text-[13px] text-white/70">
+              <li>
+                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li>
+                <Link href="/Services" className="hover:text-white transition-colors">Services</Link>
+              </li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page" className="text-white font-medium">Cleaning, Fumigation &amp; Pest Control in Enugu</li>
+            </ol>
+          </nav>
+
           {/* Heading */}
           <h1
             className="
@@ -25,7 +40,7 @@ export default function CleanHero() {
                      lg:text-[48px]
                    "
           >
-            Cleaning, Fumigation & Pest Control
+            Cleaning, Fumigation & Pest Control Services in Enugu
           </h1>
 
           {/* Description */}

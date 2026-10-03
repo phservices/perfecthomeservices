@@ -210,7 +210,7 @@ export default function ProjectEditor({ project }: { project?: ProjectWithMedia 
         </div>
         {project?.status === "published" && (
           <Link
-            href={`/Listing/Our-Projects/${project.slug}`}
+            href={`/Services/Our-Projects/${project.slug}`}
             target="_blank"
             className="rounded-full border border-black/15 px-4 py-2 text-sm font-semibold hover:bg-white"
           >
@@ -247,7 +247,7 @@ export default function ProjectEditor({ project }: { project?: ProjectWithMedia 
         <div>
           <label className={labelCls} htmlFor="slug">Web address</label>
           <div className="flex items-center gap-2">
-            <span className="hidden text-sm text-[#1A1A1A]/55 sm:inline">/Listing/Our-Projects/</span>
+            <span className="hidden text-sm text-[#1A1A1A]/55 sm:inline">/Services/Our-Projects/</span>
             <input
               id="slug"
               name="slug"

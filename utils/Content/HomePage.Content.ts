@@ -1,37 +1,37 @@
 export const navLinks = [
   {
     title: "Services",
-    router: "/Listing",
+    router: "/Services",
     dropdown: [
-        {
+      {
         title: "Our Services",
-        router: "/Listing",
+        router: "/Services",
       },
       {
-        title: "Interior-design",
-        router: "/Listing/interior-design",
+        title: "Interior Design",
+        router: "/Services/interior-design-enugu",
       },
       {
-        title: "Cleaning, Fumigation & Pest Controls",
-        router: "/Listing/cleaning",
+        title: "Cleaning, Fumigation & Pest Control",
+        router: "/Services/cleaning-fumigation-pest-control-enugu",
       },
       {
-        title: "Explore Real Estate Services",
-        router: "/Listing/real-estate",
+        title: "Real Estate Services",
+        router: "/Services/real-estate-enugu",
       },
     ],
   },
   {
     title: "Academy",
-    router: "/Academy",
+    router: "/Interior-design-academy-enugu",
   },
   {
-    title: "Aboutus",
+    title: "About Us",
     router: "/Aboutus",
   },
   {
-    title:"Our Projects",
-    router:"/Listing/Our-Projects"
+    title: "Our Projects",
+    router: "/Services/Our-Projects",
   },
   {
     title: "Blog",
@@ -42,7 +42,7 @@ export const navLinks = [
 export const services = [
   "Interior & Exterior Design",
   "Construction Finishing",
-  "Space Planning",
+  "Interior Design Academy ",
   "3D Visualisation",
   "Home Renovation",
   "Cleaning, Fumigation & Pest Control",
@@ -83,18 +83,24 @@ export const FeaturedServices = [
   {
     img: "/images/img.jpg",
     title: "Interior Design",
+    href: "/Services/interior-design-enugu",
+    cta: "Explore our interior design services in Enugu",
     description:
       "We transform homes, offices, apartments, and commercial spaces through thoughtful design, quality finishing, lighting, furniture selection, renovations, and space planning.",
   },
   {
     img: "/images/cleaning.jpg",
     title: "Cleaning, Fumigation & Pest Control",
+    href: "/Services/cleaning-fumigation-pest-control-enugu",
+    cta: "View our cleaning and fumigation services",
     description:
-      "Professional post-construction cleaning, deep cleaning,residential cleaning, fumigation, and pest control services delivered by trained professionals.",
+      "Professional post-construction cleaning, deep cleaning, residential cleaning, fumigation, and pest control services delivered by trained professionals.",
   },
   {
     img: "/images/real-estate.jpg",
     title: "Real Estate Services",
+    href: "/Services/real-estate-enugu",
+    cta: "Explore our real estate services in Enugu",
     description:
       "Property buying, selling, management, leasing, and tenant sourcing delivered with professionalism and transparency.",
   },

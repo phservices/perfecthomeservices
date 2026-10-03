@@ -30,7 +30,7 @@ export default function AcademyEditor({ settings, saved }: { settings: AcademySe
             Update the fee, next start date and payment details whenever they change.
           </p>
         </div>
-        <Link href="/Academy#apply" target="_blank" className="shrink-0 rounded-full border border-black/15 px-4 py-2 text-sm font-semibold hover:bg-white">
+        <Link href="/Interior-design-academy-enugu#apply" target="_blank" className="shrink-0 rounded-full border border-black/15 px-4 py-2 text-sm font-semibold hover:bg-white">
           View live ↗
         </Link>
       </div>

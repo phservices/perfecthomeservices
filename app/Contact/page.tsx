@@ -3,7 +3,6 @@ import ContactDetails from "@/components/Contact/ContactDetails";
 import ContactForm from "@/components/Contact/ContactForm";
 import ContactHero from "@/components/Contact/ContactHero";
 import ContactInfo from "@/components/Contact/ContactInfo";
-import Footer from "@/components/Footer";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
@@ -22,7 +21,7 @@ export default function Page() {
       <ContactInfo />
       <ContactForm />
       <ContactCta />
-      <Footer />
+
     </>
   );
 }

@@ -2,6 +2,7 @@
 
 import { FeaturedServices } from "@/utils/Content/HomePage.Content";
 import Image from "next/image";
+import Link from "next/link";
 import SectionHeading from "../ui/SectionHeading";
 
 export default function FeaturedService() {
@@ -28,11 +29,14 @@ export default function FeaturedService() {
             "
           >
             {FeaturedServices.map((service, index) => (
-              <div
+              <Link
                 key={index}
+                href={service.href}
+                aria-label={service.cta}
                 className="
                   group
                   relative
+                  block
                   h-[340px]
                   w-full
                   overflow-hidden
@@ -52,7 +56,7 @@ export default function FeaturedService() {
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
-                {/* Dark Gradient Overlay: on small cards the text wraps higher, so the dark part reaches higher too */}
+                {/* Dark Gradient Overlay */}
                 <div className="absolute inset-0 bg-linear-to-t from-black/90 via-black/60 via-55% to-black/10 xl:from-black/85 xl:via-black/30 xl:via-50% xl:to-transparent" />
 
                 {/* Content */}
@@ -96,8 +100,26 @@ export default function FeaturedService() {
                   >
                     {service.description}
                   </p>
+
+                  <span className="mt-3 inline-flex items-center gap-1 font-sans text-[13px] font-medium text-white/90 underline-offset-2 group-hover:underline sm:text-[14px]">
+                    {service.cta}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

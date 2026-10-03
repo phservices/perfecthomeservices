@@ -49,7 +49,7 @@ export default function Founder() {
               </p>
 
               <div className="flex w-full items-center justify-start">
-                <Link href="/Listing">
+                <Link href="/Services">
                   <Button
                     style="danger"
                     type="button"
