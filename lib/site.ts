@@ -1,7 +1,7 @@
 export const SITE_NAME = "Perfect Home Services";
 
 export const SITE_URL = (
-  process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.phsinteriors.com"
 ).replace(/\/$/, "");
 
 export const DEFAULT_OG_IMAGE = "/images/Hero-bg.jpg";
