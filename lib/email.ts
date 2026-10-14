@@ -89,3 +89,57 @@ export async function sendQuoteAlert(q: QuoteAlert) {
     console.error("sendQuoteAlert:", error);
   }
 }
+
+/**
+ * Sends a WhatsApp message to the business about a new quote request via CallMeBot
+ * (https://www.callmebot.com/blog/free-api-whatsapp-messages/).
+ *
+ * Setup (one-time, takes ~2 minutes):
+ *   1. Save +34 644 76 00 29 as a contact in WhatsApp.
+ *   2. Send this message to that contact: "I allow callmebot to send me messages"
+ *   3. You'll receive your personal API key by WhatsApp within a minute.
+ *   4. Set CALLMEBOT_API_KEY and CALLMEBOT_PHONE in your environment variables.
+ *
+ * Needs CALLMEBOT_API_KEY and CALLMEBOT_PHONE; without them this logs and does nothing.
+ */
+export async function sendQuoteWhatsApp(q: QuoteAlert) {
+  const apiKey = process.env.CALLMEBOT_API_KEY;
+  const phone = (process.env.CALLMEBOT_PHONE || BUSINESS.phone).replace(/\D/g, "");
+
+  if (!apiKey) {
+    console.warn("sendQuoteWhatsApp: CALLMEBOT_API_KEY is not set; skipping WhatsApp alert.");
+    return;
+  }
+
+  const lines = [
+    "🏠 *New Quote Request*",
+    "",
+    `*Name:* ${q.name}`,
+    `*Phone:* ${q.phone}`,
+    q.email ? `*Email:* ${q.email}` : null,
+    `*Location:* ${q.location}`,
+    `*Service:* ${q.service}`,
+    `*Property:* ${q.propertyType}`,
+    q.budget ? `*Budget:* ${q.budget}` : null,
+    q.preferredStartDate ? `*Start date:* ${q.preferredStartDate}` : null,
+    q.photoCount ? `*Photos:* ${q.photoCount} attached` : null,
+    "",
+    `*Description:*\n${q.description}`,
+    "",
+    `View in admin: ${SITE_URL}/admin/quotes`,
+  ]
+    .filter((l) => l !== null)
+    .join("\n");
+
+  try {
+    const url = new URL("https://api.callmebot.com/whatsapp.php");
+    url.searchParams.set("phone", phone);
+    url.searchParams.set("text", lines);
+    url.searchParams.set("apikey", apiKey);
+
+    const res = await fetch(url.toString());
+    if (!res.ok) console.error("sendQuoteWhatsApp:", res.status, await res.text().catch(() => ""));
+  } catch (error) {
+    console.error("sendQuoteWhatsApp:", error);
+  }
+}

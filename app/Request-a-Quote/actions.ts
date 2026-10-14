@@ -2,7 +2,7 @@
 
 import { headers } from "next/headers";
 import { after } from "next/server";
-import { sendQuoteAlert } from "@/lib/email";
+import { sendQuoteAlert, sendQuoteWhatsApp } from "@/lib/email";
 import {
   MAX_QUOTE_PHOTOS,
   QUOTE_BUDGETS,
@@ -185,21 +185,20 @@ export async function submitQuote(input: QuoteInput): Promise<QuoteResult> {
     return { ok: false, error: "We couldn't send your request. Please try again or contact us on WhatsApp." };
   }
 
-  // Email the team once the visitor already has their confirmation.
-  after(() =>
-    sendQuoteAlert({
-      name,
-      phone,
-      email,
-      location,
-      service,
-      propertyType,
-      budget,
-      description,
-      preferredStartDate,
-      photoCount: photoPaths.length,
-    })
-  );
+  // Notify the team once the visitor already has their confirmation.
+  const alertPayload = {
+    name,
+    phone,
+    email,
+    location,
+    service,
+    propertyType,
+    budget,
+    description,
+    preferredStartDate,
+    photoCount: photoPaths.length,
+  };
+  after(() => Promise.all([sendQuoteAlert(alertPayload), sendQuoteWhatsApp(alertPayload)]));
 
   return { ok: true };
 }

@@ -260,8 +260,11 @@ export default function QuoteForm() {
             </div>
           ))}
           {preparing && (
-            <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-white text-[12px] font-semibold text-[#1A1A1A]/60 ring-1 ring-black/10">
-              Preparing…
+            <div className="flex h-24 w-24 items-center justify-center rounded-lg bg-white ring-1 ring-black/10">
+              <svg className="h-5 w-5 animate-spin text-[#F89A0B]" viewBox="0 0 24 24" fill="none" aria-hidden>
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
             </div>
           )}
           {!preparing && photos.length < MAX_QUOTE_PHOTOS && (
@@ -302,9 +305,15 @@ export default function QuoteForm() {
         <button
           type="submit"
           disabled={!hydrated || sending || preparing}
-          className="rounded-full bg-[#F89A0B] whitespace-nowrap px-5 py-2.5 font-sans text-[14px] font-semibold sm:px-6 sm:py-3 sm:text-[15px] text-[#1A1A1A] shadow-[0_8px_20px_-8px_rgba(248,154,11,0.6)] transition hover:bg-[#E38A05] disabled:opacity-60"
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F89A0B] whitespace-nowrap px-5 py-2.5 font-sans text-[14px] font-semibold sm:px-6 sm:py-3 sm:text-[15px] text-[#1A1A1A] shadow-[0_8px_20px_-8px_rgba(248,154,11,0.6)] transition hover:bg-[#E38A05] disabled:opacity-60"
         >
-          {!hydrated ? "Loading…" : sending ? (photos.length ? "Uploading photos…" : "Sending…") : "Request My Quote"}
+          {(sending || preparing) && (
+            <svg className="h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden>
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+            </svg>
+          )}
+          {!hydrated ? "Loading…" : sending ? (photos.length ? "Uploading photos…" : "Submitting…") : "Request My Quote"}
         </button>
       </div>
     </form>

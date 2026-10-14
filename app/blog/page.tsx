@@ -46,7 +46,7 @@ export default async function BlogPage() {
         <div className="container mx-auto px-5 sm:px-6 md:px-8">
           <div className="flex flex-col items-center py-16 text-center sm:py-20 lg:pb-[86px] lg:pt-[72px]">
             <h1 className="mb-4 max-w-[881px] text-[28px] font-bold leading-[105%] text-white sm:text-[32px] md:text-[40px] lg:text-[48px]">
-              The Prefect Homes Blog
+              The Perfect Homes Service Blog
             </h1>
             <p className="max-w-[720px] font-inter text-[16px] leading-[150%] text-white/85 sm:text-[18px]">
               Ideas, guides and expert advice on interior design, real estate and professional cleaning.
